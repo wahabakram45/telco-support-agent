@@ -103,6 +103,21 @@ repeatable output. Note that **temperature 0 is still not fully deterministic** 
 order, batching, model updates). That's why evals run over a whole set and track averages rather than
 trusting one run. Some reasoning models fix the temperature and ignore it. Check the model's docs.
 
+**Why temperature 0 still varies, step by step** (we demonstrated this live: the same story prompt
+sent 5× at temperature 0 gave 5 different stories, all starting "The SIM card lived in a…" before splitting):
+1. Temperature 0 = always pick the top-scoring token. That's deterministic *only if the scores are bit-identical*.
+2. Floating-point addition depends on order: `(0.1 + 0.2) + 0.3 == 0.6000000000000001`, but
+   `0.1 + (0.2 + 0.3) == 0.6`. Summing 1M numbers in 3 orders gave 3 different totals (~1e-12 apart).
+3. GPUs add in parallel chunks with no fixed order, and **batching** (your request grouped with other
+   users' requests) changes how the work is split. So the scores depend slightly on server load.
+4. When two tokens nearly tie, a 6th-decimal difference flips the winner. Every later token is
+   predicted from different text, so the rest of the answer diverges (butterfly effect).
+5. Other sources: silent model updates behind the same name, mixture-of-experts routing that depends
+   on the batch, provider-side sampling.
+
+Factual tasks barely vary (when the answer is "2 GB", the top token wins by a mile); creative text has
+near-ties at almost every word.
+
 ### 4b. Reasoning models: what changes (applies to our model, gpt-5.4-nano)
 
 Most current models are **reasoning models**. Before answering, they generate hidden "thinking"
