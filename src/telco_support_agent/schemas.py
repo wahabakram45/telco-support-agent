@@ -10,11 +10,6 @@ class UsageProfile(BaseModel):
     rather than invent a number (our first guardrail).
     """
 
-    # TODO(you) — lesson 00a: make tests/test_schemas.py pass.
-    #   - forbid unknown fields (model_config = ConfigDict(...))
-    #   - no negative values anywhere (Field(..., ge=0))
-    #   - a sane upper bound on data_gb (le=...): what's the most data a plan could plausibly have?
-
     model_config = ConfigDict(extra="forbid")
     data_gb: float | None = Field(
         None, ge=0, le=1000, description="Monthly mobile data in GB; null if not stated"

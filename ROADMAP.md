@@ -15,9 +15,9 @@ Original spec: [AI_Engineer_Side_Project.md](AI_Engineer_Side_Project.md). Gaps 
   which matters on 8 GB of RAM. The `docker` commands you learn are identical.
 
 ## Phase 0 — Python toolkit & LLM API fundamentals  (week 1, ~8 h)
-- [ ] Lesson [00a — Python engineering toolkit](learn/00a-python-toolkit.md) ➕: uv, type hints, **Pydantic**
+- [x] Lesson [00a — Python engineering toolkit](learn/00a-python-toolkit.md) ➕: uv, type hints, **Pydantic**
       (models, validation, Field, JSON Schema, settings), **pytest** (fixtures, parametrize, fakes), **ruff** (lint + format), **pre-commit**
-- [ ] Build: add validation rules to `UsageProfile`, install pre-commit and watch it block a bad commit
+- [x] Build: add validation rules to `UsageProfile`, install pre-commit and watch it block a bad commit
 - [ ] Drill: interview-bank §00a
 - [ ] Lesson [00b — LLM API fundamentals](learn/00b-llm-api-fundamentals.md): tokens, context windows, sampling, cost, ➕ structured outputs
 - [ ] Build: `llm.py` wrapper that logs tokens and cost for every call, plus structured extraction of a usage profile
