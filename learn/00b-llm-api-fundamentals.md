@@ -100,6 +100,23 @@ repeatable output. Note that **temperature 0 is still not fully deterministic** 
 order, batching, model updates). That's why evals run over a whole set and track averages rather than
 trusting one run. Some reasoning models fix the temperature and ignore it. Check the model's docs.
 
+### 4b. Reasoning models: what changes (applies to our model, gpt-5.4-nano)
+
+Most current models are **reasoning models**. Before answering, they generate hidden "thinking"
+tokens. Three consequences:
+- **Hidden tokens are billed as output.** `usage.output_tokens` includes them, and
+  `usage.output_tokens_details.reasoning_tokens` tells you how many there were. A 50-word answer can
+  cost hundreds of output tokens. Log them, because they're part of your cost per query.
+- **The control is reasoning effort, not temperature.** The API takes a `reasoning={"effort": ...}`
+  parameter (low effort = fewer hidden tokens, cheaper and faster). Many reasoning models **reject
+  `temperature`**. If `chat()` fails with "unsupported parameter", that's why: drop `temperature` and
+  set a low effort instead. Check the model page for which parameters it supports.
+- **`max_output_tokens` caps reasoning + answer together.** Set it too low and the model can use the
+  whole budget thinking and return an *empty* answer. That's a classic production bug.
+
+Interview angle: "For simple extraction and grounded RAG answers I used low reasoning effort. Higher
+effort cost more and added latency without improving my eval scores." (You'll measure this in Phase 3.)
+
 ### 5. Cost math (you'll implement this)
 
 ```
