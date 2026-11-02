@@ -18,7 +18,7 @@ Original spec: [AI_Engineer_Side_Project.md](AI_Engineer_Side_Project.md). Gaps 
 - [x] Lesson [00a — Python engineering toolkit](learn/00a-python-toolkit.md) ➕: uv, type hints, **Pydantic**
       (models, validation, Field, JSON Schema, settings), **pytest** (fixtures, parametrize, fakes), **ruff** (lint + format), **pre-commit**
 - [x] Build: add validation rules to `UsageProfile`, install pre-commit and watch it block a bad commit
-- [ ] Drill: interview-bank §00a
+- [x] Drill: interview-bank §00a (8/8)
 - [ ] Lesson [00b — LLM API fundamentals](learn/00b-llm-api-fundamentals.md): tokens, context windows, sampling, cost, ➕ structured outputs
 - [ ] Build: `llm.py` wrapper that logs tokens and cost for every call, plus structured extraction of a usage profile
 - [ ] Drill: interview-bank §00b
