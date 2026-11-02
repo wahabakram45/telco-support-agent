@@ -130,3 +130,67 @@ the context window can overflow, and old irrelevant turns distract the model. St
 window of the last N turns, summarizing older turns, storing facts as structured memory, and for RAG,
 **rewriting the follow-up question into a standalone query** before retrieval ("what about roaming?"
 → "roaming charges for the Super 50 plan").
+
+---
+
+## 01 — Data for RAG
+
+**Q1. Which questions go to documents, which to structured data?**
+Exact facts, numbers, filters, comparisons and calculations ("cheapest plan with 20 GB", "my balance")
+go to structured data via code: SQL, an API, or a tool the LLM calls. Explanations, policies and
+how-tos go to RAG. LLMs are unreliable at sorting, filtering and arithmetic over retrieved text, and code
+never is. Many production assistants are a hybrid: an LLM router plus tools plus retrieval.
+*Project example:* "Plan prices live in a JSON catalog that the tools query. The plan pages for RAG are
+rendered from the same JSON, so the two can't drift apart."
+
+**Q2. Why does metadata matter in RAG?**
+(1) Filtering: market, product, language, date, and **access control** (users only retrieve documents
+they're allowed to see). (2) Citations and traceability: which source an answer came from. (3) Freshness:
+effective dates and versions to exclude or down-rank stale content. (4) Debugging and evals: knowing
+what was retrieved and why, and labelling ground truth by doc_id. Capture it at ingestion, because
+recovering it later from chunks is painful.
+
+**Q3. Outdated or conflicting documents?**
+First, version documents with effective dates and `superseded_by` links. Then pick a strategy: filter to
+current versions by default; down-rank older ones; or pass dates into the prompt and instruct the model
+to prefer the most recent version and mention the change. Keep history for "what was my old price"
+questions. And **measure** it: have an eval category for stale-document leakage.
+*Project example:* "I deliberately kept the 2025 roaming policy in the corpus and tracked how often its
+old rates leaked into answers, before and after adding date filtering."
+
+**Q4. Synthetic data: pros and cons?**
+Pros: exact ground truth, designed edge cases (traps), no legal or privacy issues, stable and versioned.
+Cons: less realistic and less varied than real data, LLM-written text sounds alike, the LLM can invent
+facts while generating, and eval leakage if you generate questions from the same text with the same
+model. Mitigations: generate from fixed facts with automated checks, vary styles, write some eval
+questions by hand, and validate on real data as soon as you can get it.
+
+**Q5. What makes ingesting real enterprise documents hard?**
+Parsing: PDFs with tables, multi-column layouts and repeated headers or footers; scanned pages that need
+OCR; HTML boilerplate; slides with text in images. Also duplicates and near-duplicates, many versions of
+the same document, missing metadata, permissions, and PII. Tools (`unstructured`, `docling`, PyMuPDF)
+help, but you still have to inspect samples by hand and measure parsing quality. Tables often need
+special handling, e.g. converting them to markdown or into structured rows.
+
+**Q6. How do you stop a support bot from quoting wrong prices?**
+Defense in depth. (1) Data design: prices live in structured data, the single source of truth. (2) Tools:
+the model gets prices from a tool result instead of recalling them. (3) Retrieval: filter by market and
+to current versions. (4) Prompting: tell the model to quote prices only from the provided context, and
+to cite sources. (5) Output checks: verify that every number in the answer appears in the retrieved
+context or tool results. (6) Evals: a price-accuracy category in CI.
+*Project example:* "My data generator rejected documents containing numbers not in their facts. The same
+idea later became an output guardrail."
+
+**Q7. PII in a RAG corpus?**
+Minimize: don't ingest what you don't need. Detect and mask or redact PII before embedding (NER-based
+tools such as Presidio). Enforce access control with metadata filters at query time. Remember that
+embeddings are not anonymization, because text can be partly reconstructed from vectors. Also handle
+retention and deletion requests: you need to know which chunks came from which source so you can
+delete them.
+
+**Q8. Documents change daily. How do you keep the index fresh?**
+Incremental indexing: track a content hash and timestamp per document, and re-chunk and re-embed only
+documents that changed. Delete chunks of removed documents. Run it on a schedule or trigger it from
+events (webhooks or change-data-capture). Version the index so you can roll back. Monitor freshness
+(age of newest document) and run the eval set after re-indexing. Changing the *embedding model* means
+re-embedding everything, so plan for that.

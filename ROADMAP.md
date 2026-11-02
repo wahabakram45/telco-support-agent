@@ -26,9 +26,10 @@ Original spec: [AI_Engineer_Side_Project.md](AI_Engineer_Side_Project.md). Gaps 
 Pydantic comes back throughout the project: request and response models in FastAPI (04a), tool schemas
 (10), eval records (05). Ruff and pre-commit run on every commit from now on, and later in CI (Phase 3).
 
-## Phase 1 — The data  (week 1, ~5 h)
-- [ ] Lesson 01 — Data for RAG: structured vs unstructured, metadata design, why we generate a synthetic catalog
-- [ ] Build: synthetic operator catalog (~40 plans as JSON, ~60 FAQ/policy docs in markdown) with deliberate traps (similar plan names, prices that changed, regional variants)
+## Phase 1 — The data  (week 1, ~5–6 h)
+- [ ] Lesson [01 — Data for RAG](learn/01-data-for-rag.md): structured vs unstructured, metadata, real vs synthetic data, traps, freshness, PII
+- [ ] Build: `Plan` model, a catalog of ≥30 current plans with traps T1–T5, number checker, generation prompt → ~55–65 documents
+- [ ] Drill: interview-bank §01
 
 ## Phase 2 — Naive RAG end to end + FastAPI & Docker basics  (weeks 2–3)
 - [ ] Lesson 02 — Chunking: fixed, recursive, semantic, structure-aware; chunk size vs recall

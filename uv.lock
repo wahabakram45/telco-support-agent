@@ -828,6 +828,7 @@ dependencies = [
     { name = "openai" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
+    { name = "pyyaml" },
     { name = "tiktoken" },
 ]
 
@@ -843,6 +844,7 @@ requires-dist = [
     { name = "openai", specifier = ">=1.60" },
     { name = "pydantic", specifier = ">=2.7" },
     { name = "pydantic-settings", specifier = ">=2.3" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "tiktoken", specifier = ">=0.8" },
 ]
 
