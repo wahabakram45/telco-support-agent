@@ -19,9 +19,9 @@ Original spec: [AI_Engineer_Side_Project.md](AI_Engineer_Side_Project.md). Gaps 
       (models, validation, Field, JSON Schema, settings), **pytest** (fixtures, parametrize, fakes), **ruff** (lint + format), **pre-commit**
 - [x] Build: add validation rules to `UsageProfile`, install pre-commit and watch it block a bad commit
 - [x] Drill: interview-bank §00a (8/8)
-- [ ] Lesson [00b — LLM API fundamentals](learn/00b-llm-api-fundamentals.md): tokens, context windows, sampling, cost, ➕ structured outputs
+- [x] Lesson [00b — LLM API fundamentals](learn/00b-llm-api-fundamentals.md): tokens, context windows, sampling, cost, ➕ structured outputs
 - [ ] Build: `llm.py` wrapper that logs tokens and cost for every call, plus structured extraction of a usage profile
-- [ ] Drill: interview-bank §00b
+- [x] Drill: interview-bank §00b (8/8)
 
 Pydantic comes back throughout the project: request and response models in FastAPI (04a), tool schemas
 (10), eval records (05). Ruff and pre-commit run on every commit from now on, and later in CI (Phase 3).
