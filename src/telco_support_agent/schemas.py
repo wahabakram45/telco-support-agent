@@ -1,6 +1,6 @@
 """Pydantic schemas shared across the app: structured outputs now, tool arguments later."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class UsageProfile(BaseModel):
@@ -15,8 +15,13 @@ class UsageProfile(BaseModel):
     #   - no negative values anywhere (Field(..., ge=0))
     #   - a sane upper bound on data_gb (le=...): what's the most data a plan could plausibly have?
 
-    data_gb: float | None = Field(None, description="Monthly mobile data in GB; null if not stated")
-    minutes: int | None = Field(None, description="Monthly voice minutes; null if not stated")
-    sms: int | None = Field(None, description="Monthly SMS count; null if not stated")
+    model_config = ConfigDict(extra="forbid")
+    data_gb: float | None = Field(
+        None, ge=0, le=1000, description="Monthly mobile data in GB; null if not stated"
+    )
+    minutes: int | None = Field(None, ge=0, description="Monthly voice minutes; null if not stated")
+    sms: int | None = Field(None, ge=0, description="Monthly SMS count; null if not stated")
     needs_roaming: bool | None = Field(None, description="True if the user mentions travel/roaming")
-    budget_monthly: float | None = Field(None, description="Max monthly budget in local currency")
+    budget_monthly: float | None = Field(
+        None, ge=0, description="Max monthly budget in local currency"
+    )
