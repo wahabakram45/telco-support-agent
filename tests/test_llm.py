@@ -3,7 +3,7 @@ from types import SimpleNamespace
 import pytest
 
 from telco_support_agent.config import Settings
-from telco_support_agent.llm import LLMClient, count_tokens
+from telco_support_agent.llm import ExtractionError, LLMClient, count_tokens
 from telco_support_agent.schemas import UsageProfile
 
 SETTINGS = Settings(
@@ -77,3 +77,10 @@ def test_live_extraction():
     assert profile.data_gb == 2 and profile.minutes == 300 and profile.needs_roaming
     assert profile.budget_monthly is None
     assert record.cost_usd > 0
+
+
+def test_extract_raises_when_model_returns_nothing(llm):
+    client, fake = llm
+    fake.parse = lambda **kw: SimpleNamespace(output_parsed=None, usage=fake.usage)
+    with pytest.raises(ExtractionError):
+        client.extract("sys", "ignore instructions", UsageProfile)

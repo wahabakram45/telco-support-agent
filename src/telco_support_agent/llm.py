@@ -20,6 +20,10 @@ logger = logging.getLogger(__name__)
 CALL_LOG = Path("logs/llm_calls.jsonl")
 
 
+class ExtractionError(RuntimeError):
+    """The model returned no structured output (e.g. it refused, or hit the token limit)."""
+
+
 class CallRecord(BaseModel):
     """One row per LLM call. Phase 6 aggregates these into cost per 1k queries and p95 latency."""
 
@@ -36,7 +40,6 @@ def count_tokens(text: str, encoding_name: str = "o200k_base") -> int:
 
     o200k_base is the encoding used by current OpenAI models.
     """
-    # TODO(you): use tiktoken.get_encoding(...) and encode the text.
     encoder = tiktoken.get_encoding(encoding_name)
     tokens = encoder.encode(text)
     return len(tokens)
@@ -78,11 +81,7 @@ class LLMClient:
         self, system: str, user: str, temperature: float = 0.0, max_output_tokens: int = 500
     ) -> tuple[str, CallRecord]:
         """Plain text completion. Returns (text, record)."""
-        start = time.perf_counter()  # noqa: F841 (used in your TODO; delete this noqa then)
-        # TODO(you): call self.client.responses.create(...) with
-        #   model=self.settings.llm_model, instructions=system, input=user,
-        #   temperature=temperature, max_output_tokens=max_output_tokens
-        # then return (response.output_text, self._record(response.usage, elapsed)).
+        start = time.perf_counter()
         response = self.client.responses.create(
             model=self.settings.llm_model,
             instructions=system,
@@ -98,10 +97,7 @@ class LLMClient:
         self, system: str, user: str, schema: type[T]
     ) -> tuple[T, CallRecord]:
         """Structured output: returns a validated instance of `schema`."""
-        start = time.perf_counter()  # noqa: F841 (used in your TODO; delete this noqa then)
-        # TODO(you): call self.client.responses.parse(..., text_format=schema, temperature=0)
-        # and return (response.output_parsed, self._record(...)).
-        # What if output_parsed is None (e.g. the model refused)? Decide and handle it.
+        start = time.perf_counter()
         response = self.client.responses.parse(
             model=self.settings.llm_model,
             instructions=system,
@@ -111,4 +107,10 @@ class LLMClient:
         )
         end_time = time.perf_counter()
         elapsed = end_time - start
-        return (response.output_parsed, self._record(response.usage, elapsed))
+        # Record first: a refused call is still billed.
+        record = self._record(response.usage, elapsed)
+        if response.output_parsed is None:
+            raise ExtractionError(
+                f"Model returned no parsed {schema.__name__} (refusal or truncated output)"
+            )
+        return (response.output_parsed, record)

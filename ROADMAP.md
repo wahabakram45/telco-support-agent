@@ -20,7 +20,7 @@ Original spec: [AI_Engineer_Side_Project.md](AI_Engineer_Side_Project.md). Gaps 
 - [x] Build: add validation rules to `UsageProfile`, install pre-commit and watch it block a bad commit
 - [x] Drill: interview-bank §00a (8/8)
 - [x] Lesson [00b — LLM API fundamentals](learn/00b-llm-api-fundamentals.md): tokens, context windows, sampling, cost, ➕ structured outputs
-- [ ] Build: `llm.py` wrapper that logs tokens and cost for every call, plus structured extraction of a usage profile
+- [x] Build: `llm.py` wrapper that logs tokens and cost for every call, plus structured extraction of a usage profile
 - [x] Drill: interview-bank §00b (8/8)
 
 Pydantic comes back throughout the project: request and response models in FastAPI (04a), tool schemas

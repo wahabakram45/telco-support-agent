@@ -20,17 +20,17 @@ def estimate_cost(
     `cached_input_tokens`. Charge the cached part at the cached price and the rest at the
     normal input price.
     """
-    # TODO(you): implement the formula from the lesson. Raise ValueError if
-    # cached_input_tokens > input_tokens or any count is negative.
-    if (
-        any([input_tokens < 0, output_tokens < 0, cached_input_tokens < 0])
-        or cached_input_tokens > input_tokens
-    ):
+    if min(input_tokens, output_tokens, cached_input_tokens) < 0:
         raise ValueError(
-            "Values Cant be negative and cached input tokens cant be greater than input tokens"
+            f"Token counts can't be negative: input={input_tokens}, "
+            f"output={output_tokens}, cached={cached_input_tokens}"
+        )
+    if cached_input_tokens > input_tokens:
+        raise ValueError(
+            f"cached_input_tokens ({cached_input_tokens}) > input_tokens ({input_tokens})"
         )
 
-    mil = 1000000
+    mil = 1_000_000
     input_cost = ((input_tokens - cached_input_tokens) / mil) * prices.input_per_m
     output_cost = (output_tokens / mil) * prices.output_per_m
     cached_input_cost = (cached_input_tokens / mil) * prices.cached_input_per_m
