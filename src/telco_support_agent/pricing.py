@@ -1,14 +1,14 @@
 """Token cost accounting. See learn/00b-llm-api-fundamentals.md §5."""
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Prices(BaseModel):
     """USD per 1M tokens."""
 
-    input_per_m: float
-    cached_input_per_m: float
-    output_per_m: float
+    input_per_m: float = Field(ge=0)
+    cached_input_per_m: float = Field(ge=0)
+    output_per_m: float = Field(ge=0)
 
 
 def estimate_cost(
@@ -22,4 +22,16 @@ def estimate_cost(
     """
     # TODO(you): implement the formula from the lesson. Raise ValueError if
     # cached_input_tokens > input_tokens or any count is negative.
-    raise NotImplementedError
+    if (
+        any([input_tokens < 0, output_tokens < 0, cached_input_tokens < 0])
+        or cached_input_tokens > input_tokens
+    ):
+        raise ValueError(
+            "Values Cant be negative and cached input tokens cant be greater than input tokens"
+        )
+
+    mil = 1000000
+    input_cost = ((input_tokens - cached_input_tokens) / mil) * prices.input_per_m
+    output_cost = (output_tokens / mil) * prices.output_per_m
+    cached_input_cost = (cached_input_tokens / mil) * prices.cached_input_per_m
+    return input_cost + output_cost + cached_input_cost

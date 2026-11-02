@@ -8,6 +8,7 @@ import logging
 import time
 from pathlib import Path
 
+import tiktoken
 from openai import OpenAI
 from pydantic import BaseModel
 
@@ -36,7 +37,9 @@ def count_tokens(text: str, encoding_name: str = "o200k_base") -> int:
     o200k_base is the encoding used by current OpenAI models.
     """
     # TODO(you): use tiktoken.get_encoding(...) and encode the text.
-    raise NotImplementedError
+    encoder = tiktoken.get_encoding(encoding_name)
+    tokens = encoder.encode(text)
+    return len(tokens)
 
 
 class LLMClient:
@@ -80,7 +83,16 @@ class LLMClient:
         #   model=self.settings.llm_model, instructions=system, input=user,
         #   temperature=temperature, max_output_tokens=max_output_tokens
         # then return (response.output_text, self._record(response.usage, elapsed)).
-        raise NotImplementedError
+        response = self.client.responses.create(
+            model=self.settings.llm_model,
+            instructions=system,
+            input=user,
+            temperature=temperature,
+            max_output_tokens=max_output_tokens,
+        )
+        end_time = time.perf_counter()
+        elapsed = end_time - start
+        return (response.output_text, self._record(response.usage, elapsed))
 
     def extract[T: BaseModel](
         self, system: str, user: str, schema: type[T]
@@ -90,4 +102,13 @@ class LLMClient:
         # TODO(you): call self.client.responses.parse(..., text_format=schema, temperature=0)
         # and return (response.output_parsed, self._record(...)).
         # What if output_parsed is None (e.g. the model refused)? Decide and handle it.
-        raise NotImplementedError
+        response = self.client.responses.parse(
+            model=self.settings.llm_model,
+            instructions=system,
+            input=user,
+            text_format=schema,
+            temperature=0,
+        )
+        end_time = time.perf_counter()
+        elapsed = end_time - start
+        return (response.output_parsed, self._record(response.usage, elapsed))
