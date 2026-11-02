@@ -78,8 +78,10 @@ A token is a sub-word unit produced by the model's tokenizer (BPE). In English i
 and numbers, code and non-Latin scripts take more. Compute cost scales with tokens: every input token
 goes through the forward pass, and every output token needs its own sequential decode step. So
 per-token pricing tracks the provider's real cost, unlike per-request pricing.
-*Project example:* "Arabic plan descriptions took about N× more tokens than the English ones, which
-changed our cost estimate for the GCC market." (Fill in N after the experiment.)
+*Project example:* "I measured it instead of assuming: with the current o200k tokenizer, an Arabic usage
+sentence was 14 tokens vs 15 in English, so the old 'non-English costs 2–4× more' rule didn't hold. The
+bigger surprise was structured output: a 15-token message was billed about 270 input tokens, because the
+JSON Schema is sent with every call."
 
 **Q2. Why is output pricier and slower than input?**
 Input is processed in one parallel pass (prefill). Output is autoregressive: one token at a time, each

@@ -68,7 +68,10 @@ Why it matters:
 - **The context window limit is counted in tokens** (prompt + documents + history + output).
 - **Latency is mostly output tokens.** Input is processed in parallel ("prefill"). Output is generated
   one token at a time ("decode"). A 2,000-token answer is slow, while a 2,000-token prompt is cheap and fast.
-- **Arabic, Urdu and code take more tokens per word** than English. That's relevant for a GCC telecom bot.
+- **Token efficiency differs by language and tokenizer.** Older tokenizers spent 2–4× more tokens on Arabic
+  or Urdu than on English. The current `o200k_base` closed most of that gap: in our run, an Arabic usage
+  sentence was 14 tokens vs 15 in English. Code and long numbers are still token-hungry. Measure your
+  own traffic instead of trusting a rule of thumb.
 - Tokenization causes classic failures: miscounting letters in a word, arithmetic on long numbers.
   That's one reason **we never let the LLM compute prices**. Tools do the math (Phase 5).
 
@@ -110,7 +113,9 @@ tokens. Three consequences:
 - **The control is reasoning effort, not temperature.** The API takes a `reasoning={"effort": ...}`
   parameter (low effort = fewer hidden tokens, cheaper and faster). Many reasoning models **reject
   `temperature`**. If `chat()` fails with "unsupported parameter", that's why: drop `temperature` and
-  set a low effort instead. Check the model page for which parameters it supports.
+  set a low effort instead. Check the model page for which parameters it supports. (In our run,
+  gpt-5.4-nano *accepted* `temperature=0` and used few or no hidden tokens at default settings.
+  Behaviour differs per model, so verify it with a real call.)
 - **`max_output_tokens` caps reasoning + answer together.** Set it too low and the model can use the
   whole budget thinking and return an *empty* answer. That's a classic production bug.
 
