@@ -15,7 +15,7 @@ def _normalize(raw: str) -> str:
     return n
 
 
-def _numbers(text: str) -> set[str]:
+def extract_numbers(text: str) -> set[str]:
     """All normalized numbers in `text`, skipping single-digit integers."""
     found = {_normalize(m) for m in _NUMBER.findall(text)}
     return {n for n in found if len(n) > 1}
@@ -30,4 +30,4 @@ def find_unsupported_numbers(text: str, source: str) -> set[str]:
     - a number followed by "%" counts as the number: "15%" -> "15"
     Single-digit integers (0–9) are ignored: they're mostly list numbering and generic words.
     """
-    return _numbers(text) - _numbers(source)
+    return extract_numbers(text) - extract_numbers(source)

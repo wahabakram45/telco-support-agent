@@ -194,3 +194,64 @@ documents that changed. Delete chunks of removed documents. Run it on a schedule
 events (webhooks or change-data-capture). Version the index so you can roll back. Monitor freshness
 (age of newest document) and run the eval set after re-indexing. Changing the *embedding model* means
 re-embedding everything, so plan for that.
+
+---
+
+## 02 — Chunking
+
+**Q1. Why chunk instead of embedding whole documents?**
+One vector per long document is a diluted average of all its topics, so it matches no specific
+question strongly. Chunks give sharp embeddings, send the LLM only relevant text (fewer tokens, less
+distraction), fit embedding models' input limits (text beyond them is silently truncated), and allow
+precise citations. The trade-off is context: chunks that are too small lose their subject.
+
+**Q2. How do you choose chunk size?**
+Start from the documents and the questions: short factual questions favour smaller chunks, questions
+needing broad context favour larger ones. Typical starting points are 200–500 tokens, then **measure
+recall@k and answer quality** on an eval set across a few sizes. Too small: facts lose their subject
+("it costs 25 SAR"), and you need more chunks per query. Too large: diluted embeddings, noise, and
+more tokens per query.
+*Project example:* "Our documents are short and structured, so section-level chunks with a 300-token
+cap kept 100% of facts whole while embedding the fewest tokens. I validated it against a fixed-size
+baseline on recall@k."
+
+**Q3. What is overlap and what does it cost?**
+Repeating the last N tokens of each chunk at the start of the next, so content cut at a boundary
+appears whole somewhere. Costs: more tokens to embed and store (+15% in our corpus at 50/200), and
+near-duplicate results that crowd the top-k. It patches blind cutting. Structure-aware boundaries
+mostly remove the need for it.
+
+**Q4. Fixed vs recursive vs structure-aware vs semantic?**
+Fixed: every N tokens; simple, but cuts sentences and facts. Recursive: splits on paragraphs, then
+sentences, then characters until pieces fit; the common default. Structure-aware: uses headings, HTML
+or PDF sections, so chunks match the author's topics and headings provide context; needs structured
+input. Semantic: starts a new chunk where sentence embeddings shift in meaning; useful for
+unstructured prose, but costs more and gains are often modest. Choose based on the documents, then
+validate with evals.
+
+**Q5. Contextual headers / contextual retrieval?**
+Chunks lose context once cut out ("the fee is 30 AED": which fee, which market?). Contextual headers
+prepend the document title and section path before embedding. Anthropic's Contextual Retrieval uses an
+LLM to write a 1–2 sentence context for each chunk; they reported large reductions in retrieval
+failures, especially combined with BM25 and reranking. The cost is an LLM call per chunk at indexing
+time, reduced with prompt caching.
+*Project example:* "Each chunk is embedded as 'Roaming Policy (KSA) > GCC Day Pass' plus its text, so
+even a one-line FAQ answer carries its subject and market."
+
+**Q6. Parent-child (small-to-big) retrieval?**
+Index small chunks for precise matching, but return their larger parent (section or document) to the
+LLM. You get the precision of small chunks with the context of large ones. Variants: sentence-window
+retrieval (return neighbouring sentences), and auto-merging (if several children of one parent are
+retrieved, return the parent instead).
+
+**Q7. Chunking FAQs, tables, code?**
+FAQs: one question-and-answer pair per chunk; the question itself is an excellent retrieval key. Tables:
+keep small tables whole; for big ones, one row (or a group of rows) per chunk with the column headers
+repeated, or convert them to text sentences; never cut mid-table. Code: split by function or class
+(AST-aware), with the file path and signature as context.
+
+**Q8. How do you evaluate a chunking strategy?**
+Ultimately by downstream metrics: retrieval recall@k and MRR on a golden question set, then answer
+faithfulness and correctness. Cheap proxies before that: fact integrity (do known facts survive in one
+chunk?), size distribution (tiny or huge chunks), and reading samples. Compare strategies with
+everything else held fixed (same embedding model, same k).
