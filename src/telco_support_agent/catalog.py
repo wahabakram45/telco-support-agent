@@ -4,12 +4,12 @@ See learn/01-data-for-rag.md §1 and Task 1.
 """
 
 import json
-from datetime import date  # noqa: F401 (you'll use this in Plan)
+from datetime import date
 from pathlib import Path
 from typing import Literal
 
 import yaml
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 Market = Literal["KSA", "UAE"]
 Currency = Literal["SAR", "AED"]
@@ -25,8 +25,64 @@ class Plan(BaseModel):
     A price change creates a new version: the old one gets `effective_to` and `replaced_by`.
     """
 
-    # TODO(you) — lesson 01, Task 1: define the fields from the lesson's table (exact names),
-    # with types, defaults and constraints, then add the validators. Forbid unknown fields.
+    model_config = ConfigDict(extra="forbid")
+    plan_id: str = Field(pattern=r"^[a-z0-9\-]+$")
+    name: str
+    market: Market
+    currency: Currency
+    plan_type: PlanType
+    price: float = Field(gt=0)
+    validity_days: int = Field(gt=0)
+    data_gb: float | None = Field(default=None, ge=0)
+    unlimited_data: bool = Field(default=False)
+    fair_usage_gb: float | None = Field(default=None, ge=0)
+    local_minutes: int = Field(ge=0)
+    sms: int = Field(ge=0)
+    roaming_countries: list[str] = Field(default=[])
+    roaming_data_gb: float | None = Field(default=None, ge=0)
+    features: list[str] = Field(default=[])
+    effective_from: date
+    effective_to: date | None = Field(default=None)
+    status: Literal["active", "discontinued"] = Field(default="active")
+    replaced_by: str | None = Field(default=None)
+
+    @model_validator(mode="after")
+    def validate_currency(self) -> "Plan":
+        if self.currency != CURRENCY_BY_MARKET[self.market]:
+            raise ValueError("Currency does not match with the market")
+        return self
+
+    @model_validator(mode="after")
+    def validate_data_gb(self) -> "Plan":
+        if (self.data_gb is not None and self.unlimited_data) or (
+            self.data_gb is None and not self.unlimited_data
+        ):
+            raise ValueError("data_gb must be None exactly when unlimited_data is true")
+        return self
+
+    @model_validator(mode="after")
+    def validate_fair_usage(self) -> "Plan":
+        if self.unlimited_data and self.fair_usage_gb is None:
+            raise ValueError("fair_usage_gb cannot be None when unlimited_data is True")
+        return self
+
+    @model_validator(mode="after")
+    def validate_roaming_countries(self) -> "Plan":
+        if self.plan_type == "roaming_addon" and not self.roaming_countries:
+            raise ValueError("roaming_addon plans must list roaming_countries")
+        return self
+
+    @model_validator(mode="after")
+    def validate_dates(self) -> "Plan":
+        if self.effective_to is not None and self.effective_to <= self.effective_from:
+            raise ValueError("effective_to must be after effective_from")
+        return self
+
+    @model_validator(mode="after")
+    def validate_replaced_by(self) -> "Plan":
+        if self.effective_to is None and self.replaced_by is not None:
+            raise ValueError("Replaced by should be None when effective to is None")
+        return self
 
     @property
     def is_current(self) -> bool:

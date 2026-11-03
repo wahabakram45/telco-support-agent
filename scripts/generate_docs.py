@@ -28,6 +28,7 @@ class Topic(BaseModel):
     effective_to: date | None = None
     superseded_by: str | None = None
     target_words: int = 350
+    outline: list[str] = []  # fixed section headings, for long documents
     facts: list[str]
 
 
@@ -348,6 +349,22 @@ TOPICS = [
         market="ALL",
         effective_from=date(2026, 1, 1),
         target_words=2000,
+        outline=[
+            "About these terms",
+            "Definitions",
+            "Who can hold an account",
+            "Your TelcoX account",
+            "Using the service",
+            "Your responsibilities",
+            "Charges and payments",
+            "Billing questions and disputes",
+            "Network coverage and service quality",
+            "Changes to these terms",
+            "Suspension and ending the service",
+            "Personal data",
+            "General provisions",
+            "Governing law",
+        ],
         facts=[
             "Account holders must be at least 18 years old.",
             "TelcoX may change these terms with 30 days' notice by SMS or email.",
@@ -434,10 +451,58 @@ TOPICS = [
 ]
 
 
+MARKET_NOTE = {
+    "KSA": "Saudi Arabia (KSA) customers only. Say so near the top.",
+    "UAE": "UAE customers only. Say so near the top.",
+    "ALL": "All customers in KSA and the UAE. Where a fact differs by market, keep both.",
+}
+
+FORMAT_NOTE = {
+    "policy": "A policy page: a short intro, then a few sections with descriptive headings. "
+    "Prefer short paragraphs; use bullet lists only for real lists.",
+    "faq": "An FAQ page: '### ' questions phrased the way real customers ask them (casual, "
+    "sometimes vague, e.g. 'Why did my internet get slow?'), each followed by a short answer. "
+    "One question can cover several related facts.",
+}
+
+
 def build_prompt(topic: Topic) -> tuple[str, str]:
     """Return (system, user) messages that turn `topic.facts` into a realistic document."""
-    # TODO(you) — lesson 01, Task 4. See the lesson for what a good prompt should cover.
-    raise NotImplementedError
+    system = (
+        "You are a technical writer for TelcoX, a mobile operator, writing pages for its "
+        "online help centre. Your readers are ordinary customers. Write in clear, plain "
+        "English, the way a real operator's help pages read.\n\n"
+        "Rules:\n"
+        "- Include every fact you are given, with its exact numbers and conditions.\n"
+        "- Never add new facts: no extra numbers, prices, fees, deadlines, conditions, "
+        "exceptions, phone numbers, URLs or eligibility rules. If something isn't in the "
+        "facts, don't mention it.\n"
+        "- You may add neutral explanatory text that adds no new rules, e.g. what a term "
+        "means or why a customer might care.\n"
+        "- Don't number headings or sections. Use bold sparingly, never for whole sentences.\n"
+        "- Output markdown only: start with the given '# ' title, no front matter, no "
+        "closing remarks to me."
+    )
+    facts = "\n".join(f"- {f}" for f in topic.facts)
+    user = (
+        f"Title: # {topic.title}\n"
+        f"Market: {MARKET_NOTE[topic.market]}\n"
+        f"Length: about {topic.target_words} words. Stay close to this length.\n"
+        f"Format: {FORMAT_NOTE[topic.doc_type]}\n"
+    )
+    if topic.outline:
+        per_section = topic.target_words // len(topic.outline)
+        headings = "\n".join(f"## {h}" for h in topic.outline)
+        user += (
+            "This is a long legal-style document. Use exactly these section headings, in this "
+            f"order, and write {per_section - 30}-{per_section + 30} words under each:\n"
+            f"{headings}\n"
+            "Put each fact inside the section where it naturally belongs, as one sentence "
+            "among others. Give every fact the same weight: no summaries, no highlights, no "
+            "bold, and no extra headings.\n"
+        )
+    user += f"\nFacts:\n{facts}"
+    return system, user
 
 
 def generate(topic: Topic, llm: LLMClient) -> str:
@@ -472,7 +537,7 @@ def main() -> None:
             continue
         print(f"{topic.doc_id}")
         body = generate(topic, llm)
-        meta = topic.model_dump(exclude={"facts", "target_words"})
+        meta = topic.model_dump(exclude={"facts", "target_words", "outline"})
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(to_markdown(meta, body))
 
