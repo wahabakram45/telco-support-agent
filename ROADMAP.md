@@ -29,7 +29,7 @@ Pydantic comes back throughout the project: request and response models in FastA
 ## Phase 1 — The data  (week 1, ~5–6 h)
 - [x] Lesson [01 — Data for RAG](learn/01-data-for-rag.md): structured vs unstructured, metadata, real vs synthetic data, traps, freshness, PII
 - [x] Build: `Plan` model, a catalog of ≥30 current plans with traps T1–T5, number checker, generation prompt → ~55–65 documents
-- [ ] Drill: interview-bank §01
+- [x] Drill: interview-bank §01 (7/8; missed: embeddings are not anonymisation)
 
 ## Phase 2 — Naive RAG end to end + FastAPI & Docker basics  (weeks 2–3)
 - [ ] Lesson 02 — Chunking: fixed, recursive, semantic, structure-aware; chunk size vs recall
