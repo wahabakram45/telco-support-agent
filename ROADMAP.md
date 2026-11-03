@@ -27,8 +27,8 @@ Pydantic comes back throughout the project: request and response models in FastA
 (10), eval records (05). Ruff and pre-commit run on every commit from now on, and later in CI (Phase 3).
 
 ## Phase 1 — The data  (week 1, ~5–6 h)
-- [ ] Lesson [01 — Data for RAG](learn/01-data-for-rag.md): structured vs unstructured, metadata, real vs synthetic data, traps, freshness, PII
-- [ ] Build: `Plan` model, a catalog of ≥30 current plans with traps T1–T5, number checker, generation prompt → ~55–65 documents
+- [x] Lesson [01 — Data for RAG](learn/01-data-for-rag.md): structured vs unstructured, metadata, real vs synthetic data, traps, freshness, PII
+- [x] Build: `Plan` model, a catalog of ≥30 current plans with traps T1–T5, number checker, generation prompt → ~55–65 documents
 - [ ] Drill: interview-bank §01
 
 ## Phase 2 — Naive RAG end to end + FastAPI & Docker basics  (weeks 2–3)

@@ -37,7 +37,8 @@ class Document(BaseModel):
 
 def to_markdown(meta: dict, body: str) -> str:
     front = yaml.safe_dump(meta, sort_keys=False, allow_unicode=True)
-    return f"---\n{front}---\n\n{body.strip()}\n"
+    body = "\n".join(line.rstrip() for line in body.strip().splitlines())
+    return f"---\n{front}---\n\n{body}\n"
 
 
 def parse_markdown(raw: str) -> tuple[dict, str]:
