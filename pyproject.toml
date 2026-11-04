@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Telecom support RAG agent with evals — an AI engineering learning project"
 requires-python = ">=3.12"
 dependencies = [
+    "numpy>=2.5.4",
     "openai>=1.60",
     "pydantic>=2.7",
     "pydantic-settings>=2.3",

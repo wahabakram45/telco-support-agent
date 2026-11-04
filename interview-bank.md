@@ -255,3 +255,72 @@ Ultimately by downstream metrics: retrieval recall@k and MRR on a golden questio
 faithfulness and correctness. Cheap proxies before that: fact integrity (do known facts survive in one
 chunk?), size distribution (tiny or huge chunks), and reading samples. Compare strategies with
 everything else held fixed (same embedding model, same k).
+
+---
+
+## 03 — Embeddings & vector search
+
+**Q1. What is an embedding, and how are embedding models trained?**
+A fixed-length vector representing a text's meaning, so similar meanings are close in vector space.
+Models are transformer encoders trained contrastively on (query, relevant passage) pairs: matching
+pairs are pulled together, in-batch negatives pushed apart; pooling turns token vectors into one
+vector. It's a bi-encoder: query and documents are encoded separately, so document vectors are
+precomputed and search is fast. A cross-encoder reads query and document together: more accurate,
+too slow for full search, so it's used to rerank the top results.
+*Project example:* "'Phone internet on holiday in Dubai' retrieved our UAE roaming policy with no
+shared keywords."
+
+**Q2. Cosine vs dot product vs Euclidean?**
+Cosine measures angle only; dot product also rewards vector length; Euclidean is straight-line
+distance. For unit-length vectors all three give the same ranking (‖a−b‖² = 2 − 2cos). So normalize
+once at index time, and search becomes one matrix-vector product. Use whatever the model was trained
+with; cosine is the default for text.
+
+**Q3. How do you choose an embedding model?**
+Shortlist from the MTEB retrieval leaderboard, then decide on your own eval set: recall@k on real
+questions. Also weigh language coverage (Arabic for us), dimensions (storage and speed; Matryoshka
+models can be truncated), max input length, cost and latency, and privacy (API vs self-hosted
+open models such as BGE or multilingual-E5). Changing later means re-embedding everything, so choose
+deliberately.
+*Project example:* "text-embedding-3-small: $0.0003 to embed the whole corpus, decent Arabic; I'd
+only move to -large if evals show retrieval is the bottleneck."
+
+**Q4. What happens when you switch embedding models in production?**
+Old and new vectors are in incompatible spaces, so every document must be re-embedded, and queries
+must switch at the same moment. Do it blue-green: build a new index alongside the old one, run the
+eval set on both, switch traffic atomically, keep the old one for rollback. Store the model name
+and version with the index and check it at query time.
+*Project example:* "Our retriever refuses to start if the index's model differs from the query
+model, because mixing them fails silently."
+
+**Q5. Exact vs approximate search; how does HNSW work?**
+Exact search compares the query with every vector, O(n·d): fine up to around 100k vectors, and the
+ground truth. ANN trades a little recall for big speedups. HNSW builds a layered proximity graph:
+search enters at a sparse top layer, greedily moves toward the query, and descends to denser layers.
+Knobs: M (links per node: memory vs recall), ef_construction (build quality), ef_search (query
+recall vs latency). Alternatives: IVF (search only the nearest k-means clusters, tuned by nprobe)
+and PQ (compressed vectors). Evaluate with recall@k against exact search, plus latency and memory.
+
+**Q6. Which vector database would you choose?**
+It depends on scale and the existing stack. Prototype: numpy, FAISS or Chroma. If the company
+already runs Postgres: pgvector, with one system, SQL joins to business data, and transactions; it's
+enough for millions of vectors. Very large scale, heavy filtering or built-in hybrid search: Qdrant,
+Weaviate or Milvus. No operations team: managed Pinecone. What matters more than the brand:
+metadata filtering, updates and deletes, hybrid search, and operational fit.
+
+**Q7. Pre-filtering vs post-filtering?**
+Pre-filtering restricts the candidates by metadata first, then ranks them, so you always get k valid
+results. Post-filtering takes the top-k, then drops mismatches, and can return few or none. With
+ANN graphs, restrictive pre-filters can hurt recall unless the DB supports filtered HNSW. Use
+filters for facts embeddings can't distinguish.
+*Project example:* "'KSA roaming prices' vs 'UAE roaming prices' scored 0.755 similarity, so market
+and freshness are hard filters, not left to the embedding."
+
+**Q8. Where does dense retrieval fail, and what do you do?**
+Negation ("cancel" vs "don't cancel" scored 0.82), numbers (55 vs 95 SAR scored 0.93), exact IDs and
+rare terms (shaky margins), and out-of-domain questions: top-k always returns something, and scores
+overlap with real but hard questions. Fixes: hybrid search with BM25 for exact terms, a reranker,
+metadata filters, structured tools for numbers, and a generation step that can say "I don't know".
+Measure each fix on a golden set.
+*Project example:* "'Weather in Riyadh' scored 0.40, about the same as the correct answer to a
+hard question, so a similarity threshold couldn't detect missing answers."
