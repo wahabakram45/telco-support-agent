@@ -32,9 +32,9 @@ Pydantic comes back throughout the project: request and response models in FastA
 - [x] Drill: interview-bank §01 (7/8; missed: embeddings are not anonymisation)
 
 ## Phase 2 — Naive RAG end to end + FastAPI & Docker basics  (weeks 2–3)
-- [ ] Lesson [02 — Chunking](learn/02-chunking.md): fixed, recursive, structure-aware, semantic; size, overlap, contextual headers
-- [ ] Build: `chunk_by_headings()` + strategy comparison
-- [ ] Drill: interview-bank §02
+- [x] Lesson [02 — Chunking](learn/02-chunking.md): fixed, recursive, structure-aware, semantic; size, overlap, contextual headers
+- [x] Build: `chunk_by_headings()` + strategy comparison
+- [x] Drill: interview-bank §02 — 7/8 (missed: fixed-500 = one chunk per doc → diluted; proxy metric can't see it)
 - [ ] Lesson 03 — Embeddings & vector search: what embeddings are, cosine similarity, ANN indexes (HNSW), vector DB options
 - [ ] Lesson 04 — Generation: grounding prompts, citations, "I don't know"
 - [ ] Build: ingest → chunk → embed → Chroma → retrieve → answer with citations
