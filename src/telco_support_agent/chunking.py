@@ -105,6 +105,8 @@ def split_long(text: str, max_tokens: int) -> list[str]:
 
 # --- Strategy 2: structure-aware (markdown headings) ---------------------------------------
 
+_HEADING = re.compile(r"^(#{1,3}) (.*)")
+
 
 def chunk_by_headings(doc: Document, max_tokens: int = 300) -> list[Chunk]:
     """One chunk per markdown section, with a context header. See learn/02-chunking.md, Task 1.
@@ -120,8 +122,25 @@ def chunk_by_headings(doc: Document, max_tokens: int = 300) -> list[Chunk]:
       heading and context.
     - Chunks are numbered 0, 1, 2… in document order (use `make_chunk`).
     """
-    # TODO(you) — lesson 02, Task 1.
-    raise NotImplementedError
+    # 1. Group lines into (heading, body lines). Text before the first sub-heading goes to "".
+    sections: list[tuple[str, list[str]]] = [("", [])]
+    for line in doc.text.splitlines():
+        match = _HEADING.match(line)
+        if not match:
+            sections[-1][1].append(line)
+        elif len(match.group(1)) > 1:  # "## X" / "### X" open a section; "# Title" is dropped
+            sections.append((match.group(2).strip(), []))
+
+    # 2. One or more chunks per non-empty section, numbered across the whole document.
+    chunks: list[Chunk] = []
+    for heading, lines in sections:
+        body = "\n".join(lines).strip()
+        if not body:
+            continue
+        context = f"{doc.title} > {heading}" if heading else doc.title
+        for piece in split_long(body, max_tokens):
+            chunks.append(make_chunk(doc, len(chunks), piece, heading, context))
+    return chunks
 
 
 # --- Applying a strategy to the corpus ------------------------------------------------------
