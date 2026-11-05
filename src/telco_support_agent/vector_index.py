@@ -31,8 +31,14 @@ def cosine_top_k(query: np.ndarray, matrix: np.ndarray, k: int) -> list[tuple[in
     - Ties keep the lower row index first.
     - Raises ValueError if k < 1.
     """
-    # TODO(you) — lesson 03, Task 1.
-    raise NotImplementedError
+    if k < 1:
+        raise ValueError("k should be >= 1")
+    query_norm = normalize(query)
+    matrix_norm = normalize(matrix)
+
+    cosine_sim = matrix_norm @ query_norm
+    top_k = np.argsort(cosine_sim, descending=True)[:k]
+    return [(int(i), float(cosine_sim[i])) for i in top_k]
 
 
 class SearchResult(BaseModel):

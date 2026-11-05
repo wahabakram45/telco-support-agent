@@ -49,6 +49,12 @@ def test_top_k_ignores_vector_length():
     assert cosine_top_k(np.array([6.0, 8.0]), matrix, k=1)[0][1] == pytest.approx(1.0)
 
 
+def test_top_k_returns_exactly_k_when_k_is_small():
+    # Real vectors have many more dimensions than k: k must not depend on d.
+    matrix = np.eye(10)
+    assert len(cosine_top_k(np.ones(10), matrix, k=3)) == 3
+
+
 def test_top_k_larger_than_n_returns_all():
     assert len(cosine_top_k(np.array([1.0, 0.0]), MATRIX, k=10)) == 4
 

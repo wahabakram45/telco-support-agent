@@ -35,8 +35,8 @@ Pydantic comes back throughout the project: request and response models in FastA
 - [x] Lesson [02 — Chunking](learn/02-chunking.md): fixed, recursive, structure-aware, semantic; size, overlap, contextual headers
 - [x] Build: `chunk_by_headings()` + strategy comparison
 - [x] Drill: interview-bank §02 — 7/8 (missed: fixed-500 = one chunk per doc → diluted; proxy metric can't see it)
-- [ ] Lesson [03 — Embeddings & vector search](learn/03-embeddings-vector-search.md): what embeddings are, cosine similarity, ANN indexes (HNSW), vector DB options
-- [ ] Build: `cosine_top_k()` + index the corpus + probe what embeddings miss
+- [x] Lesson [03 — Embeddings & vector search](learn/03-embeddings-vector-search.md): what embeddings are, cosine similarity, ANN indexes (HNSW), vector DB options
+- [x] Build: `cosine_top_k()` + index the corpus + probe what embeddings miss
 - [ ] Drill: interview-bank §03
 - [ ] Lesson 04 — Generation: grounding prompts, citations, "I don't know"
 - [ ] Build: ingest → chunk → embed → Chroma → retrieve → answer with citations
