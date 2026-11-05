@@ -389,3 +389,66 @@ only for the other market. For strict multi-tenancy, use separate collections or
 tenant.
 *Project example:* "A UAE customer asking about porting gets 'I don't have that information'
 instead of the KSA porting rules, because those chunks are filtered out before generation."
+
+---
+
+## 04a — FastAPI
+
+**Q1. Walk through an HTTP request; which status codes would an LLM API return?**
+A request is a method, a path, headers and an optional body; the response is a status code, headers
+and a body, usually JSON. 2xx means success, 4xx a client error (don't retry unchanged), 5xx a server
+error (a retry may help). For an LLM endpoint: 200 for an answer, including "I don't know"; 422 for
+an invalid request; 401/403 for auth; 429 when *our* rate limit is hit; 502 when the LLM provider
+errors; 503 when not ready or the provider is rate-limiting us (with Retry-After); 504 on an upstream
+timeout; 500 only for our own bugs.
+
+**Q2. Why FastAPI over Flask or Django?**
+Type hints and Pydantic models drive request parsing, validation, response serialization and the
+OpenAPI docs, so you write the contract once. It supports async natively and has dependency
+injection built in, and it's the standard for ML and LLM services. Flask is minimal, with validation
+and docs as add-ons; Django is full-stack (ORM, admin), which is great for web apps and heavy for a
+model-serving microservice.
+
+**Q3. How does FastAPI use Pydantic?**
+Request body models are validated before the endpoint runs, so invalid input returns a detailed
+422 and never reaches your code. `response_model` validates and *filters* the output, which guards
+against leaking internal fields. The models generate the OpenAPI schema and interactive docs.
+*Project example:* "AskRequest strips whitespace, caps questions at 500 characters (cost and abuse
+control) and forbids unknown fields; AskResponse is a public subset of the internal RAGResponse, with
+no costs or retrieval scores."
+
+**Q4. `async def` vs `def`?**
+`async def` endpoints run on the event loop: great for non-blocking I/O with `await`, but any blocking
+call inside one (a sync HTTP client, `time.sleep`, heavy CPU) freezes every request on that worker.
+Plain `def` endpoints run in a thread pool, so blocking calls are safe. Match the endpoint to the
+code inside it. LLM calls are network-bound, so a fully async stack (AsyncOpenAI) gives the most
+concurrency per process.
+*Project example:* "Our pipeline uses the sync OpenAI client, so the endpoints are plain def."
+
+**Q5. Dependency injection in FastAPI, and testing?**
+An endpoint declares what it needs (`Depends(get_pipeline)`) and FastAPI provides it, which
+centralizes setup (pipelines, database sessions, auth) and enables reuse. For tests,
+`app.dependency_overrides` swaps the real dependency for a fake, so tests are fast, free,
+deterministic and need no API key. Plus a few `live`-marked tests against the real thing.
+
+**Q6. Error handling for an endpoint that calls an LLM?**
+Set client timeouts and retries with backoff for transient errors (the SDK does this). Map failures to
+honest codes in central exception handlers: timeout → 504, provider rate limit → 503 with
+Retry-After, other provider errors → 502, invalid structured output → 502. Never leak stack traces or
+keys; log details with a request ID and return a short message. Consider fallbacks: a cheaper model,
+a cached answer, or a hand-off to a human.
+
+**Q7. Load a model or index once, serve many requests and cores?**
+Build it once per process, at startup (lifespan) or on first use (a cached dependency), and share it
+read-only across requests. One Python process uses one core, so run several workers (uvicorn
+`--workers`, or more containers behind a load balancer); each worker holds its own copy, so watch
+memory. For big local models, use a dedicated model server (vLLM, Triton) and keep the API thin.
+*Project example:* "The pipeline is built once via an lru_cache dependency; if the index is missing,
+health returns 503 and the next request retries."
+
+**Q8. Streaming an LLM's answer token by token?**
+Users perceive latency as time to first token, so stream. Use `stream=True` on the LLM call and
+return a `StreamingResponse` with Server-Sent Events (`text/event-stream`), sending each delta as an
+event; the client renders as it arrives. Trade-offs: you can't validate the whole answer before
+sending it (so checks such as citation verification run at the end, or you buffer sentences), errors
+mid-stream need an in-band error event, and proxies must not buffer.

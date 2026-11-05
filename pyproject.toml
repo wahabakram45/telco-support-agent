@@ -5,6 +5,7 @@ description = "Telecom support RAG agent with evals — an AI engineering learni
 requires-python = ">=3.12"
 dependencies = [
     "chromadb>=1.5.9",
+    "fastapi[standard]>=0.162.0",
     "numpy>=2.5.4",
     "openai>=1.60",
     "pydantic>=2.7",

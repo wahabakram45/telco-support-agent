@@ -41,9 +41,10 @@ Pydantic comes back throughout the project: request and response models in FastA
 - [x] Lesson [04 — Generation](learn/04-generation.md): grounding prompts, citations, "I don't know", prompt injection, Chroma
 - [x] Build: ingest → chunk → embed → Chroma → retrieve → answer with citations; write the grounded system prompt (≥14/15 probes)
 - [x] Drill: interview-bank §04 — 8/8
-- [ ] Lesson 04a — ➕ FastAPI fundamentals: HTTP & REST basics, routes, Pydantic request/response models,
+- [ ] Lesson [04a — ➕ FastAPI fundamentals](learn/04a-fastapi.md): HTTP & REST basics, routes, Pydantic request/response models,
       automatic validation & OpenAPI docs, status codes & error handling, dependency injection, testing with `TestClient`
 - [ ] Build: `/ask` and `/health` endpoints around the RAG pipeline, with tests
+- [ ] Drill: interview-bank §04a
 - [ ] Lesson 04b — ➕ Docker fundamentals: images vs containers, Dockerfile line by line, layers & caching,
       ports, env vars & secrets, volumes, `.dockerignore`
 - [ ] Build: containerize the API; `docker run` it locally
