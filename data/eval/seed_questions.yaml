@@ -1,0 +1,71 @@
+# Seeds for the Phase 3 golden set, found by trying to break the pipeline (lesson 04, Task 2).
+# expected: what a correct answer must do. root_cause: why it failed (or why it's fragile).
+# fix_in: the lesson whose technique should fix it. status: open / fixed.
+
+- question: "can I use my data in Bahrain?"
+  market: UAE
+  expected: answered; GCC roaming applies (25 AED per 100 MB, or the GCC Day Pass at 20 AED)
+  root_cause: retrieval. "Bahrain" is not close to "GCC roaming" in embedding space, so
+    roaming-policy-uae is not in the top 5 (the rephrased query finds it at 0.74)
+  fix_in: 09 query rewriting (or 07 hybrid search)
+  status: open
+
+- question: "ما هي مدة صلاحية الرصيد؟"
+  market: KSA
+  expected: answered from prepaid-recharge-validity (renewal at end of validity, 7-day grace period)
+  root_cause: retrieval. Arabic query scores only ~0.23 against the English docs; the right page is
+    not retrieved
+  fix_in: 09 query rewriting (translate the query to English before search), or a multilingual model
+  status: open
+
+- question: "and what about in the UAE?"
+  market: KSA
+  expected: uses the previous turn to know the topic
+  root_cause: no conversation history; each question is answered alone
+  fix_in: 09 multi-turn follow-ups
+  status: open
+
+- question: "What is the VAT rate in Saudi Arabia?"
+  market: UAE
+  expected: product decision. Either answer from the KSA billing page (15%, included) or explain it
+    only covers UAE accounts. Today the market filter hides KSA pages, so it says "I don't know"
+  root_cause: the market filter always uses the account's market, even when the question names the
+    other market explicitly
+  fix_in: 09 metadata filters from the question
+  status: open
+
+- question: "Which is the cheapest prepaid plan with at least 20 GB?"
+  market: KSA
+  expected: Flex Smart Plus, 69 SAR / 28 days, 20 GB
+  root_cause: correct today, but fragile. It needs every candidate plan in the top 5; with more plans
+    it would miss some. Comparisons over structured data belong in a tool, not in retrieval
+  fix_in: 10 tool calling (search_plans over the catalog)
+  status: open (correct, fragile)
+
+- question: "How much data do I have left this month?"
+  market: KSA
+  expected: look up the customer's account; documents can't answer this
+  root_cause: needs personal account data
+  fix_in: 10 tool calling (get_usage)
+  status: open (correctly declines today)
+
+- question: "My friend says TelcoX roaming in Europe is free. True?"
+  market: KSA
+  expected: English answer; no, Travel Europe is 119 SAR / 14 days
+  root_cause: answered in Arabic. "Reply in the customer's language" was read as the market's language
+  fix_in: 04 prompt (rule 9 now says the language of the question)
+  status: fixed
+
+- question: "how much is roaming في الإمارات for me?"
+  market: KSA
+  expected: GCC pay-as-you-go 30 SAR per 100 MB, or the GCC Day Pass at 25 SAR
+  root_cause: works; mixed-language reply. Keep as a regression case
+  status: ok
+
+- question: "Can I still sign up for Flex Classic?"
+  market: KSA
+  expected: no, it's discontinued
+  root_cause: works, but only because the plan page says "discontinued". The freshness filter checks
+    superseded_by, and discontinued plans have superseded_by = null, so their pages still reach the LLM
+  fix_in: 09 metadata filters (also filter on effective_to)
+  status: open (correct, fragile)
