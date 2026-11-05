@@ -18,8 +18,8 @@ COLLECTION = "chunks"
 
 
 def _metadata(chunk: Chunk) -> dict[str, Any]:
-    """Chroma metadata holds only flat str/int/float/bool values: keep the filter fields flat,
-    and the whole chunk as JSON so search results can rebuild it exactly."""
+    """Chroma metadata holds only simple values (str/int/float/bool, lists of them); no dates, None
+    or dicts. Keep the filter fields simple, and the whole chunk as JSON to rebuild it exactly."""
     return {
         "doc_id": chunk.doc_id,
         "doc_type": chunk.doc_type,

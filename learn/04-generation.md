@@ -122,8 +122,11 @@ Same vectors, same results (`tests/test_generation.py` checks Chroma against our
 What the database changes:
 - **Persistence and a query API.** `collection.query(query_embeddings=…, n_results=k, where=…)`.
 - **Distance, not similarity.** Chroma returns cosine *distance* = 1 − similarity; we convert it back.
-- **Flat metadata only:** strings, numbers and booleans. So we store filter fields
-  (`market`, `is_current`) flat, plus the whole chunk as JSON to rebuild it.
+- **Simple metadata only:** strings, numbers, booleans (and lists of them in recent versions). No
+  dates, no `None`, no nested dicts: the database must store, index and compare them itself, while
+  our numpy index filtered in plain Python, where anything goes. So we store filter fields as simple
+  values (`superseded_by is None` becomes `is_current: True`), plus the whole chunk as one JSON string
+  to rebuild it after search. To filter on dates, store them as sortable numbers (`20260701`).
 - **Filter language:** our `{"market": ["KSA", "ALL"], "superseded_by": None}` is translated into
   `{"$and": [{"market": {"$in": […]}}, {"is_current": True}]}`.
 - **HNSW under the hood:** approximate, but on 201 vectors it returns exactly the same ranking.
