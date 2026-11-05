@@ -38,9 +38,9 @@ Pydantic comes back throughout the project: request and response models in FastA
 - [x] Lesson [03 — Embeddings & vector search](learn/03-embeddings-vector-search.md): what embeddings are, cosine similarity, ANN indexes (HNSW), vector DB options
 - [x] Build: `cosine_top_k()` + index the corpus + probe what embeddings miss
 - [x] Drill: interview-bank §03 — 6/8 (missed: unit vectors → cosine, dot, L2 all rank the same; ef_search is the query-time knob)
-- [ ] Lesson [04 — Generation](learn/04-generation.md): grounding prompts, citations, "I don't know", prompt injection, Chroma
-- [ ] Build: ingest → chunk → embed → Chroma → retrieve → answer with citations; write the grounded system prompt (≥14/15 probes)
-- [ ] Drill: interview-bank §04
+- [x] Lesson [04 — Generation](learn/04-generation.md): grounding prompts, citations, "I don't know", prompt injection, Chroma
+- [x] Build: ingest → chunk → embed → Chroma → retrieve → answer with citations; write the grounded system prompt (≥14/15 probes)
+- [x] Drill: interview-bank §04 — 8/8
 - [ ] Lesson 04a — ➕ FastAPI fundamentals: HTTP & REST basics, routes, Pydantic request/response models,
       automatic validation & OpenAPI docs, status codes & error handling, dependency injection, testing with `TestClient`
 - [ ] Build: `/ask` and `/health` endpoints around the RAG pipeline, with tests
