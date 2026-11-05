@@ -324,3 +324,68 @@ metadata filters, structured tools for numbers, and a generation step that can s
 Measure each fix on a golden set.
 *Project example:* "'Weather in Riyadh' scored 0.40, about the same as the correct answer to a
 hard question, so a similarity threshold couldn't detect missing answers."
+
+---
+
+## 04 — Generation: grounded answers, citations, "I don't know"
+
+**Q1. How do you write a grounded RAG prompt?**
+Static system prompt (cacheable): role, "answer only from the sources", what to do when they don't
+contain the answer, partial answers and false premises, scope, injection rules, citation format,
+style. Variable user message: the context (market), sources in delimiters with short labels and
+metadata, best first, and the question last. Use structured output so status and citations are
+machine-readable. Then iterate against a probe set; don't trust the first draft.
+*Project example:* "A naive prompt passed 8 of 15 probes and the grounded one 15 of 15; the
+failures fixed were mostly product issues, like telling customers 'the provided sources don't say'."
+
+**Q2. How do you implement and verify citations?**
+Label sources (S1…Sk), have the model return the labels it used (a structured list, or inline
+markers), map them back to chunk IDs in code. Verify deterministically: cited labels must exist, an
+answered response must cite something, and numbers in the answer must appear in the cited sources.
+Then evaluate citation *support* with an LLM judge or NLI model: does the cited text actually entail
+the claim?
+*Project example:* "The number check caught nano inventing a USSD code that existed in no source."
+
+**Q3. How do you make a RAG system say "I don't know"?**
+Retrieval can't do it: top-k always returns results, and similarity scores overlap between unanswerable
+and hard questions. So: an explicit status field in structured output (answered / cannot_answer),
+rules telling the model to use it, escalation to a human or support channel, and evaluation on
+unanswerable questions in the golden set. Optionally a separate answerability judge, if evals show
+it's needed. Handle partial answers and false premises explicitly.
+
+**Q4. Kinds of hallucination in RAG, and how to catch them?**
+Fabrication (facts in no source), wrong source (another market or tenant), outdated source,
+unfaithful synthesis (distorting what the source says), and out-of-scope answers. Reduce them with
+filters (market, freshness), grounding rules and a cannot-answer path. Catch them with deterministic
+checks (citations, numbers), LLM-as-judge faithfulness scoring, and monitoring in production.
+*Project example:* "Quoting last year's 35 SAR price is prevented by a freshness filter, not by the
+prompt."
+
+**Q5. Prompt injection, direct vs indirect; defences?**
+Direct: the user's own message tries to override the instructions. Indirect: instructions hidden in
+retrieved content (web pages, emails, uploaded files), which is more dangerous because nobody sees
+it. Defence in depth: treat inputs as data with clear delimiters; never let the model grant things
+directly (discounts and refunds go through tools with authorization); validate outputs in code;
+least-privilege tools; red-team cases in the eval set.
+
+**Q6. How many chunks do you send, and in what order?**
+k trades recall against cost, latency and distraction; typical values are 3–10, tuned with evals
+(recall@k for retrieval, answer quality for generation). Put the most relevant chunk first and the
+question last, because models attend most to the start and end of the prompt ("lost in the middle").
+Deduplicate near-identical chunks, and use a reranker (Lesson 08) to retrieve wide and send narrow.
+
+**Q7. How do you iterate on a prompt without breaking what works?**
+Keep a fixed probe or golden set with explicit expectations; change one thing at a time; run more
+than once, because outputs are nondeterministic; version prompts in git alongside their scores; read
+the failing outputs, not just the score. Check the test as well as the model: eval sets have bugs.
+*Project example:* "One 'unanswerable' probe was actually answered by an FAQ, so the model was right
+and my expectation was wrong."
+
+**Q8. How do you keep one market's (or tenant's) answers from reaching another?**
+Never infer it from the question: take the market or tenant from the authenticated account and apply
+it as a hard metadata pre-filter in retrieval, so the other market's documents never reach the
+prompt. Add a prompt rule as a second layer, and test it with probes asking about policies that exist
+only for the other market. For strict multi-tenancy, use separate collections or namespaces per
+tenant.
+*Project example:* "A UAE customer asking about porting gets 'I don't have that information'
+instead of the KSA porting rules, because those chunks are filtered out before generation."

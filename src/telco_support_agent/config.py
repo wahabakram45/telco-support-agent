@@ -1,6 +1,7 @@
 """Settings loaded from environment / .env. Never hardcode keys or prices."""
 
 from functools import lru_cache
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -15,6 +16,7 @@ class Settings(BaseSettings):
     price_output_per_m: float = 0.0
     embedding_model: str = "text-embedding-3-small"
     price_embedding_per_m: float = 0.0
+    vector_store: Literal["numpy", "chroma"] = "chroma"
     request_timeout_s: float = 30.0
     max_retries: int = 3
 
