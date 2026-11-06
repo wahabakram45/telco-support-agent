@@ -1,0 +1,12 @@
+# The same `docker run` flags, written down once. See learn/04b-docker.md §11.
+#   docker compose up --build      (Ctrl+C to stop; add -d to run in the background)
+services:
+  api:
+    build: .
+    image: telco-support-agent:dev
+    ports:
+      - "8000:8000"        # host:container
+    env_file: .env         # read at run time; never copied into the image
+    volumes:
+      - ./logs:/app/logs   # keep the JSONL logs after the container is gone
+    restart: unless-stopped

@@ -1,0 +1,12 @@
+# Allowlist: ignore everything, then let back in only what the image needs.
+# Safer than a blocklist: a new secret (.env) or a big folder can't slip into the build by accident.
+*
+!pyproject.toml
+!uv.lock
+!src/
+!data/chroma/
+
+# ...and never these, even inside the allowed folders.
+**/__pycache__
+**/*.pyc
+**/.DS_Store

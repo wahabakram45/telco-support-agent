@@ -476,3 +476,71 @@ RPC style: it triggers a computation rather than acting on a stored resource, as
 call is neither cheap nor cacheable. Once conversations exist, I'd remodel it as
 `POST /conversations/{id}/messages`, with the history stored server side, and add an
 Idempotency-Key for safe retries.
+
+## 04b — Docker
+
+**Q1. Image vs container? Container vs VM?**
+An image is a read-only template: stacked filesystem layers plus metadata such as the start
+command. A container is a running instance of it with a thin writable layer, so one image can run
+as many containers, and a container's writes vanish when it's removed. A VM virtualizes hardware and
+runs its own kernel (strong isolation, GBs, slow to boot). A container is just an isolated Linux
+process sharing the host kernel, using namespaces for what it can see and cgroups for what it can
+use. It's light and starts in under a second, with weaker isolation. On a Mac, Docker runs a small
+Linux VM underneath.
+
+**Q2. Why does instruction order matter?**
+Each RUN/COPY creates a cached layer, and a change invalidates that layer and every layer after it.
+So put rarely changing steps first: copy only the dependency manifests (`pyproject.toml` +
+`uv.lock`, or `requirements.txt`), install dependencies, and only then copy the source. A code edit
+then reuses the cached dependency layer, and rebuilds take seconds instead of minutes.
+*Project example:* "`uv sync --locked --no-dev --no-install-project` runs before `COPY src`; then a
+second `uv sync --no-editable` installs only our package."
+
+**Q3. What is a multi-stage build?**
+Several FROM stages in one Dockerfile; only the last becomes the image, and it copies just the
+artifacts it needs from earlier stages. Build tools, compilers, the package manager and source stay
+in the builder. The result is smaller (faster pulls and cold starts) and has less attack surface.
+*Project example:* "The builder has uv and installs into a venv; the runtime stage copies only
+`.venv` and the index, with no src/ and no uv."
+
+**Q4. How do you give a container secrets?**
+At run time, from the environment: `--env-file` or `-e` locally; a secret manager in production
+(AWS/GCP Secret Manager, Vault, Kubernetes Secrets) injecting env vars or mounted files. Never COPY
+a `.env` and never put keys in ENV or ARG: every layer and the image history are readable by anyone
+who can pull the image, and deleting a file in a later layer doesn't remove it from the earlier one.
+Add `.dockerignore` so secrets never even enter the build context. For build-time secrets, use
+BuildKit `--mount=type=secret`. The same image then runs in every environment with different config.
+
+**Q5. The container runs but `curl localhost:8000` fails. What do you check?**
+1. Is the app bound to `0.0.0.0` rather than `127.0.0.1`? Inside a container, localhost is the
+   container itself.
+2. Is the port published (`-p 8000:8000`, host:container)? EXPOSE alone publishes nothing.
+3. Is it still running? `docker ps`, then `docker logs` for a crash (a missing env var, a missing
+   index).
+4. Does the health status say healthy, or is it still starting?
+5. Is something else already using the host port?
+
+**Q6. Why non-root, and why exec-form CMD?**
+Containers run as root by default. If the app is exploited, root makes container escapes and damage
+far easier, and hardened platforms reject root containers, so create a user and `USER` it, owning
+only the folders the app writes to. Exec form (`CMD ["uvicorn", …]`) makes the server PID 1, so it
+receives SIGTERM from `docker stop` or Kubernetes and shuts down gracefully, finishing in-flight
+requests. Shell form wraps it in `sh`, which doesn't forward signals, so it gets SIGKILLed after the
+grace period.
+
+**Q7. Which base image for a Python ML service?**
+`python:3.x-slim`, with the version pinned (a digest in production): small Debian with glibc, so
+prebuilt manylinux wheels for numpy, onnxruntime, torch and the like install directly. Alpine uses
+musl, so those wheels often don't apply: packages compile from source, builds get slow or fail, and
+the size advantage disappears. The full image is ~1 GB of tools you don't need. Distroless or
+Chainguard is more secure but has no shell for debugging. Use CUDA images only when you need GPUs.
+
+**Q8. Where should state live when containers are disposable?**
+Not in the container's writable layer. Logs go to stdout/stderr, collected by the platform.
+Durable data goes to a database, object storage (S3) or a named volume. Bind mounts are for
+development. Reference data such as a small index can be baked into the image, so code and data
+are versioned and rolled back together. A large or frequently updated index belongs in a separate
+vector DB service shared by all replicas. Keeping containers stateless is what lets you scale,
+restart and replace them freely.
+*Project example:* "Our 5 MB Chroma index is baked into the image; logs are bind-mounted only in
+development."
