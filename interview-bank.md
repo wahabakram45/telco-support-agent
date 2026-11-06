@@ -452,3 +452,27 @@ return a `StreamingResponse` with Server-Sent Events (`text/event-stream`), send
 event; the client renders as it arrives. Trade-offs: you can't validate the whole answer before
 sending it (so checks such as citation verification run at the end, or you buffer sentences), errors
 mid-stream need an in-band error event, and proxies must not buffer.
+
+**Q9. What is an API, and why serve a model behind a web API?**
+An API is a contract for how one program asks another for something: the operations, the input
+shape, and the output shape including errors. A web API carries that contract over HTTP and JSON,
+usually described by an OpenAPI spec. Serving a model behind one means any language or device can
+call it, secrets and data (API keys, the index, model weights) stay on the server, you can improve
+the internals without redeploying clients, and auth, rate limits, logging and cost tracking live in
+one place, and it scales independently. The costs are a network hop and the duty to keep the
+contract stable for clients you don't control.
+*Project example:* "The OpenAI SDK we call is itself a wrapper over HTTP; our FastAPI service
+flips the role and exposes POST /ask, so a mobile app or a WhatsApp bot can use the pipeline
+without the OpenAI key or the Chroma index ever leaving our server."
+
+**Q10. What makes an API RESTful? Is `POST /ask` RESTful?**
+REST is an architectural style (Fielding, 2000): resources identified by URLs (nouns, plural
+collections), a uniform interface of HTTP methods acting on them, JSON representations, meaningful
+status codes (201 + Location on create, 204 on delete, 404), statelessness (every request carries
+everything needed and shared state lives in a database, so any instance can serve any request), and
+cacheable safe reads. Strict REST also requires HATEOAS, which few APIs implement. `POST /ask` is
+RPC style: it triggers a computation rather than acting on a stored resource, as OpenAI's
+`POST /v1/responses` does. POST fits because the input is structured and potentially long, and the
+call is neither cheap nor cacheable. Once conversations exist, I'd remodel it as
+`POST /conversations/{id}/messages`, with the history stored server side, and add an
+Idempotency-Key for safe retries.

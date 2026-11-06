@@ -12,7 +12,7 @@ from typing import Annotated, Literal
 import openai
 from fastapi import Depends, FastAPI, Request
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 from telco_support_agent.config import get_settings
 from telco_support_agent.generation import Market, RAGPipeline, RAGResponse
@@ -35,10 +35,9 @@ app = FastAPI(
 class AskRequest(BaseModel):
     """Body of POST /ask."""
 
-    # TODO(you) — lesson 04a, Task 1: add the validation rules from the lesson.
-    model_config = ConfigDict()
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
-    question: str
+    question: str = Field(min_length=1, max_length=500)
     market: Market
 
 
@@ -171,4 +170,7 @@ def health(pipeline: PipelineDep) -> HealthResponse:
     )
 
 
-# TODO(you) — lesson 04a, Task 2: the POST /ask route.
+@app.post("/ask", response_model=AskResponse)
+def ask(request: AskRequest, pipeline: PipelineDep) -> AskResponse:
+    response = pipeline.ask(request.question, request.market)
+    return AskResponse.from_rag(response)
