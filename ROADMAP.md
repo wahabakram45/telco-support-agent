@@ -48,7 +48,7 @@ Pydantic comes back throughout the project: request and response models in FastA
 - [x] Lesson [04b — ➕ Docker fundamentals](learn/04b-docker.md): images vs containers, Dockerfile line by line, layers & caching,
       ports, env vars & secrets, volumes, `.dockerignore`
 - [x] Build: containerize the API; `docker run` it locally
-- [ ] Drill: interview-bank §04b
+- [x] Drill: interview-bank §04b — 7/8 (missed: Alpine is smaller, but uses musl so glibc wheels don't fit and ML packages compile from source)
 
 ## Phase 3 — Evals FIRST  (week 4) ⭐ the differentiator
 - [ ] Lesson 05 — Retrieval metrics: recall@k, precision@k, MRR, nDCG; building a golden set
