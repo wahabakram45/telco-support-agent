@@ -14,13 +14,16 @@ ENV UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
     UV_PYTHON_DOWNLOADS=0
 
+
 WORKDIR /app
 
-# TODO(you) — lesson 04b, Task 1: install dependencies and our code, in a cache-friendly order.
-#   1. copy only the files that list dependencies (pyproject.toml, uv.lock)
-#   2. install dependencies only:        uv sync --locked --no-dev --no-install-project
-#   3. copy our code (src/)
-#   4. install our package, non-editable: uv sync --locked --no-dev --no-editable
+# Dependencies first: this layer is rebuilt only when the lockfile changes, not on every code edit.
+COPY pyproject.toml uv.lock ./
+RUN uv sync --locked --no-dev --no-install-project
+
+# Then our code, installed as a regular (non-editable) package so the runtime stage needs no src/.
+COPY src ./src
+RUN uv sync --locked --no-dev --no-editable
 
 # --- Stage 2: runtime — only what's needed to serve ---------------------------------------
 FROM python:3.12-slim
@@ -45,5 +48,7 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
     CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4)"]
 
-# TODO(you) — lesson 04b, Task 2: run as the `app` user, and start uvicorn serving
-# telco_support_agent.api:app on port 8000, reachable from outside the container (exec form).
+USER app
+
+# Exec form, so uvicorn is PID 1 and gets docker stop's SIGTERM; 0.0.0.0 so -p can reach it.
+CMD ["uvicorn", "telco_support_agent.api:app", "--host", "0.0.0.0", "--port", "8000"]

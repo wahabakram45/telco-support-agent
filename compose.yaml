@@ -1,4 +1,4 @@
-# The same `docker run` flags, written down once. See learn/04b-docker.md §11.
+# The same `docker run` flags, written down once. See learn/04b-docker.md §13.
 #   docker compose up --build      (Ctrl+C to stop; add -d to run in the background)
 services:
   api:

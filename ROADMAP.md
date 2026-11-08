@@ -45,9 +45,9 @@ Pydantic comes back throughout the project: request and response models in FastA
       automatic validation & OpenAPI docs, status codes & error handling, dependency injection, testing with `TestClient`
 - [x] Build: `/ask` and `/health` endpoints around the RAG pipeline, with tests
 - [x] Drill: interview-bank §04a — 5/8 (missed: GET must be safe → close via PATCH; tests use dependency_overrides not the live marker; /health makes no LLM call: runs every few seconds, must be fast and free)
-- [ ] Lesson [04b — ➕ Docker fundamentals](learn/04b-docker.md): images vs containers, Dockerfile line by line, layers & caching,
+- [x] Lesson [04b — ➕ Docker fundamentals](learn/04b-docker.md): images vs containers, Dockerfile line by line, layers & caching,
       ports, env vars & secrets, volumes, `.dockerignore`
-- [ ] Build: containerize the API; `docker run` it locally
+- [x] Build: containerize the API; `docker run` it locally
 - [ ] Drill: interview-bank §04b
 
 ## Phase 3 — Evals FIRST  (week 4) ⭐ the differentiator

@@ -174,8 +174,9 @@ Why: the builder needs tools the server never uses: uv, source code, sometimes c
 them out makes the image **smaller** (faster to pull and start) and **safer** (less software means
 fewer vulnerabilities to patch, and fewer tools for an attacker who gets in).
 
-**Honest numbers for us:** the virtualenv alone is ~480 MB, so expect an image of roughly
-600 MB. Most of it is `chromadb`'s own dependencies: `onnxruntime` (75 MB), the `kubernetes` client
+**Honest numbers for us (measured):** the image is **879 MB** on disk, **178 MB** compressed in a
+registry (what a server actually downloads). `docker history` shows the `.venv` layer is 537 MB of
+that, and the Debian base ~150 MB. Most of it is `chromadb`'s own dependencies: `onnxruntime` (75 MB), the `kubernetes` client
 (74 MB), Chroma's Rust bindings (50 MB), `grpc` (41 MB). We use none of them except the bindings,
 because we pass our own embeddings. In production you'd run Chroma (or Qdrant, pgvector…) as a
 **separate service**, and the API would install only a thin client (`chromadb-client`). That alone
@@ -236,6 +237,29 @@ to keep what matters:
 | **Named volume** | `-v telco-logs:/app/logs` | Data managed by Docker that outlives containers (databases) |
 | **tmpfs** | `--tmpfs /app/.cache` | Scratch space in memory, never written to disk |
 
+**What `-v ./logs:/app/logs` actually does.** It reads as `-v HOST_PATH:CONTAINER_PATH`. A bind
+mount doesn't copy anything. It makes one folder appear in two places, so both sides see the same
+files at the same moment:
+
+```
+Your Mac                                          Container
+~/Documents/wahab/telco-support-agent/logs/  ◄═══►  /app/logs/
+   llm_calls.jsonl                                    (the app appends here…)
+   rag_answers.jsonl                                  (…and the lines land on your Mac)
+```
+- `./logs` is relative to **where you run the command**. Run `docker run` from the project folder
+  and it's the project's existing `logs/` (gitignored). Run it from your home folder and Docker
+  uses (and creates) `~/logs` instead. With Compose, it's relative to the folder holding
+  `compose.yaml`, so it's always the project's `logs/`. Never the root of your Mac.
+- The container writes as `app` (UID 1000). Docker Desktop's file sharing maps that to your Mac
+  user, so the files are yours, readable and deletable as normal.
+- **Without `-v`**, the app writes to `/app/logs` inside the container's writable layer. With
+  `--rm` that layer, and the logs, are deleted the moment the container stops.
+- A **named volume** (`-v telco-logs:/app/logs`) also survives, but Docker stores it inside its
+  Linux VM: you won't find it in Finder, only with `docker volume ls` / `docker volume inspect`.
+- Whatever is already in `/app/logs` *in the image* is hidden while the mount is in place. The
+  mount covers the folder; it doesn't merge with it.
+
 And the bigger decision, **where does the index live?**
 
 | Option | Pros | Cons |
@@ -294,7 +318,54 @@ builds and runs. Its real strength is **several services**: later, `api` + `chro
 simple deployments; production usually means Kubernetes, ECS or Cloud Run, which read the same
 image.
 
-### 14. Our decisions
+### 14. Deploying: the image is the artifact, not the repo
+
+A common misunderstanding: "to run the container on another machine, I need the repo there."
+**No. The repo is needed only where the image is *built*.** Every machine that *runs* it needs just
+the image, plus config and secrets:
+
+```
+                 git push
+Your Mac ─────────────────► GitHub ──► CI runner (has the repo)
+                                          │ docker build  (repo + index → image)
+                                          │ docker push
+                                          ▼
+                                Registry (GHCR / ECR / Docker Hub)
+                                 telco-support-agent:1.4.0
+                     ┌────────────────────┼────────────────────┐
+                docker pull          docker pull          docker pull
+                     ▼                    ▼                    ▼
+                 Server A             Server B             Server C
+           Docker + secrets      Docker + secrets      Docker + secrets
+              NO repo               NO repo               NO repo
+```
+
+| Each server needs | Each server does NOT need |
+|---|---|
+| Docker (or Kubernetes, ECS, Cloud Run…) | The repo, `git`, Python, uv, packages |
+| Access to pull from the registry | `src/`, `pyproject.toml`, `uv.lock` |
+| Config and secrets, injected by the platform | The Chroma index (it's inside the image) |
+| | `.env` copied around by hand |
+
+- **Build once, run many.** All three servers run *byte-identical* images, so they behave the same.
+  Building separately on each server could install different package versions.
+- **Tag with a version** (`:1.4.0` or the git commit SHA), not `:latest`. Then you always know what
+  runs where, and **rollback** means "run `:1.3.0` again". Since the index is baked in, the
+  matching index comes back with it.
+- **Bind-mounted logs don't scale.** Each server would have its own `./logs` folder, scattered
+  across machines. That's why production containers log to stdout and the platform ships the logs
+  to one central place (§10).
+- **`compose.yaml` here uses `build: .`**, which needs the repo. A deployment compose file uses
+  `image: ghcr.io/you/telco-support-agent:1.4.0` instead, and pulls it.
+- **Architecture:** CI builds `linux/amd64` for x86 servers (§12).
+
+You can prove it locally: run the image from a folder that has no repo in it.
+```bash
+cd /tmp && docker run --rm -p 8000:8000 --env-file ~/Documents/wahab/telco-support-agent/.env telco-support-agent
+```
+It works: the image carries everything except the secrets you pass in.
+
+### 15. Our decisions
 
 - `python:3.12-slim` base, pinned; uv copied from its official image, also pinned (`0.13.6`).
 - Multi-stage: builder installs with `uv sync --locked --no-dev`; runtime copies only `.venv`.

@@ -101,6 +101,8 @@ def test_dependencies_install_before_the_code_is_copied():
     code = first(steps, "COPY", r"^src\b")
     project = first(steps, "RUN", r"uv sync .*--no-editable")
     assert lockfile < deps < code < project
+    workdir = first(steps, "WORKDIR", r"^/app$")
+    assert workdir < lockfile, "the runtime stage copies /app/.venv, so the builder works in /app"
     assert "src" not in steps[lockfile][1], "copy src/ only after installing dependencies"
 
 
