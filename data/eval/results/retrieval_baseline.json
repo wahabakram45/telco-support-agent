@@ -1,0 +1,5424 @@
+{
+  "created": "2026-11-08T16:50:59",
+  "label": "baseline",
+  "k": 5,
+  "config": {
+    "embedding_model": "text-embedding-3-small",
+    "index_chunks": 201,
+    "corpus_chunks": 201,
+    "golden_sha": "20f543fddd41"
+  },
+  "n_items": 77,
+  "n_scored": 70,
+  "skipped": [
+    "h-120",
+    "h-121",
+    "h-122",
+    "h-123",
+    "seed-003",
+    "seed-004",
+    "seed-006"
+  ],
+  "overall": {
+    "hit": 0.9428571428571428,
+    "recall": 0.8795238095238096,
+    "precision": 0.2771428571428572,
+    "mrr": 0.8976190476190476,
+    "ndcg": 0.8592349844999657,
+    "distractor": 0.05714285714285714
+  },
+  "ci95": {
+    "hit": [
+      0.8857142857142857,
+      0.9857142857142858
+    ],
+    "recall": [
+      0.8090238095238095,
+      0.9380952380952382
+    ],
+    "precision": [
+      0.23999999999999996,
+      0.31714285714285706
+    ],
+    "mrr": [
+      0.8285714285714286,
+      0.9523809523809522
+    ],
+    "ndcg": [
+      0.7882661698885096,
+      0.9176117746917911
+    ],
+    "distractor": [
+      0.014285714285714285,
+      0.11428571428571428
+    ]
+  },
+  "hit_curve": {
+    "1": 0.8571428571428571,
+    "3": 0.9428571428571428,
+    "5": 0.9428571428571428,
+    "10": 0.9714285714285714
+  },
+  "by_category": {
+    "buried_fact": {
+      "n": 3.0,
+      "hit": 1.0,
+      "recall": 0.8333333333333334,
+      "precision": 0.26666666666666666,
+      "mrr": 1.0,
+      "ndcg": 0.8710490642551528,
+      "distractor": 0.0
+    },
+    "discontinued": {
+      "n": 3.0,
+      "hit": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "precision": 0.13333333333333333,
+      "mrr": 0.6666666666666666,
+      "ndcg": 0.6666666666666666,
+      "distractor": 0.3333333333333333
+    },
+    "market_rule": {
+      "n": 2.0,
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.8,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    "multi_doc": {
+      "n": 4.0,
+      "hit": 1.0,
+      "recall": 0.6833333333333333,
+      "precision": 0.45,
+      "mrr": 1.0,
+      "ndcg": 0.6751922319152386,
+      "distractor": 0.0
+    },
+    "multilingual": {
+      "n": 3.0,
+      "hit": 0.6666666666666666,
+      "recall": 0.38888888888888884,
+      "precision": 0.20000000000000004,
+      "mrr": 0.4444444444444444,
+      "ndcg": 0.3368305618056213,
+      "distractor": 0.0
+    },
+    "near_duplicate": {
+      "n": 4.0,
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.30000000000000004,
+      "mrr": 0.875,
+      "ndcg": 0.9069599401989676,
+      "distractor": 0.5
+    },
+    "paraphrase": {
+      "n": 16.0,
+      "hit": 0.875,
+      "recall": 0.8229166666666666,
+      "precision": 0.23750000000000002,
+      "mrr": 0.84375,
+      "ndcg": 0.8174633735096798,
+      "distractor": 0.0
+    },
+    "price_history": {
+      "n": 3.0,
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.20000000000000004,
+      "mrr": 0.8333333333333334,
+      "ndcg": 0.8769765845238191,
+      "distractor": 0.3333333333333333
+    },
+    "regional": {
+      "n": 4.0,
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.35000000000000003,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    "single_fact": {
+      "n": 20.0,
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.23000000000000004,
+      "mrr": 0.975,
+      "ndcg": 0.9815464876785729,
+      "distractor": 0.0
+    },
+    "superseded_policy": {
+      "n": 3.0,
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.26666666666666666,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    "unlimited_fair_usage": {
+      "n": 5.0,
+      "hit": 1.0,
+      "recall": 0.8,
+      "precision": 0.36,
+      "mrr": 0.9,
+      "ndcg": 0.7705855730121314,
+      "distractor": 0.0
+    }
+  },
+  "items": [
+    {
+      "id": "h-001",
+      "category": "single_fact",
+      "question": "How much is the late payment fee on a postpaid bill?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "postpaid-billing-ksa#3",
+          "score": 0.697,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#1",
+          "score": 0.6156,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#2",
+          "score": 0.5943,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#7",
+          "score": 0.5864,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#0",
+          "score": 0.5091,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#4",
+          "score": 0.4996,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#1",
+          "score": 0.4916,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#2",
+          "score": 0.4836,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#8",
+          "score": 0.4768,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#0",
+          "score": 0.4545,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-002",
+      "category": "single_fact",
+      "question": "How much does it cost per minute to call Pakistan?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "international-calling-uae#2",
+          "score": 0.5858,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#1",
+          "score": 0.4754,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#4",
+          "score": 0.4746,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#3",
+          "score": 0.4711,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#5",
+          "score": 0.4407,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#3",
+          "score": 0.4395,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#1",
+          "score": 0.4351,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#0",
+          "score": 0.3909,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#6",
+          "score": 0.3878,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.3527,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-003",
+      "category": "single_fact",
+      "question": "How long does it take to port my number to TelcoX?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "number-porting-ksa#2",
+          "score": 0.7921,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "number-porting-ksa#4",
+          "score": 0.669,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "number-porting-ksa#5",
+          "score": 0.6498,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "number-porting-ksa#0",
+          "score": 0.6472,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "number-porting-ksa#1",
+          "score": 0.6274,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-support-contact#0",
+          "score": 0.6073,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "number-porting-ksa#3",
+          "score": 0.6019,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#9",
+          "score": 0.5017,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#2",
+          "score": 0.4772,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#12",
+          "score": 0.4755,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-004",
+      "category": "single_fact",
+      "question": "What number do I call for customer support?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "customer-support-contact#0",
+          "score": 0.5514,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#0",
+          "score": 0.3408,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#1",
+          "score": 0.322,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#12",
+          "score": 0.3009,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#6",
+          "score": 0.2955,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#3",
+          "score": 0.2931,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#3",
+          "score": 0.2878,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#4",
+          "score": 0.2829,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#5",
+          "score": 0.2803,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "prepaid-recharge-validity#1",
+          "score": 0.2728,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-005",
+      "category": "single_fact",
+      "question": "What does the International Saver add-on include?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "international-calling-ksa#5",
+          "score": 0.5766,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-europe-ksa#0",
+          "score": 0.3989,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-asia-ksa#0",
+          "score": 0.3862,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-ksa#0",
+          "score": 0.3748,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.3597,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.3529,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.35,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#0",
+          "score": 0.3452,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.3396,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#5",
+          "score": 0.3274,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-006",
+      "category": "single_fact",
+      "question": "Do I pay extra to use 5G?",
+      "market": "UAE",
+      "n_relevant": 3,
+      "retrieved": [
+        {
+          "chunk_id": "faq-network-devices#2",
+          "score": 0.6791,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "5g-coverage-devices#3",
+          "score": 0.6721,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#1",
+          "score": 0.5597,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "5g-coverage-devices#0",
+          "score": 0.5349,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "5g-coverage-devices#2",
+          "score": 0.521,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "5g-coverage-devices#4",
+          "score": 0.5183,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.428,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.4273,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#4",
+          "score": 0.4265,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.4264,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-007",
+      "category": "single_fact",
+      "question": "Which cities have 5G coverage in Saudi Arabia?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "5g-coverage-devices#1",
+          "score": 0.8227,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#0",
+          "score": 0.7269,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#0",
+          "score": 0.5277,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "5g-coverage-devices#0",
+          "score": 0.5054,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.4737,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-ksa#0",
+          "score": 0.4681,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-ksa#0",
+          "score": 0.4624,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.4571,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "5g-coverage-devices#4",
+          "score": 0.4565,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.4526,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-008",
+      "category": "single_fact",
+      "question": "How many lines can I register with one Emirates ID?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "customer-id-requirements#2",
+          "score": 0.6906,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#3",
+          "score": 0.6645,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#0",
+          "score": 0.6333,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#1",
+          "score": 0.5117,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#4",
+          "score": 0.4577,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#1",
+          "score": 0.4141,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#0",
+          "score": 0.4132,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#2",
+          "score": 0.4037,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#5",
+          "score": 0.3766,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#6",
+          "score": 0.3754,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.6309297535714574,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-009",
+      "category": "single_fact",
+      "question": "How long does it take to get a refund once it's approved?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "refunds-cancellation#4",
+          "score": 0.6634,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#4",
+          "score": 0.3644,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#1",
+          "score": 0.3612,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#0",
+          "score": 0.3532,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#5",
+          "score": 0.3459,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#2",
+          "score": 0.3215,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#5",
+          "score": 0.3028,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#6",
+          "score": 0.2876,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#7",
+          "score": 0.2859,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#3",
+          "score": 0.2717,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-010",
+      "category": "paraphrase",
+      "question": "I lost my phone. Will I have to pay for a new SIM card?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "faq-network-devices#6",
+          "score": 0.5601,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#4",
+          "score": 0.5263,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#1",
+          "score": 0.5051,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#0",
+          "score": 0.4465,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#3",
+          "score": 0.4237,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#0",
+          "score": 0.4211,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#2",
+          "score": 0.4209,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#2",
+          "score": 0.3816,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#7",
+          "score": 0.3707,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#3",
+          "score": 0.3524,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 0.6885288809404666,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-011",
+      "category": "paraphrase",
+      "question": "I'm visiting Dubai for two weeks as a tourist. Can I get a SIM?",
+      "market": "UAE",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "sim-replacement-esim#1",
+          "score": 0.5387,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#0",
+          "score": 0.5312,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#2",
+          "score": 0.5121,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-europe-uae#0",
+          "score": 0.4889,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-uae#0",
+          "score": 0.4863,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-uae#0",
+          "score": 0.4829,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-asia-uae#0",
+          "score": 0.4769,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-uae#0",
+          "score": 0.4768,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.4718,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-uae#0",
+          "score": 0.4703,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "ndcg": 0.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-012",
+      "category": "paraphrase",
+      "question": "My kid uses my old phone. Can I stop them seeing inappropriate websites?",
+      "market": "KSA",
+      "n_relevant": 3,
+      "retrieved": [
+        {
+          "chunk_id": "parental-controls#0",
+          "score": 0.5728,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#2",
+          "score": 0.5152,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#3",
+          "score": 0.4626,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#5",
+          "score": 0.4182,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#4",
+          "score": 0.394,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#1",
+          "score": 0.382,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#6",
+          "score": 0.3327,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#4",
+          "score": 0.3259,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#3",
+          "score": 0.3232,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#4",
+          "score": 0.315,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 0.9072836011519267,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-013",
+      "category": "paraphrase",
+      "question": "If I move to a cheaper plan, when does the change kick in?",
+      "market": "UAE",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "plan-change-rules#1",
+          "score": 0.6689,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#2",
+          "score": 0.6398,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#5",
+          "score": 0.6317,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#6",
+          "score": 0.5962,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#0",
+          "score": 0.5915,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#4",
+          "score": 0.4946,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#3",
+          "score": 0.4696,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#2",
+          "score": 0.445,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#4",
+          "score": 0.4312,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#2",
+          "score": 0.4294,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 0.5,
+      "ndcg": 0.6934264036172708,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-014",
+      "category": "paraphrase",
+      "question": "Can I share my phone's internet with my laptop?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "faq-network-devices#3",
+          "score": 0.6123,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.3867,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#3",
+          "score": 0.3745,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#4",
+          "score": 0.3652,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#4",
+          "score": 0.3314,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "5g-coverage-devices#4",
+          "score": 0.3232,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#1",
+          "score": 0.321,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "5g-coverage-devices#2",
+          "score": 0.3194,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#5",
+          "score": 0.311,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#0",
+          "score": 0.3052,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 0.9639404333166532,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-015",
+      "category": "paraphrase",
+      "question": "I haven't paid my bill for over a month. What happens now?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "postpaid-billing-uae#3",
+          "score": 0.5979,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#6",
+          "score": 0.4807,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#2",
+          "score": 0.4657,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#2",
+          "score": 0.4598,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#7",
+          "score": 0.457,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#0",
+          "score": 0.4498,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#1",
+          "score": 0.4454,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#7",
+          "score": 0.4431,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "prepaid-recharge-validity#4",
+          "score": 0.4408,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#4",
+          "score": 0.4133,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-016",
+      "category": "paraphrase",
+      "question": "My mobile data just stopped working after I used my whole bundle. Why?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "out-of-bundle-charges-uae#3",
+          "score": 0.6422,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#3",
+          "score": 0.5226,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#4",
+          "score": 0.5185,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#6",
+          "score": 0.5072,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.4778,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#5",
+          "score": 0.4758,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#7",
+          "score": 0.4712,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#0",
+          "score": 0.4655,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#0",
+          "score": 0.4591,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#0",
+          "score": 0.4478,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-020",
+      "category": "multi_doc",
+      "question": "I'm going to Turkey for a week. What's the cheapest way to get roaming data?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "plan-travel-europe-ksa#0",
+          "score": 0.5395,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.537,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-ksa#0",
+          "score": 0.5337,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#5",
+          "score": 0.5025,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#2",
+          "score": 0.501,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.4908,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#4",
+          "score": 0.4902,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-asia-ksa#0",
+          "score": 0.4897,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#3",
+          "score": 0.483,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#4",
+          "score": 0.479,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-021",
+      "category": "multi_doc",
+      "question": "Does Max Advanced roll over unused data?",
+      "market": "UAE",
+      "n_relevant": 6,
+      "retrieved": [
+        {
+          "chunk_id": "data-rollover#2",
+          "score": 0.6028,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#4",
+          "score": 0.5931,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#3",
+          "score": 0.5881,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#4",
+          "score": 0.5821,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#0",
+          "score": 0.5719,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#3",
+          "score": 0.568,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#8",
+          "score": 0.5543,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#5",
+          "score": 0.544,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#4",
+          "score": 0.5431,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.5206,
+          "grade": 2,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.3333333333333333,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 0.3270396664923996,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-022",
+      "category": "multi_doc",
+      "question": "I just got a new SIM and I'm flying to Bahrain tomorrow. What do I need to do to use data there, and what will it cost?",
+      "market": "KSA",
+      "n_relevant": 5,
+      "retrieved": [
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.5256,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.5241,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#1",
+          "score": 0.5069,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.4988,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#2",
+          "score": 0.4964,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#0",
+          "score": 0.4887,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-asia-ksa#0",
+          "score": 0.4798,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#0",
+          "score": 0.4748,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-ksa#0",
+          "score": 0.4685,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-ksa#0",
+          "score": 0.4628,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.4,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 0.5524155465547719,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-030",
+      "category": "near_duplicate",
+      "question": "How much data does Flex Smart give?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.5616,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.5591,
+          "grade": 0,
+          "distractor": true
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.4889,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.4744,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#1",
+          "score": 0.4513,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-ksa#0",
+          "score": 0.449,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-ksa#0",
+          "score": 0.4428,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.4425,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.4417,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-ksa#0",
+          "score": 0.4404,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 1.0
+    },
+    {
+      "id": "h-031",
+      "category": "near_duplicate",
+      "question": "What's the price of Flex Smart Plus?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.5924,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-uae#0",
+          "score": 0.5306,
+          "grade": 0,
+          "distractor": true
+        },
+        {
+          "chunk_id": "plan-flex-pro-uae#0",
+          "score": 0.4309,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.407,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.3911,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.387,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.3675,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-uae#0",
+          "score": 0.3637,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-uae#0",
+          "score": 0.3362,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-social-pack-uae#0",
+          "score": 0.3312,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 1.0
+    },
+    {
+      "id": "h-032",
+      "category": "near_duplicate",
+      "question": "What's the difference between Flex Smart and Flex Smart Plus?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.501,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.4113,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-ksa#0",
+          "score": 0.3425,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.3147,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-ksa#0",
+          "score": 0.3135,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.3069,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.2974,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-ksa#0",
+          "score": 0.2925,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#6",
+          "score": 0.2779,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.2706,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-033",
+      "category": "near_duplicate",
+      "question": "Is Flex Start enough if I use about 10 GB a month?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.4816,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.4679,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#3",
+          "score": 0.4536,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.4196,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.4176,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#1",
+          "score": 0.4152,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#2",
+          "score": 0.4146,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.4092,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.4075,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#4",
+          "score": 0.4048,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 0.5,
+      "ndcg": 0.6278397607958708,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-040",
+      "category": "regional",
+      "question": "How much is Flex Pro?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-pro-uae#0",
+          "score": 0.4824,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.3592,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-uae#0",
+          "score": 0.344,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.3311,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.3151,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.2964,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-uae#0",
+          "score": 0.2911,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.2859,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-uae#0",
+          "score": 0.2381,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#1",
+          "score": 0.2314,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-041",
+      "category": "regional",
+      "question": "How much does Max Premium cost per month?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-max-premium-ksa#0",
+          "score": 0.5339,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.4402,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-ksa#0",
+          "score": 0.4209,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-ksa#0",
+          "score": 0.4149,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-ksa#0",
+          "score": 0.3953,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.3805,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.3596,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.352,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#1",
+          "score": 0.3404,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.3398,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-042",
+      "category": "regional",
+      "question": "What does an incoming call cost when I'm roaming?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "roaming-policy-uae#3",
+          "score": 0.7199,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.5835,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#0",
+          "score": 0.5347,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#1",
+          "score": 0.5016,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#1",
+          "score": 0.499,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#5",
+          "score": 0.4819,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#4",
+          "score": 0.4816,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#6",
+          "score": 0.4806,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-uae#0",
+          "score": 0.4795,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#0",
+          "score": 0.4779,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-043",
+      "category": "regional",
+      "question": "When does my data roaming get cut off because of spending?",
+      "market": "KSA",
+      "n_relevant": 4,
+      "retrieved": [
+        {
+          "chunk_id": "roaming-policy-ksa#5",
+          "score": 0.635,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#3",
+          "score": 0.6327,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#6",
+          "score": 0.611,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#4",
+          "score": 0.573,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#3",
+          "score": 0.562,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.556,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#4",
+          "score": 0.5525,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#0",
+          "score": 0.5514,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#0",
+          "score": 0.544,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.526,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.8,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-050",
+      "category": "price_history",
+      "question": "How much is Flex Smart now? I remember it being 59 SAR.",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.6299,
+          "grade": 0,
+          "distractor": true
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.6293,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.5035,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.5033,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.4954,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-ksa#0",
+          "score": 0.4939,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.4633,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-europe-ksa#0",
+          "score": 0.4581,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-ksa#0",
+          "score": 0.4536,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.4491,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.6309297535714574,
+      "distractor": 1.0
+    },
+    {
+      "id": "h-051",
+      "category": "price_history",
+      "question": "What's the current price of Max Advanced?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.4468,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-ksa#0",
+          "score": 0.3508,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-ksa#0",
+          "score": 0.3323,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-ksa#0",
+          "score": 0.3277,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.2781,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-ksa#0",
+          "score": 0.2754,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.2668,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.2646,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#1",
+          "score": 0.2514,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.2453,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-052",
+      "category": "price_history",
+      "question": "How much is DataGo 60?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-datago-60-uae#0",
+          "score": 0.5833,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-uae#0",
+          "score": 0.5199,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-uae#0",
+          "score": 0.508,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#4",
+          "score": 0.3899,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-social-pack-uae#0",
+          "score": 0.3807,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#2",
+          "score": 0.3791,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.3674,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.3507,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#4",
+          "score": 0.3479,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-uae#0",
+          "score": 0.3452,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-060",
+      "category": "unlimited_fair_usage",
+      "question": "Is Flex Unlimited really unlimited?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "fair-usage-policy#0",
+          "score": 0.5652,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.528,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#4",
+          "score": 0.5205,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#3",
+          "score": 0.4634,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#1",
+          "score": 0.4627,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#5",
+          "score": 0.46,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#4",
+          "score": 0.436,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.4147,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-ksa#0",
+          "score": 0.4133,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.4127,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.3868528072345416,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-061",
+      "category": "unlimited_fair_usage",
+      "question": "My internet got really slow on Max Elite after a heavy month. Why?",
+      "market": "UAE",
+      "n_relevant": 3,
+      "retrieved": [
+        {
+          "chunk_id": "faq-network-devices#5",
+          "score": 0.5629,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.5025,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#6",
+          "score": 0.4057,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-uae#0",
+          "score": 0.3926,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#2",
+          "score": 0.385,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#7",
+          "score": 0.3597,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.3202,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#6",
+          "score": 0.3183,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#1",
+          "score": 0.3039,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.302,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6,
+      "mrr": 1.0,
+      "ndcg": 0.8529278650606569,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-062",
+      "category": "unlimited_fair_usage",
+      "question": "Can I use unlimited hotspot on Max Premium?",
+      "market": "KSA",
+      "n_relevant": 3,
+      "retrieved": [
+        {
+          "chunk_id": "fair-usage-policy#3",
+          "score": 0.5996,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#4",
+          "score": 0.5652,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-ksa#0",
+          "score": 0.5181,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#3",
+          "score": 0.5093,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.4751,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.4601,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-ksa#0",
+          "score": 0.4507,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#0",
+          "score": 0.4268,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.419,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-ksa#0",
+          "score": 0.4173,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-063",
+      "category": "unlimited_fair_usage",
+      "question": "Does video quality drop once I pass the limit on an unlimited plan?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "fair-usage-policy#2",
+          "score": 0.6231,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#5",
+          "score": 0.6018,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#1",
+          "score": 0.4779,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#0",
+          "score": 0.4753,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#4",
+          "score": 0.4742,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.4736,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#4",
+          "score": 0.463,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#3",
+          "score": 0.4498,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#2",
+          "score": 0.4273,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#4",
+          "score": 0.4077,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-070",
+      "category": "discontinued",
+      "question": "I'd like to sign up for the Social Pack.",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-social-pack-uae#0",
+          "score": 0.4335,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.2758,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-uae#0",
+          "score": 0.2692,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-uae#0",
+          "score": 0.2401,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.2359,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.2343,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-uae#0",
+          "score": 0.2268,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-uae#0",
+          "score": 0.2245,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-uae#0",
+          "score": 0.2238,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.2219,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-071",
+      "category": "discontinued",
+      "question": "What's the cheapest prepaid plan I can buy?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "refunds-cancellation#1",
+          "score": 0.4513,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#4",
+          "score": 0.4465,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.4336,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.4297,
+          "grade": 0,
+          "distractor": true
+        },
+        {
+          "chunk_id": "plan-change-rules#2",
+          "score": 0.4293,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "prepaid-recharge-validity#6",
+          "score": 0.4258,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.4256,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "prepaid-recharge-validity#1",
+          "score": 0.4249,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#1",
+          "score": 0.421,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.4203,
+          "grade": 2,
+          "distractor": false
+        }
+      ],
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "ndcg": 0.0,
+      "distractor": 1.0
+    },
+    {
+      "id": "h-080",
+      "category": "superseded_policy",
+      "question": "How much is pay-as-you-go roaming data in the GCC?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.7616,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.7212,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#2",
+          "score": 0.7053,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.6688,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-ksa#1",
+          "score": 0.5786,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#3",
+          "score": 0.572,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-ksa#0",
+          "score": 0.5566,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#4",
+          "score": 0.5425,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#6",
+          "score": 0.542,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-europe-ksa#0",
+          "score": 0.537,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-081",
+      "category": "superseded_policy",
+      "question": "How much data does the GCC Day Pass include?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.788,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#2",
+          "score": 0.7254,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.4933,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-ksa#0",
+          "score": 0.4639,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-ksa#0",
+          "score": 0.4516,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.4488,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-ksa#0",
+          "score": 0.4454,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.398,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#4",
+          "score": 0.3936,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-ksa#1",
+          "score": 0.3896,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-082",
+      "category": "superseded_policy",
+      "question": "Roaming outside the GCC is 75 SAR per 100 MB, right?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.77,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#2",
+          "score": 0.6954,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.6619,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.6582,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#3",
+          "score": 0.6202,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-ksa#1",
+          "score": 0.6105,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#0",
+          "score": 0.5838,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#6",
+          "score": 0.5797,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#3",
+          "score": 0.5792,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-ksa#0",
+          "score": 0.5774,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-090",
+      "category": "market_rule",
+      "question": "Is VAT added on top of my postpaid bill?",
+      "market": "KSA",
+      "n_relevant": 4,
+      "retrieved": [
+        {
+          "chunk_id": "faq-postpaid#3",
+          "score": 0.6726,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#8",
+          "score": 0.6374,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#7",
+          "score": 0.6293,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#6",
+          "score": 0.6266,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#0",
+          "score": 0.4789,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#2",
+          "score": 0.4774,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#7",
+          "score": 0.4749,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#1",
+          "score": 0.4744,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#6",
+          "score": 0.4626,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#0",
+          "score": 0.4595,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.8,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-091",
+      "category": "market_rule",
+      "question": "Do your plan prices include VAT?",
+      "market": "UAE",
+      "n_relevant": 4,
+      "retrieved": [
+        {
+          "chunk_id": "faq-postpaid#3",
+          "score": 0.5532,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#5",
+          "score": 0.5142,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#7",
+          "score": 0.5034,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#8",
+          "score": 0.4258,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#6",
+          "score": 0.3766,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#1",
+          "score": 0.3696,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-uae#0",
+          "score": 0.3606,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#5",
+          "score": 0.3606,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.3556,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.3551,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.8,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-100",
+      "category": "buried_fact",
+      "question": "Do you have any discount for elderly customers?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "terms-and-conditions#6",
+          "score": 0.4725,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#12",
+          "score": 0.3551,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#2",
+          "score": 0.2864,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-ksa#0",
+          "score": 0.2861,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.2823,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#2",
+          "score": 0.2807,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#5",
+          "score": 0.2804,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-ksa#0",
+          "score": 0.2698,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#1",
+          "score": 0.2673,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-ksa#0",
+          "score": 0.2669,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-101",
+      "category": "buried_fact",
+      "question": "How long do I have to dispute a charge on my bill?",
+      "market": "UAE",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "terms-and-conditions#7",
+          "score": 0.7303,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#3",
+          "score": 0.4535,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#2",
+          "score": 0.4226,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "refunds-cancellation#2",
+          "score": 0.3942,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#0",
+          "score": 0.3754,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#6",
+          "score": 0.374,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#6",
+          "score": 0.3673,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#0",
+          "score": 0.363,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#12",
+          "score": 0.3621,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "prepaid-recharge-validity#4",
+          "score": 0.3557,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 0.6131471927654584,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-102",
+      "category": "buried_fact",
+      "question": "Can my 16-year-old open their own account?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "terms-and-conditions#2",
+          "score": 0.4746,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#3",
+          "score": 0.3135,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#3",
+          "score": 0.2871,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#12",
+          "score": 0.2745,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#5",
+          "score": 0.2598,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#1",
+          "score": 0.2587,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#3",
+          "score": 0.2491,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#7",
+          "score": 0.2466,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#0",
+          "score": 0.2463,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#1",
+          "score": 0.2456,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "h-110",
+      "category": "multilingual",
+      "question": "كم سعر باقة الخليج اليومية؟",
+      "market": "UAE",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "international-calling-uae#1",
+          "score": 0.3869,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#2",
+          "score": 0.3647,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.3623,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#4",
+          "score": 0.3457,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#5",
+          "score": 0.3454,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#1",
+          "score": 0.3425,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#6",
+          "score": 0.3409,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#3",
+          "score": 0.3293,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.3247,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-uae#0",
+          "score": 0.3243,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.2,
+      "mrr": 0.3333333333333333,
+      "ndcg": 0.3065735963827292,
+      "distractor": 0.0
+    },
+    {
+      "id": "seed-001",
+      "category": "paraphrase",
+      "question": "can I use my data in Bahrain?",
+      "market": "UAE",
+      "n_relevant": 3,
+      "retrieved": [
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.5342,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#4",
+          "score": 0.5286,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-uae#0",
+          "score": 0.5268,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#4",
+          "score": 0.5264,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-uae#0",
+          "score": 0.5236,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#2",
+          "score": 0.5223,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-uae#0",
+          "score": 0.5212,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-uae#0",
+          "score": 0.5188,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#3",
+          "score": 0.5159,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.5156,
+          "grade": 2,
+          "distractor": false
+        }
+      ],
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "ndcg": 0.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "seed-002",
+      "category": "multilingual",
+      "question": "ما هي مدة صلاحية الرصيد؟",
+      "market": "KSA",
+      "n_relevant": 3,
+      "retrieved": [
+        {
+          "chunk_id": "terms-and-conditions#7",
+          "score": 0.226,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#3",
+          "score": 0.2077,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#4",
+          "score": 0.2074,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#3",
+          "score": 0.2043,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-ksa#2",
+          "score": 0.2006,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#2",
+          "score": 0.1994,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#2",
+          "score": 0.195,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-change-rules#1",
+          "score": 0.1899,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#5",
+          "score": 0.1852,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#0",
+          "score": 0.1826,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "ndcg": 0.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "seed-005",
+      "category": "multi_doc",
+      "question": "Which is the cheapest prepaid plan with at least 20 GB?",
+      "market": "KSA",
+      "n_relevant": 3,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.5179,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.4937,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-ksa#0",
+          "score": 0.4917,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.4885,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-ksa#0",
+          "score": 0.4817,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.479,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.4762,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.4713,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#4",
+          "score": 0.455,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.455,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.6,
+      "mrr": 1.0,
+      "ndcg": 0.8213137146137828,
+      "distractor": 0.0
+    },
+    {
+      "id": "seed-007",
+      "category": "paraphrase",
+      "question": "My friend says TelcoX roaming in Europe is free. True?",
+      "market": "KSA",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "plan-travel-europe-ksa#0",
+          "score": 0.5797,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-ksa#0",
+          "score": 0.5483,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "number-porting-ksa#1",
+          "score": 0.5387,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-asia-ksa#0",
+          "score": 0.5083,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#1",
+          "score": 0.5003,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.4819,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#4",
+          "score": 0.4788,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#3",
+          "score": 0.4473,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.4469,
+          "grade": 1,
+          "distractor": false
+        },
+        {
+          "chunk_id": "terms-and-conditions#12",
+          "score": 0.4395,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 0.8262346571285599,
+      "distractor": 0.0
+    },
+    {
+      "id": "seed-008",
+      "category": "multilingual",
+      "question": "how much is roaming في الإمارات for me?",
+      "market": "KSA",
+      "n_relevant": 3,
+      "retrieved": [
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.6294,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.5644,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#2",
+          "score": 0.5618,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#3",
+          "score": 0.5495,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#3",
+          "score": 0.5426,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#6",
+          "score": 0.5414,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-ksa#0",
+          "score": 0.5358,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#4",
+          "score": 0.5249,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.5238,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#0",
+          "score": 0.5218,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.6666666666666666,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 0.7039180890341348,
+      "distractor": 0.0
+    },
+    {
+      "id": "seed-009",
+      "category": "discontinued",
+      "question": "Can I still sign up for Flex Classic?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.4529,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#6",
+          "score": 0.3194,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.3172,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.3121,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-ksa#0",
+          "score": 0.3112,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#2",
+          "score": 0.3066,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.296,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.2959,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#4",
+          "score": 0.2936,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.2931,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-001",
+      "category": "single_fact",
+      "question": "How much is Travel Asia in KSA, and how long does it last?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-travel-asia-ksa#0",
+          "score": 0.5991,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-ksa#0",
+          "score": 0.5456,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-ksa#0",
+          "score": 0.544,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-ksa#5",
+          "score": 0.5181,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-europe-ksa#0",
+          "score": 0.5146,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#0",
+          "score": 0.5121,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.5024,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.4898,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#2",
+          "score": 0.4813,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-ksa#4",
+          "score": 0.4727,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-003",
+      "category": "single_fact",
+      "question": "How much does the Travel Asia roaming add-on cost every 14 days in AED?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-travel-asia-uae#0",
+          "score": 0.766,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-europe-uae#0",
+          "score": 0.7248,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.7231,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-uae#0",
+          "score": 0.7204,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-uae#0",
+          "score": 0.6994,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#3",
+          "score": 0.67,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#5",
+          "score": 0.6456,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#2",
+          "score": 0.6383,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#5",
+          "score": 0.6232,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#6",
+          "score": 0.617,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-006",
+      "category": "paraphrase",
+      "question": "If I buy a GCC day pass while I’m in the UAE, how much data do I get for 24 hours and what’s the price?",
+      "market": "UAE",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.8479,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#2",
+          "score": 0.7758,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.6193,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-uae#0",
+          "score": 0.6013,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-uae#0",
+          "score": 0.5769,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-uae#0",
+          "score": 0.5724,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#1",
+          "score": 0.5606,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-uae#0",
+          "score": 0.5591,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.5344,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.5311,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-010",
+      "category": "paraphrase",
+      "question": "I’m traveling in Europe from the UAE—how much does the roaming add-on cost and how often do I pay for it?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-travel-europe-uae#0",
+          "score": 0.7543,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-uae#0",
+          "score": 0.6771,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-asia-uae#0",
+          "score": 0.6761,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.6633,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-uae#0",
+          "score": 0.6404,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#0",
+          "score": 0.6191,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#3",
+          "score": 0.6058,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#5",
+          "score": 0.5613,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#5",
+          "score": 0.5549,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#2",
+          "score": 0.5516,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-011",
+      "category": "single_fact",
+      "question": "How much does the DataGo 60 plan cost every 30 days in KSA?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-datago-60-ksa#0",
+          "score": 0.7796,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-ksa#0",
+          "score": 0.7359,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-ksa#0",
+          "score": 0.7261,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.6554,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.6364,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.6312,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.6292,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.6263,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.6257,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-ksa#0",
+          "score": 0.6234,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-012",
+      "category": "unlimited_fair_usage",
+      "question": "I’m on a prepaid plan in the UAE—how much does the Flex Unlimited plan cost every 28 days, and what’s the data speed limit after the allowance?",
+      "market": "UAE",
+      "n_relevant": 2,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.7333,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-uae#0",
+          "score": 0.6846,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.6721,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.6686,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-uae#0",
+          "score": 0.645,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-uae#0",
+          "score": 0.6319,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.6297,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.6253,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-60-uae#0",
+          "score": 0.6238,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-uae#0",
+          "score": 0.6143,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 0.5,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 0.6131471927654584,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-013",
+      "category": "single_fact",
+      "question": "Does my unused main balance expire if my line is still active?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "prepaid-recharge-validity#5",
+          "score": 0.7978,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "prepaid-recharge-validity#4",
+          "score": 0.5711,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "prepaid-recharge-validity#2",
+          "score": 0.5432,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#2",
+          "score": 0.5384,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#5",
+          "score": 0.5274,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#8",
+          "score": 0.5238,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "prepaid-recharge-validity#6",
+          "score": 0.4677,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#6",
+          "score": 0.4664,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#7",
+          "score": 0.4645,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#3",
+          "score": 0.4617,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-014",
+      "category": "paraphrase",
+      "question": "I’m trying to set up my eSIM—how long does activation take, and do I need to provide an ID?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "sim-replacement-esim#2",
+          "score": 0.7217,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#5",
+          "score": 0.6774,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#1",
+          "score": 0.5447,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#3",
+          "score": 0.5143,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#4",
+          "score": 0.4883,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#0",
+          "score": 0.4821,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "sim-replacement-esim#0",
+          "score": 0.4767,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#6",
+          "score": 0.4407,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#2",
+          "score": 0.4185,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "customer-id-requirements#1",
+          "score": 0.3885,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-015",
+      "category": "single_fact",
+      "question": "How much is the Max Elite (KSA) postpaid plan per 30 days?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-max-elite-ksa#0",
+          "score": 0.7131,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-ksa#0",
+          "score": 0.67,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.6661,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-ksa#0",
+          "score": 0.6493,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.6097,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.5968,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.5894,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.5843,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-ksa#0",
+          "score": 0.5785,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.5758,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-017",
+      "category": "paraphrase",
+      "question": "Why can’t I open adult websites on my phone when I’m using mobile data?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "parental-controls#2",
+          "score": 0.5743,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#0",
+          "score": 0.4638,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#0",
+          "score": 0.4499,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "parental-controls#5",
+          "score": 0.4416,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#3",
+          "score": 0.4081,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.4071,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#3",
+          "score": 0.3988,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#6",
+          "score": 0.3907,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#4",
+          "score": 0.3854,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#0",
+          "score": 0.3736,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-018",
+      "category": "single_fact",
+      "question": "How much does the DataGo 60 (UAE) data-only plan cost every 30 days?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-datago-60-uae#0",
+          "score": 0.7756,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-20-uae#0",
+          "score": 0.7307,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-datago-150-uae#0",
+          "score": 0.7191,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.6477,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-social-pack-uae#0",
+          "score": 0.6388,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-uae#4",
+          "score": 0.6252,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.6186,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.6067,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-gcc-uae#0",
+          "score": 0.6056,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.6029,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-020",
+      "category": "single_fact",
+      "question": "How much full-speed data do I get on my unlimited plan each billing cycle?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "fair-usage-policy#1",
+          "score": 0.6878,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#0",
+          "score": 0.5925,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.5842,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#5",
+          "score": 0.5511,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#3",
+          "score": 0.5348,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#2",
+          "score": 0.5312,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-network-devices#4",
+          "score": 0.5253,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "fair-usage-policy#4",
+          "score": 0.5223,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#4",
+          "score": 0.4996,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#2",
+          "score": 0.4974,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-021",
+      "category": "single_fact",
+      "question": "How much does the Flex Smart prepaid plan cost every 28 days in AED?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-smart-uae#0",
+          "score": 0.7207,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.6982,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.6619,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-uae#0",
+          "score": 0.6317,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.6182,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.5684,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.5628,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.5597,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#5",
+          "score": 0.5476,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-uae#0",
+          "score": 0.5455,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-023",
+      "category": "single_fact",
+      "question": "If I use data after my bundle runs out, how much does the extra data cost?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#4",
+          "score": 0.7014,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#3",
+          "score": 0.6356,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#5",
+          "score": 0.5344,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#2",
+          "score": 0.5234,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#5",
+          "score": 0.5183,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#4",
+          "score": 0.5145,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#0",
+          "score": 0.5036,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "out-of-bundle-charges-ksa#0",
+          "score": 0.4961,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "data-rollover#3",
+          "score": 0.4925,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-prepaid#8",
+          "score": 0.4863,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-024",
+      "category": "paraphrase",
+      "question": "How much does the Max Elite postpaid plan cost in the UAE, and how often is it billed?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-max-elite-uae#0",
+          "score": 0.7161,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.6726,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.6643,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#0",
+          "score": 0.6488,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-uae#0",
+          "score": 0.6458,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.632,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#5",
+          "score": 0.6284,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#4",
+          "score": 0.6219,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.6081,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-uae#0",
+          "score": 0.6042,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-025",
+      "category": "single_fact",
+      "question": "How much does the Flex Smart Plus prepaid plan cost every 28 days in AED?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-smart-plus-uae#0",
+          "score": 0.7325,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-uae#0",
+          "score": 0.7153,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-uae#0",
+          "score": 0.6601,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-uae#0",
+          "score": 0.6381,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-uae#0",
+          "score": 0.6281,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-uae#0",
+          "score": 0.5873,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-uae#0",
+          "score": 0.5732,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-uae#5",
+          "score": 0.5632,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-uae#0",
+          "score": 0.5617,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-uae#1",
+          "score": 0.5584,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-026",
+      "category": "paraphrase",
+      "question": "What are the ways I can pay my postpaid bill in the UAE?",
+      "market": "UAE",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "postpaid-billing-uae#6",
+          "score": 0.7874,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#0",
+          "score": 0.73,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#4",
+          "score": 0.7114,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#1",
+          "score": 0.6518,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#2",
+          "score": 0.6419,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#0",
+          "score": 0.6113,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#3",
+          "score": 0.5873,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#8",
+          "score": 0.5849,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "postpaid-billing-uae#5",
+          "score": 0.5848,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-postpaid#1",
+          "score": 0.5612,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-028",
+      "category": "single_fact",
+      "question": "How much does the Flex Smart Plus prepaid plan cost every 28 days in KSA?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-flex-smart-plus-ksa#0",
+          "score": 0.7706,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-smart-ksa#0",
+          "score": 0.7612,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-start-ksa#0",
+          "score": 0.6951,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-unlimited-ksa#0",
+          "score": 0.6849,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-pro-ksa#0",
+          "score": 0.6779,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-flex-classic-ksa#0",
+          "score": 0.6667,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-premium-ksa#0",
+          "score": 0.6376,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-advanced-ksa#0",
+          "score": 0.6185,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-basic-ksa#0",
+          "score": 0.6173,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-max-elite-ksa#0",
+          "score": 0.6048,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    },
+    {
+      "id": "syn-033",
+      "category": "paraphrase",
+      "question": "I’m traveling in the GCC—how much does the roaming add-on cost per week, and how much roaming data do I get in places like UAE, Bahrain, Kuwait, Oman, or Qatar?",
+      "market": "KSA",
+      "n_relevant": 1,
+      "retrieved": [
+        {
+          "chunk_id": "plan-travel-gcc-ksa#0",
+          "score": 0.7264,
+          "grade": 2,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#1",
+          "score": 0.7191,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#2",
+          "score": 0.6686,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "roaming-policy-ksa#2",
+          "score": 0.6658,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-world-ksa#0",
+          "score": 0.6476,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-europe-ksa#0",
+          "score": 0.6271,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "plan-travel-asia-ksa#0",
+          "score": 0.6232,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#3",
+          "score": 0.5887,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "faq-roaming#5",
+          "score": 0.5723,
+          "grade": 0,
+          "distractor": false
+        },
+        {
+          "chunk_id": "international-calling-ksa#1",
+          "score": 0.5702,
+          "grade": 0,
+          "distractor": false
+        }
+      ],
+      "hit": 1.0,
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "distractor": 0.0
+    }
+  ]
+}

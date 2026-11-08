@@ -145,6 +145,14 @@ def verify(
     return checks, valid
 
 
+def market_filter(market: Market) -> dict:
+    """The retrieval filter for a customer: their market or ALL, current documents only.
+
+    The market comes from the customer's account, not from the question: a hard filter.
+    """
+    return {"market": [market, "ALL"], "superseded_by": None}
+
+
 class RAGPipeline:
     def __init__(
         self,
@@ -160,9 +168,7 @@ class RAGPipeline:
 
     def ask(self, question: str, market: Market) -> RAGResponse:
         start = time.perf_counter()
-        # The market comes from the customer's account, not from the question: a hard filter.
-        where = {"market": [market, "ALL"], "superseded_by": None}
-        results = self.retriever.retrieve(question, k=self.k, where=where)
+        results = self.retriever.retrieve(question, k=self.k, where=market_filter(market))
 
         user = build_user_prompt(question, results, market)
         answer, record = self.llm.extract(self.system_prompt, user, Answer)

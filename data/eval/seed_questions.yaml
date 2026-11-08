@@ -1,6 +1,7 @@
 # Seeds for the Phase 3 golden set, found by trying to break the pipeline (lesson 04, Task 2).
 # expected: what a correct answer must do. root_cause: why it failed (or why it's fragile).
 # fix_in: the lesson whose technique should fix it. status: open / fixed.
+# All 9 are now in golden.yaml as seed-001…seed-009 (lesson 05).
 
 - question: "can I use my data in Bahrain?"
   market: UAE

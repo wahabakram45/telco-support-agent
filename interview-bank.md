@@ -544,3 +544,86 @@ vector DB service shared by all replicas. Keeping containers stateless is what l
 restart and replace them freely.
 *Project example:* "Our 5 MB Chroma index is baked into the image; logs are bind-mounted only in
 development."
+
+## 05 — Retrieval evals
+
+**Q1. Why evaluate retrieval separately from generation?**
+Retrieval sets the ceiling: if the right chunk isn't in the context, no prompt can produce a
+correct answer. Separate scores say where to work: high hit rate with low faithfulness means fix the
+prompt, not the search. Retrieval evals need no LLM, so they're cheap and deterministic enough to run
+on every commit.
+*Project example:* "Hit@5 is 0.94, so most wrong answers will be generation problems, apart from a
+few known slices like Arabic queries."
+
+**Q2. How do you build a golden set with no users yet?**
+Combine sources:
+- hand-written questions for the known risks and traps (near-duplicate products, regional variants,
+  outdated versions, facts buried in long documents);
+- real failures found by break-testing;
+- LLM-generated questions from sampled chunks, always human-reviewed.
+
+Add unanswerable questions so refusals get tested. Categorize everything so you can slice the
+metrics, label relevance carefully, version the set in git, and replace synthetic questions with
+real logs as soon as you have users.
+*Project example:* "77 questions: 49 hand-written for traps T1–T8, 9 break-test seeds, and 19
+synthetic kept from 33 after review."
+
+**Q3. recall@k, precision@k, MRR, nDCG: which do you report for RAG?**
+- **Hit@k:** at least one relevant chunk in the top k.
+- **Recall@k:** the share of all relevant chunks found.
+- **Precision@k:** the share of the top k that is relevant.
+- **MRR:** 1 / rank of the first relevant chunk, averaged over questions.
+- **nDCG:** graded gains discounted by log2(rank + 1), normalized by the ideal order.
+
+For RAG, report hit@k and recall@k at the k the LLM actually sees (can it answer? does it get
+everything?), plus MRR or nDCG for ordering, which matters for lost-in-the-middle and for rerankers
+that cut k. Precision is capped by (relevant chunks / k), so it's mostly noise unless context cost
+or distraction matters.
+*Project example:* "Our multi-doc slice has hit 1.00 but recall 0.68: hit alone would hide
+incomplete context."
+
+**Q4. Why do synthetic questions overstate quality?**
+The LLM writes the question while looking at the chunk, so it reuses the chunk's words, and
+embedding search rewards that overlap. It also produces ambiguous questions that only make sense
+with the passage in view, and its distribution follows the corpus rather than real users.
+Mitigations:
+- ask for paraphrases;
+- validate the evidence spans automatically;
+- review every candidate;
+- write the hard cases by hand;
+- move to real queries.
+
+*Project example:* "Synthetic questions scored 1.00 hit@5 while real break-test failures scored
+0.67; review dropped 11 of 33 as ambiguous."
+
+**Q5. Recall@5 went from 0.86 to 0.88. Is that real?**
+Probably not, by itself. With about 70 questions, the bootstrap 95% interval is roughly ±0.06, and
+0.02 is one or two questions. Do a paired comparison on the same questions: which ones changed and
+why. Use more questions, or a significance test (paired bootstrap, or McNemar for hit rate), before
+claiming an improvement, and check that no category regressed.
+
+**Q6. How do you label relevance so labels survive re-chunking?**
+Don't store chunk IDs; they change with any chunking change. Label by content: "a chunk of document
+D containing text T" (a fact or number), resolved against the current corpus at eval time. Grade it
+(answers / partial). Test the labels: every label must match at least one current, in-market chunk.
+*Project example:* "`{doc: roaming-policy-uae, has: '20 AED for 1 GB'}`, matched ignoring case and
+markdown."
+
+**Q7. A question fails retrieval. What do you check first?**
+1. Look at what *was* retrieved. Is the label incomplete, with the same fact elsewhere worded
+   differently?
+2. Is the question itself ambiguous or wrong?
+3. Did a filter exclude the document by design?
+4. Is the right chunk just below the cut (the hit curve at 10 vs 5)?
+
+Only then is it a retriever problem, and the kind of miss points to the fix: vocabulary mismatch
+suggests hybrid search or query rewriting; just below the cut suggests a reranker; another language
+suggests translation or a multilingual model.
+*Project example:* "1 of our 5 first-run misses was a labelling error: the FAQ said '150 or more'
+where the policy said '150 SAR or 150 AED'."
+
+**Q8. Dev set vs held-out test set?**
+You tune prompts, chunking and retrieval against the dev set; repeated tuning overfits to its
+specific questions (Goodhart's law). A held-out test set is run rarely, only for final numbers, so
+it gives an unbiased estimate of quality on unseen questions. Keep them from the same distribution,
+version both, and never tune on the test set; if you do, refresh it.

@@ -1,0 +1,344 @@
+- id: syn-001
+  question: How much does the roaming add-on cost every 14 days in KSA?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-travel-asia-ksa
+    has: 99.00 SAR every 14 days
+  reference_answer: The roaming add-on costs 99.00 SAR every 14 days in KSA.
+  notes: generated from plan-travel-asia-ksa#0
+- id: syn-002
+  question: How much does the TelcoX postpaid plan cost in Saudi riyals, and how often is it billed?
+  market: KSA
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-max-basic-ksa
+    has: 115.00 SAR every 30 days
+  reference_answer: It costs 115.00 SAR every 30 days.
+  notes: generated from plan-max-basic-ksa#0
+- id: syn-003
+  question: How much does the Travel Asia roaming add-on cost every 14 days in AED?
+  market: UAE
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-travel-asia-uae
+    has: 95.00 AED every 14 days
+  reference_answer: The Travel Asia roaming add-on costs 95.00 AED every 14 days.
+  notes: generated from plan-travel-asia-uae#0
+- id: syn-004
+  question: I’m on a postpaid plan in the UAE—what’s the monthly price and how much local data do I get?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-max-basic-uae
+    has: 125.00 AED every 30 days
+  reference_answer: It costs 125.00 AED every 30 days and includes 30 GB of local data.
+  notes: generated from plan-max-basic-uae#0
+- id: syn-005
+  question: How much does the TelcoX KSA roaming add-on cost every 30 days?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-travel-world-ksa
+    has: 199.00 SAR every 30 days
+  reference_answer: The TelcoX KSA roaming add-on costs 199.00 SAR every 30 days.
+  notes: generated from plan-travel-world-ksa#0
+- id: syn-006
+  question: If I buy a GCC day pass while I’m in the UAE, how much data do I get for 24 hours and what’s
+    the price?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: faq-roaming
+    has: 1 GB for 24 hours
+  reference_answer: In the UAE, the GCC Day Pass costs 20 AED and includes 1 GB of data for 24 hours.
+  notes: generated from faq-roaming#2
+- id: syn-007
+  question: I’m traveling in the USA/UK/France and want to add roaming data—how much does the roaming
+    add-on cost and how often is it billed?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-travel-world-uae
+    has: 189.00 AED every 30 days
+  reference_answer: The roaming add-on costs 189.00 AED every 30 days.
+  notes: generated from plan-travel-world-uae#0
+- id: syn-008
+  question: How much does the TelcoX KSA prepaid plan cost every 28 days?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-flex-smart-ksa
+    has: 55.00 SAR every 28 days
+  reference_answer: The TelcoX KSA prepaid plan costs 55.00 SAR every 28 days.
+  notes: generated from plan-flex-smart-ksa#0
+- id: syn-009
+  question: I’m on a prepaid plan in KSA—how much does it cost every 28 days, and is 5G included?
+  market: KSA
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-flex-unlimited-ksa
+    has: 199.00 SAR every 28 days
+  reference_answer: It costs 199.00 SAR every 28 days, and 5G is included.
+  notes: generated from plan-flex-unlimited-ksa#0
+- id: syn-010
+  question: I’m traveling in Europe from the UAE—how much does the roaming add-on cost and how often do
+    I pay for it?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-travel-europe-uae
+    has: 109.00 AED every 14 days
+  reference_answer: The roaming add-on costs 109.00 AED every 14 days.
+  notes: generated from plan-travel-europe-uae#0
+- id: syn-011
+  question: How much does the DataGo 60 plan cost every 30 days in KSA?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-datago-60-ksa
+    has: 95.00 SAR every 30 days
+  reference_answer: The DataGo 60 plan costs 95.00 SAR every 30 days in KSA.
+  notes: generated from plan-datago-60-ksa#0
+- id: syn-012
+  question: I’m on a prepaid plan in the UAE—how much does the Flex Unlimited plan cost every 28 days,
+    and what’s the data speed limit after the allowance?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-flex-unlimited-uae
+    has: 219.00 AED every 28 days
+  reference_answer: The Flex Unlimited (UAE) prepaid plan costs 219.00 AED every 28 days, with full-speed
+    data up to 150 GB and reduced speed after that.
+  notes: generated from plan-flex-unlimited-uae#0
+- id: syn-013
+  question: Does my unused main balance expire if my line is still active?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: prepaid-recharge-validity
+    has: does not expire while the line is active
+  reference_answer: No—unused main balance does not expire as long as your line remains active.
+  notes: generated from prepaid-recharge-validity#5
+- id: syn-014
+  question: I’m trying to set up my eSIM—how long does activation take, and do I need to provide an ID?
+  market: KSA
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: sim-replacement-esim
+    has: usually takes about 10 minutes
+  reference_answer: eSIM activation usually takes about 10 minutes, and a valid ID is required.
+  notes: generated from sim-replacement-esim#2
+- id: syn-015
+  question: How much is the Max Elite (KSA) postpaid plan per 30 days?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-max-elite-ksa
+    has: 399.00 SAR every 30 days
+  reference_answer: The Max Elite (KSA) postpaid plan costs 399.00 SAR every 30 days.
+  notes: generated from plan-max-elite-ksa#0
+- id: syn-016
+  question: How much data do I get on the data-only plan in Saudi Arabia, and what’s the monthly price?
+  market: KSA
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-datago-20-ksa
+    has: Local data | 20 GB
+  reference_answer: You get 20 GB of local data for 45.00 SAR every 30 days.
+  notes: generated from plan-datago-20-ksa#0
+- id: syn-017
+  question: Why can’t I open adult websites on my phone when I’m using mobile data?
+  market: KSA
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: parental-controls
+    has: block adult content on mobile data
+  reference_answer: Parental controls block adult content on mobile data, so adult content won’t be accessible
+    when your device is using mobile data.
+  notes: generated from parental-controls#2
+- id: syn-018
+  question: How much does the DataGo 60 (UAE) data-only plan cost every 30 days?
+  market: UAE
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-datago-60-uae
+    has: 99.00 AED every 30 days
+  reference_answer: The DataGo 60 (UAE) data-only plan costs 99.00 AED every 30 days.
+  notes: generated from plan-datago-60-uae#0
+- id: syn-019
+  question: I’m looking for a data-only mobile plan in the UAE—what’s the price and how much local data
+    do I get each 30 days?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-datago-20-uae
+    has: 49.00 AED every 30 days
+  reference_answer: It costs 49.00 AED every 30 days and includes 20 GB of local data.
+  notes: generated from plan-datago-20-uae#0
+- id: syn-020
+  question: How much full-speed data do I get on my unlimited plan each billing cycle?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: fair-usage-policy
+    has: full-speed data up to the plan’s fair usage threshold
+  reference_answer: You get full-speed data up to your plan’s fair usage threshold in each billing cycle.
+  notes: generated from fair-usage-policy#1
+- id: syn-021
+  question: How much does the Flex Smart prepaid plan cost every 28 days in AED?
+  market: UAE
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-flex-smart-uae
+    has: 59.00 AED every 28 days
+  reference_answer: The Flex Smart prepaid plan costs 59.00 AED every 28 days.
+  notes: generated from plan-flex-smart-uae#0
+- id: syn-022
+  question: How much does the TelcoX UAE postpaid plan cost every 30 days, and is it available now?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-max-premium-uae
+    has: 275.00 AED every 30 days
+  reference_answer: The TelcoX UAE postpaid plan costs 275.00 AED every 30 days and is available now (since
+    2026-01-01).
+  notes: generated from plan-max-premium-uae#0
+- id: syn-023
+  question: If I use data after my bundle runs out, how much does the extra data cost?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: out-of-bundle-charges-ksa
+    has: extra data costs 5 SAR per 100 MB
+  reference_answer: Extra data costs 5 SAR per 100 MB after your bundle runs out.
+  notes: generated from out-of-bundle-charges-ksa#4
+- id: syn-024
+  question: How much does the Max Elite postpaid plan cost in the UAE, and how often is it billed?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-max-elite-uae
+    has: 425.00 AED every 30 days
+  reference_answer: The Max Elite (UAE) postpaid plan costs 425.00 AED every 30 days.
+  notes: generated from plan-max-elite-uae#0
+- id: syn-025
+  question: How much does the Flex Smart Plus prepaid plan cost every 28 days in AED?
+  market: UAE
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-flex-smart-plus-uae
+    has: 75.00 AED every 28 days
+  reference_answer: The Flex Smart Plus prepaid plan costs 75.00 AED every 28 days.
+  notes: generated from plan-flex-smart-plus-uae#0
+- id: syn-026
+  question: What are the ways I can pay my postpaid bill in the UAE?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: postpaid-billing-uae
+    has: pay your postpaid bill using any of the following options
+  reference_answer: You can pay your postpaid bill using the TelcoX app, by card, or at TelcoX stores.
+  notes: generated from postpaid-billing-uae#6
+- id: syn-027
+  question: I’m looking for a data-only mobile plan in the UAE—what’s the price and how much local data
+    do I get every 30 days?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-datago-150-uae
+    has: 189.00 AED every 30 days
+  reference_answer: It costs 189.00 AED every 30 days and includes 150 GB of local data.
+  notes: generated from plan-datago-150-uae#0
+- id: syn-028
+  question: How much does the Flex Smart Plus prepaid plan cost every 28 days in KSA?
+  market: KSA
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-flex-smart-plus-ksa
+    has: 69.00 SAR every 28 days
+  reference_answer: The Flex Smart Plus prepaid plan costs 69.00 SAR every 28 days in KSA.
+  notes: generated from plan-flex-smart-plus-ksa#0
+- id: syn-029
+  question: I’m in the UAE—if I use up my data allowance before my bundle period ends, will I be charged
+    for what I use after that?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: out-of-bundle-charges-uae
+    has: If you use your allowance
+  reference_answer: Yes—if you use your allowance before the end of your bundle period, charges may apply
+    for services outside your bundle.
+  notes: generated from out-of-bundle-charges-uae#0
+- id: syn-030
+  question: If I use my TelcoX line in KSA or the UAE, do I automatically agree to the terms and conditions?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: terms-and-conditions
+    has: If you use your TelcoX line
+  reference_answer: Yes—by using your TelcoX line in KSA or the UAE, you agree to these terms as they
+    apply to you.
+  notes: generated from terms-and-conditions#0
+- id: syn-031
+  question: How much does the TelcoX UAE postpaid plan cost every 30 days?
+  market: UAE
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-max-advanced-uae
+    has: 165.00 AED every 30 days
+  reference_answer: The TelcoX UAE postpaid plan costs 165.00 AED every 30 days.
+  notes: generated from plan-max-advanced-uae#0
+- id: syn-032
+  question: How much does the TelcoX UAE prepaid plan cost every 28 days?
+  market: UAE
+  category: single_fact
+  source: synthetic
+  relevant:
+  - doc: plan-flex-pro-uae
+    has: 109.00 AED every 28 days
+  reference_answer: The TelcoX UAE prepaid plan costs 109.00 AED every 28 days.
+  notes: generated from plan-flex-pro-uae#0
+- id: syn-033
+  question: I’m traveling in the GCC—how much does the roaming add-on cost per week, and how much roaming
+    data do I get in places like UAE, Bahrain, Kuwait, Oman, or Qatar?
+  market: KSA
+  category: paraphrase
+  source: synthetic
+  relevant:
+  - doc: plan-travel-gcc-ksa
+    has: 49.00 SAR every 7 days
+  reference_answer: It costs 49.00 SAR every 7 days and includes 3 GB of roaming data in the UAE, Bahrain,
+    Kuwait, Oman, and Qatar.
+  notes: generated from plan-travel-gcc-ksa#0
