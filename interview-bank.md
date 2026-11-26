@@ -627,3 +627,87 @@ You tune prompts, chunking and retrieval against the dev set; repeated tuning ov
 specific questions (Goodhart's law). A held-out test set is run rarely, only for final numbers, so
 it gives an unbiased estimate of quality on unseen questions. Keep them from the same distribution,
 version both, and never tune on the test set; if you do, refresh it.
+
+## 06 — Generation evals
+
+**Q1. How do you evaluate a RAG system's answers?**
+Separately per dimension, each with the cheapest reliable method:
+- **Correctness** against a reference answer: an LLM judge with categorical verdicts.
+- **Faithfulness** against the retrieved sources: an LLM judge that lists unsupported claims.
+- **Refusal behaviour:** refusing the unanswerable vs over-refusing the answerable. These can be
+  rules when the output has a structured status.
+- **Deterministic checks:** citations exist, every number appears in a cited source.
+- **Citation relevance** against labelled chunks.
+- **Cost and latency.**
+
+Break everything down by category, and join with retrieval metrics to find which stage failed.
+*Project example:* "All 4 over-refusals traced back to retrieval misses: the generator correctly
+refused rather than guessed."
+
+**Q2. Faithfulness vs correctness?**
+Correctness compares the answer with the truth (a reference answer); faithfulness compares it with
+the context the model was given. A correct but unfaithful answer was guessed from parametric memory:
+right today, a hallucination risk tomorrow. A faithful but incorrect answer used the wrong context,
+which is a retrieval problem. Measuring both tells you whether to fix retrieval or generation.
+Faithfulness is also reference-free, so it can run on live traffic.
+
+**Q3. How do you design a reliable LLM judge?**
+- One judge per criterion.
+- Categorical verdicts with written definitions and domain examples, not 1–10 scores.
+- Reasoning before the verdict, in structured output.
+- Temperature 0.
+- A different or stronger model than the generator.
+- Graded on saved outputs, so the judge can be changed and re-run on the same answers.
+
+Most importantly, calibrate it against human labels before trusting it, and keep rules (regex,
+status fields, number checks) for anything that doesn't need semantic judgement.
+
+**Q4. LLM judge biases?**
+- **Verbosity:** longer answers win. Mitigate with a rubric that says "judge facts, not length".
+- **Self-preference:** use a different model family.
+- **Position bias** in pairwise judging: run both orders and average.
+- **Leniency or strictness:** calibrate, and read the confusion matrix for the direction.
+- **Reference anchoring:** it treats every fact in the reference as required. Fix it with rubric
+  wording and tight references.
+- **Inconsistency** between its reasoning and its verdict: audit the disagreements.
+
+**Q5. How do you know your judge is trustworthy?**
+Calibrate it:
+1. Humans label a sample of the same answers blind to the judge's verdicts.
+2. Compute raw agreement, Cohen's kappa and a confusion matrix.
+3. Read every disagreement, deciding who's right.
+4. Iterate the judge prompt on the fixed answers.
+
+Compare against human–human agreement as the ceiling, and keep some labels held out so you don't
+overfit the judge to them. A consistently strict judge can still rank systems correctly; a randomly
+disagreeing one can't.
+*Project example:* "We labelled 24 answers, enriched with every case the judge didn't call correct,
+and measured kappa before putting the judge's numbers on the results table."
+
+**Q6. Why Cohen's kappa instead of raw agreement?**
+Raw agreement is inflated when one label dominates: two raters who each say "correct" 90% of the
+time agree 82% by chance alone. Kappa = (p_observed − p_chance) / (1 − p_chance) subtracts the
+chance agreement. A judge that says "correct" to everything can get 90% agreement and kappa 0. As a
+rough guide: 0.6–0.8 is substantial, above 0.8 near the human ceiling.
+
+**Q7. Scores change between runs with no code change. Why?**
+LLM sampling isn't perfectly deterministic even at temperature 0 (batching, floating point, model
+updates), and the judge adds its own variance. So:
+- compare runs paired on the same questions and look at which items changed;
+- run 2–3 times for important decisions;
+- save outputs so the judge can be re-run on fixed answers;
+- pin model versions;
+- set CI tolerances wider than the run-to-run noise.
+
+**Q8. Evals in CI without flakiness?**
+- Run cheap deterministic checks (lint, unit tests, retrieval metrics) on every change, with tight
+  tolerances, since any drop there is real.
+- Run LLM-judged evals on pull requests, with tolerances wider than run-to-run noise plus absolute
+  floors for safety metrics such as refusal accuracy.
+- Commit the baselines and re-save them in the same PR when an improvement lands.
+- Skip cleanly when secrets are missing.
+- Keep the cost visible.
+
+A gate that fails randomly gets ignored, so tune it on observed variance.
+*Project example:* "Retrieval may drop at most 0.02; correctness 0.06; refusal accuracy never below
+0.85. About $0.05 per PR."

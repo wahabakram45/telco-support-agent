@@ -1,0 +1,2564 @@
+{
+  "created": "2026-11-26T15:56:06",
+  "label": "baseline",
+  "config": {
+    "llm_model": "gpt-5.4-nano",
+    "embedding_model": "text-embedding-3-small",
+    "system_prompt_sha": "f67473272095",
+    "golden_sha": "8ab809aee610",
+    "judge_model": "gpt-5.4-nano",
+    "judge_prompt_sha": "bb107c7d84b4"
+  },
+  "summary": {
+    "n": 80.0,
+    "correctness": 0.8493150684931506,
+    "correct_rate": 0.7808219178082192,
+    "partial_rate": 0.136986301369863,
+    "incorrect_rate": 0.0821917808219178,
+    "refusal_accuracy": 1.0,
+    "over_refusal": 0.0547945205479452,
+    "faithfulness": 0.9130434782608695,
+    "checks_ok": 1.0,
+    "citation_relevance": 0.9855072463768116,
+    "cost_per_1k_usd": 0.2889675,
+    "judge_cost_usd": 0.03163765,
+    "latency_p50_s": 2.4285,
+    "latency_p95_s": 6.63495
+  },
+  "by_category": {
+    "buried_fact": {
+      "n": 3.0,
+      "score": 1.0,
+      "faithful": 1.0
+    },
+    "discontinued": {
+      "n": 3.0,
+      "score": 0.5,
+      "faithful": 0.6666666666666666
+    },
+    "market_rule": {
+      "n": 2.0,
+      "score": 1.0,
+      "faithful": 1.0
+    },
+    "multi_doc": {
+      "n": 6.0,
+      "score": 0.5833333333333334,
+      "faithful": 0.8
+    },
+    "multilingual": {
+      "n": 3.0,
+      "score": 0.5,
+      "faithful": 1.0
+    },
+    "near_duplicate": {
+      "n": 4.0,
+      "score": 0.625,
+      "faithful": 1.0
+    },
+    "out_of_scope": {
+      "n": 7.0,
+      "score": 1.0,
+      "faithful": null
+    },
+    "paraphrase": {
+      "n": 17.0,
+      "score": 0.7941176470588235,
+      "faithful": 0.9333333333333333
+    },
+    "price_history": {
+      "n": 3.0,
+      "score": 1.0,
+      "faithful": 1.0
+    },
+    "regional": {
+      "n": 4.0,
+      "score": 1.0,
+      "faithful": 1.0
+    },
+    "single_fact": {
+      "n": 20.0,
+      "score": 1.0,
+      "faithful": 0.95
+    },
+    "superseded_policy": {
+      "n": 3.0,
+      "score": 1.0,
+      "faithful": 1.0
+    },
+    "unlimited_fair_usage": {
+      "n": 5.0,
+      "score": 0.9,
+      "faithful": 0.6
+    }
+  },
+  "items": [
+    {
+      "id": "h-001",
+      "category": "single_fact",
+      "question": "How much is the late payment fee on a postpaid bill?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "A late payment fee of 25 SAR applies after the due date.",
+      "status": "answered",
+      "answer": "In KSA, the late payment fee on a postpaid bill is 25 SAR after the due date.",
+      "cited": [
+        "postpaid-billing-ksa#3",
+        "faq-postpaid#1"
+      ],
+      "retrieved": [
+        "postpaid-billing-ksa#3",
+        "faq-postpaid#1",
+        "postpaid-billing-ksa#2",
+        "postpaid-billing-ksa#7",
+        "postpaid-billing-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00025150000000000004,
+      "latency_s": 6.634,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the late payment fee on a postpaid bill is 25 SAR after the due date, which matches the reference exactly.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00034965
+    },
+    {
+      "id": "h-002",
+      "category": "single_fact",
+      "question": "How much does it cost per minute to call Pakistan?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Calls to Pakistan cost 0.8 AED per minute (an International Saver add-on also exists).",
+      "status": "answered",
+      "answer": "Calling Pakistan costs 0.8 AED per minute.",
+      "cited": [
+        "international-calling-uae#2"
+      ],
+      "retrieved": [
+        "international-calling-uae#2",
+        "international-calling-uae#1",
+        "international-calling-uae#4",
+        "international-calling-uae#3",
+        "international-calling-uae#5"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00022420000000000003,
+      "latency_s": 6.653,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states the cost to call Pakistan as 0.8 AED per minute, which matches the reference. It omits the mention of an International Saver add-on, but that is not required to answer the question.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00034205
+    },
+    {
+      "id": "h-003",
+      "category": "single_fact",
+      "question": "How long does it take to port my number to TelcoX?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Porting usually takes up to 3 working days, and it's free.",
+      "status": "answered",
+      "answer": "In KSA, porting your number to TelcoX usually takes up to 3 working days.",
+      "cited": [
+        "number-porting-ksa#2"
+      ],
+      "retrieved": [
+        "number-porting-ksa#2",
+        "number-porting-ksa#4",
+        "number-porting-ksa#5",
+        "number-porting-ksa#0",
+        "number-porting-ksa#1"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002451,
+      "latency_s": 6.562,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that number porting to TelcoX takes up to 3 working days and is free. The answer correctly mentions the up-to-3-working-days timeframe and adds KSA context, but it omits the “free” detail. Since the question asks only “How long,” the missing free information is not required to answer the question. The key fact (up to 3 working days) matches the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00041200000000000004
+    },
+    {
+      "id": "h-004",
+      "category": "single_fact",
+      "question": "What number do I call for customer support?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Dial 900 from a TelcoX line; chat in the TelcoX app is available 24/7.",
+      "status": "answered",
+      "answer": "You can reach TelcoX Customer Support by calling 900 from your TelcoX line (free). If you’re calling from another phone, dial 800 1234 567.",
+      "cited": [
+        "customer-support-contact#0"
+      ],
+      "retrieved": [
+        "customer-support-contact#0",
+        "faq-prepaid#0",
+        "faq-roaming#1",
+        "terms-and-conditions#12",
+        "faq-network-devices#6"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00031915000000000003,
+      "latency_s": 6.561,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference says to dial 900 from a TelcoX line for customer support, and that chat is available 24/7. The answer correctly provides the 900 number for TelcoX line calls and adds an extra alternative number for other phones. It does not mention the 24/7 chat detail, but the key requested fact (the customer support number) is correct and matches the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004882
+    },
+    {
+      "id": "h-005",
+      "category": "single_fact",
+      "question": "What does the International Saver add-on include?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "30 SAR for 100 international minutes over 30 days, to India, Pakistan, Bangladesh, the Philippines and Egypt.",
+      "status": "answered",
+      "answer": "The International Saver add-on (KSA) costs 30 SAR and includes 100 international minutes, valid for 30 days, for calls to India, Pakistan, Bangladesh, the Philippines, and Egypt.",
+      "cited": [
+        "international-calling-ksa#5"
+      ],
+      "retrieved": [
+        "international-calling-ksa#5",
+        "plan-travel-europe-ksa#0",
+        "plan-travel-asia-ksa#0",
+        "plan-travel-world-ksa#0",
+        "plan-travel-gcc-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003255,
+      "latency_s": 6.677,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states the add-on costs 30 SAR, includes 100 international minutes, is valid for 30 days, and applies to calls to India, Pakistan, Bangladesh, the Philippines, and Egypt. These match the reference exactly.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00047430000000000004
+    },
+    {
+      "id": "h-006",
+      "category": "single_fact",
+      "question": "Do I pay extra to use 5G?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "No, there is no extra charge for 5G if your plan includes it and your device supports it.",
+      "status": "answered",
+      "answer": "No—5G has no extra charge. You just need a 5G-capable device and a plan that includes the 5G feature.",
+      "cited": [
+        "faq-network-devices#2",
+        "5g-coverage-devices#3",
+        "5g-coverage-devices#2"
+      ],
+      "retrieved": [
+        "faq-network-devices#2",
+        "5g-coverage-devices#3",
+        "faq-network-devices#1",
+        "5g-coverage-devices#0",
+        "5g-coverage-devices#2"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027645,
+      "latency_s": 6.729,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that there is no extra charge for using 5G, provided the customer’s plan includes 5G and the device supports it. This matches the reference exactly in key facts.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00040669999999999997
+    },
+    {
+      "id": "h-007",
+      "category": "single_fact",
+      "question": "Which cities have 5G coverage in Saudi Arabia?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Riyadh, Jeddah and Dammam.",
+      "status": "answered",
+      "answer": "5G coverage in Saudi Arabia (KSA) is available in Riyadh, Jeddah, and Dammam.",
+      "cited": [
+        "5g-coverage-devices#1",
+        "faq-network-devices#0"
+      ],
+      "retrieved": [
+        "5g-coverage-devices#1",
+        "faq-network-devices#0",
+        "roaming-policy-ksa#0",
+        "5g-coverage-devices#0",
+        "plan-flex-smart-plus-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00026905,
+      "latency_s": 6.671,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that 5G coverage in Saudi Arabia is available in Riyadh, Jeddah, and Dammam, which matches the reference exactly.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00038195
+    },
+    {
+      "id": "h-008",
+      "category": "single_fact",
+      "question": "How many lines can I register with one Emirates ID?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "A maximum of 5 lines per ID.",
+      "status": "answered",
+      "answer": "In the UAE, a maximum of 5 lines can be registered to one Emirates ID.",
+      "cited": [
+        "customer-id-requirements#3",
+        "customer-id-requirements#2"
+      ],
+      "retrieved": [
+        "customer-id-requirements#2",
+        "customer-id-requirements#3",
+        "customer-id-requirements#0",
+        "customer-id-requirements#1",
+        "customer-id-requirements#4"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002387,
+      "latency_s": 6.599,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states a maximum of 5 lines per Emirates ID. The answer matches this exactly and adds no conflicting information.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00034445000000000005
+    },
+    {
+      "id": "h-009",
+      "category": "single_fact",
+      "question": "How long does it take to get a refund once it's approved?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Approved refunds are processed within 14 working days.",
+      "status": "answered",
+      "answer": "Once your refund request is approved, the refund is processed within 14 working days.",
+      "cited": [
+        "refunds-cancellation#4"
+      ],
+      "retrieved": [
+        "refunds-cancellation#4",
+        "faq-prepaid#4",
+        "refunds-cancellation#1",
+        "refunds-cancellation#0",
+        "refunds-cancellation#5"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002385,
+      "latency_s": 2.213,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that once the refund is approved, it is processed within 14 working days, which matches the reference exactly.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00033529999999999996
+    },
+    {
+      "id": "h-010",
+      "category": "paraphrase",
+      "question": "I lost my phone. Will I have to pay for a new SIM card?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "A physical SIM replacement is free once every 12 months, then 25 SAR; a valid ID is required.",
+      "status": "answered",
+      "answer": "If your SIM is lost, you should block it immediately in the TelcoX app or by calling 900. A physical SIM replacement is free once every 12 months; after that, in KSA it costs 25 SAR (a valid ID is required).",
+      "cited": [
+        "faq-network-devices#6",
+        "sim-replacement-esim#4",
+        "sim-replacement-esim#1"
+      ],
+      "retrieved": [
+        "faq-network-devices#6",
+        "sim-replacement-esim#4",
+        "sim-replacement-esim#1",
+        "sim-replacement-esim#0",
+        "sim-replacement-esim#3"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00030425000000000005,
+      "latency_s": 2.469,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that a physical SIM replacement is free once every 12 months, then costs 25 SAR, and that a valid ID is required—matching the reference. It also adds correct extra guidance about blocking the SIM via the app or calling 900, which does not contradict the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00047224999999999996
+    },
+    {
+      "id": "h-011",
+      "category": "paraphrase",
+      "question": "I'm visiting Dubai for two weeks as a tourist. Can I get a SIM?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Yes, a prepaid visitor line with a passport and valid visa; it stays active for 30 days.",
+      "status": "cannot_answer",
+      "answer": "I can’t confirm from the available details whether TelcoX UAE offers SIMs to tourists in Dubai or how to get one. Please contact TelcoX customer support for the SIM/eSIM availability and requirements for visitors.",
+      "cited": [
+        "sim-replacement-esim#0"
+      ],
+      "retrieved": [
+        "sim-replacement-esim#1",
+        "sim-replacement-esim#0",
+        "roaming-policy-uae#2",
+        "plan-travel-europe-uae#0",
+        "plan-flex-smart-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029470000000000006,
+      "latency_s": 2.329,
+      "verdict": "incorrect",
+      "verdict_by": "rule",
+      "reasoning": "refused a question the documents answer",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "h-012",
+      "category": "paraphrase",
+      "question": "My kid uses my old phone. Can I stop them seeing inappropriate websites?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Yes, parental controls are free and block adult content on mobile data (not Wi-Fi).",
+      "status": "answered",
+      "answer": "Yes—TelcoX Parental Controls can block adult content on mobile data, so inappropriate websites won’t be accessible when the phone is using mobile data. You can set it up in the TelcoX app and protect the settings with a 4-digit PIN (note: it doesn’t apply when the phone is connected to Wi‑Fi).",
+      "cited": [
+        "parental-controls#0",
+        "parental-controls#2",
+        "parental-controls#3",
+        "parental-controls#5",
+        "parental-controls#4"
+      ],
+      "retrieved": [
+        "parental-controls#0",
+        "parental-controls#2",
+        "parental-controls#3",
+        "parental-controls#5",
+        "parental-controls#4"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00031995,
+      "latency_s": 2.56,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer correctly states that parental controls are available and can block adult/inappropriate content on mobile data, and it includes the key limitation that it does not apply on Wi‑Fi. It also adds setup details (TelcoX app and 4‑digit PIN) that are consistent with the reference’s intent. The reference also mentions that parental controls are free; the answer does not explicitly say “free,” but it does not contradict it. Since the core actionable facts match, this is at most a minor omission.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0006104000000000001
+    },
+    {
+      "id": "h-013",
+      "category": "paraphrase",
+      "question": "If I move to a cheaper plan, when does the change kick in?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "A downgrade takes effect at the next renewal; only one downgrade per billing cycle.",
+      "status": "answered",
+      "answer": "If you move to a cheaper plan (downgrade), the change kicks in at the next renewal. You can also downgrade only once per billing cycle.",
+      "cited": [
+        "plan-change-rules#2",
+        "faq-prepaid#6"
+      ],
+      "retrieved": [
+        "plan-change-rules#1",
+        "plan-change-rules#2",
+        "plan-change-rules#5",
+        "faq-prepaid#6",
+        "plan-change-rules#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00026995000000000003,
+      "latency_s": 2.505,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that a downgrade to a cheaper plan takes effect at the next renewal and that only one downgrade is allowed per billing cycle. These match the reference exactly in key facts.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0003667
+    },
+    {
+      "id": "h-014",
+      "category": "paraphrase",
+      "question": "Can I share my phone's internet with my laptop?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Yes, tethering is allowed on all plans (capped at 20 GB per cycle on unlimited plans).",
+      "status": "answered",
+      "answer": "Yes—tethering is allowed on all TelcoX plans, so you can share your phone’s internet with your laptop. If you’re on an unlimited plan, tethering is capped at 20 GB per billing cycle and tethering data counts toward fair usage.",
+      "cited": [
+        "faq-network-devices#3",
+        "fair-usage-policy#3",
+        "faq-network-devices#4"
+      ],
+      "retrieved": [
+        "faq-network-devices#3",
+        "faq-postpaid#5",
+        "fair-usage-policy#3",
+        "faq-network-devices#4",
+        "roaming-policy-ksa#4"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029585,
+      "latency_s": 2.569,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer correctly states that tethering is allowed on all plans and that on unlimited plans it is capped at 20 GB per billing cycle. It also adds an extra note about fair usage, which is consistent with the reference’s intent and does not contradict any key fact.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004711
+    },
+    {
+      "id": "h-015",
+      "category": "paraphrase",
+      "question": "I haven't paid my bill for over a month. What happens now?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "If the bill is unpaid 40 days after the bill date, outgoing services are suspended.",
+      "status": "answered",
+      "answer": "In the UAE, if your postpaid bill remains unpaid for 40 days after the bill date, your outgoing services are suspended. Payment is due within 20 days of the bill date, and if you don’t pay by then a late payment fee of 30 AED applies after the due date.",
+      "cited": [
+        "postpaid-billing-uae#3",
+        "postpaid-billing-uae#2"
+      ],
+      "retrieved": [
+        "postpaid-billing-uae#3",
+        "postpaid-billing-uae#6",
+        "faq-prepaid#2",
+        "postpaid-billing-uae#2",
+        "faq-prepaid#7"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003078,
+      "latency_s": 2.715,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that if the bill is unpaid 40 days after the bill date, outgoing services are suspended. The answer correctly includes this key fact. It also adds extra details (payment due within 20 days and a 30 AED late fee) that are not contradicted by the reference, so they don’t make it incorrect.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00047445
+    },
+    {
+      "id": "h-016",
+      "category": "paraphrase",
+      "question": "My mobile data just stopped working after I used my whole bundle. Why?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "When bundle data runs out, mobile data stops until renewal unless Data Overage is enabled.",
+      "status": "answered",
+      "answer": "In the UAE, when your bundle data runs out, mobile data stops until your bundle renews—unless Data Overage is enabled. If Data Overage is on, you can keep using data after the bundle ends (extra data costs 4 AED per 100 MB).",
+      "cited": [
+        "out-of-bundle-charges-uae#3",
+        "out-of-bundle-charges-uae#4"
+      ],
+      "retrieved": [
+        "out-of-bundle-charges-uae#3",
+        "faq-roaming#3",
+        "out-of-bundle-charges-uae#4",
+        "faq-roaming#6",
+        "faq-postpaid#5"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003132,
+      "latency_s": 2.59,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer correctly explains that once the bundle data is exhausted, mobile data stops until renewal unless Data Overage is enabled. It also adds the extra detail about overage pricing (4 AED per 100 MB), which is consistent with the reference’s condition and does not contradict it.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00046075
+    },
+    {
+      "id": "h-020",
+      "category": "multi_doc",
+      "question": "I'm going to Turkey for a week. What's the cheapest way to get roaming data?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Travel Europe (119 SAR / 14 days, 8 GB incl. Turkey) vs pay-as-you-go at 60 SAR per 100 MB.",
+      "status": "answered",
+      "answer": "For Turkey (a GCC country), the **GCC Day Pass** is **25 SAR** for **1 GB** valid for **24 hours**. If you want a fixed add-on for Turkey, the **Travel Europe** add-on costs **119 SAR every 14 days** and includes **8 GB** for Turkey.",
+      "cited": [
+        "roaming-policy-ksa#2",
+        "plan-travel-europe-ksa#0"
+      ],
+      "retrieved": [
+        "plan-travel-europe-ksa#0",
+        "roaming-policy-ksa#1",
+        "plan-travel-world-ksa#0",
+        "faq-roaming#5",
+        "roaming-policy-ksa#2"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003377,
+      "latency_s": 2.501,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference compares two options: Travel Europe (119 SAR/14 days/8 GB incl. Turkey) versus pay-as-you-go at 60 SAR per 100 MB. The answer correctly mentions Travel Europe with the same price and data allowance, but it does not address the pay-as-you-go cost and instead introduces a GCC Day Pass (25 SAR for 1 GB/24h) that is not part of the reference. Since the question asks for the cheapest way and the reference’s key comparison includes pay-as-you-go, the answer is incomplete relative to the reference.",
+      "faithful": false,
+      "unsupported_claims": [
+        "Turkey is a GCC country.",
+        "Travel Europe add-on includes 8 GB for Turkey (if interpreted as specifically 8 GB for Turkey rather than 8 GB total across listed countries)."
+      ],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0006470499999999999
+    },
+    {
+      "id": "h-021",
+      "category": "multi_doc",
+      "question": "Does Max Advanced roll over unused data?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Yes. Max Advanced is 165 AED, above the 150 AED threshold, so up to 50% rolls over to the next cycle.",
+      "status": "cannot_answer",
+      "answer": "I can’t confirm whether “Max Advanced” specifically supports data rollover. TelcoX data rollover applies to eligible postpaid plans (up to 50% of unused monthly data, carried over only to the next cycle), and it isn’t available for prepaid or unlimited plans—please contact TelcoX customer support to verify your exact plan.",
+      "cited": [
+        "data-rollover#2",
+        "faq-postpaid#4",
+        "data-rollover#4"
+      ],
+      "retrieved": [
+        "data-rollover#2",
+        "faq-postpaid#4",
+        "data-rollover#3",
+        "data-rollover#4",
+        "data-rollover#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00032500000000000004,
+      "latency_s": 2.788,
+      "verdict": "incorrect",
+      "verdict_by": "rule",
+      "reasoning": "refused a question the documents answer",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "h-022",
+      "category": "multi_doc",
+      "question": "I just got a new SIM and I'm flying to Bahrain tomorrow. What do I need to do to use data there, and what will it cost?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Turn on data roaming (app or *123#); GCC pay-as-you-go is 30 SAR per 100 MB, or the GCC Day Pass 25 SAR / 1 GB.",
+      "status": "answered",
+      "answer": "To use data in Bahrain, you can either use the **GCC Day Pass** (cost **25 SAR** for **1 GB** valid for **24 hours**) or use **pay-as-you-go roaming data** (for **GCC countries** like Bahrain: **30 SAR per 100 MB**).",
+      "cited": [
+        "roaming-policy-ksa#2",
+        "roaming-policy-ksa#1"
+      ],
+      "retrieved": [
+        "roaming-policy-ksa#1",
+        "faq-roaming#2",
+        "sim-replacement-esim#1",
+        "plan-travel-gcc-ksa#0",
+        "roaming-policy-ksa#2"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003262,
+      "latency_s": 2.621,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer correctly states the two required pricing options for GCC roaming data: GCC Day Pass at 25 SAR for 1 GB (and implies validity) and pay-as-you-go at 30 SAR per 100 MB. However, it omits the key instruction from the reference to turn on data roaming (via app or *123#).",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004818
+    },
+    {
+      "id": "h-030",
+      "category": "near_duplicate",
+      "question": "How much data does Flex Smart give?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Flex Smart (KSA) includes 12 GB for 55 SAR every 28 days.",
+      "status": "answered",
+      "answer": "Flex Smart (KSA) includes 12 GB of local data.",
+      "cited": [
+        "plan-flex-smart-ksa#0"
+      ],
+      "retrieved": [
+        "plan-flex-smart-ksa#0",
+        "plan-flex-smart-plus-ksa#0",
+        "faq-postpaid#5",
+        "plan-flex-unlimited-ksa#0",
+        "fair-usage-policy#1"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00026235,
+      "latency_s": 2.34,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that Flex Smart (KSA) includes 12 GB for 55 SAR every 28 days. The answer only mentions 12 GB of local data and omits the price (55 SAR) and validity period (28 days). This is missing key details needed to fully answer the question as given by the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00040850000000000006
+    },
+    {
+      "id": "h-031",
+      "category": "near_duplicate",
+      "question": "What's the price of Flex Smart Plus?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "75 AED every 28 days.",
+      "status": "answered",
+      "answer": "Flex Smart Plus (UAE) costs 75.00 AED every 28 days.",
+      "cited": [
+        "plan-flex-smart-plus-uae#0"
+      ],
+      "retrieved": [
+        "plan-flex-smart-plus-uae#0",
+        "plan-flex-smart-uae#0",
+        "plan-flex-pro-uae#0",
+        "plan-flex-unlimited-uae#0",
+        "plan-max-premium-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00028175000000000005,
+      "latency_s": 2.464,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that Flex Smart Plus costs 75.00 AED every 28 days, which matches the reference exactly in both amount and billing period.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00038480000000000003
+    },
+    {
+      "id": "h-032",
+      "category": "near_duplicate",
+      "question": "What's the difference between Flex Smart and Flex Smart Plus?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Flex Smart is 55 SAR for 12 GB; Flex Smart Plus is 69 SAR for 20 GB (both 28 days).",
+      "status": "answered",
+      "answer": "In KSA, Flex Smart costs 55 SAR every 28 days and includes 12 GB local data, 300 local minutes, and 100 SMS. Flex Smart Plus costs 69 SAR every 28 days and includes 20 GB local data, 500 local minutes, and 100 SMS (both include 5G).",
+      "cited": [
+        "plan-flex-smart-ksa#0",
+        "plan-flex-smart-plus-ksa#0"
+      ],
+      "retrieved": [
+        "plan-flex-smart-plus-ksa#0",
+        "plan-flex-smart-ksa#0",
+        "plan-flex-pro-ksa#0",
+        "plan-flex-unlimited-ksa#0",
+        "plan-max-premium-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003498,
+      "latency_s": 2.511,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer correctly states the key differences in price, data allowance, and validity: Flex Smart is 55 SAR for 12 GB every 28 days, and Flex Smart Plus is 69 SAR for 20 GB every 28 days. It also adds additional included minutes/SMS and mentions 5G, which are extra details and do not contradict the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00051395
+    },
+    {
+      "id": "h-033",
+      "category": "near_duplicate",
+      "question": "Is Flex Start enough if I use about 10 GB a month?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "No, Flex Start has 5 GB; Flex Smart (12 GB, 55 SAR) would cover it.",
+      "status": "answered",
+      "answer": "Yes—Flex Start includes 5 GB of local data every 28 days, so 10 GB/month would be above the included allowance. If you want to cover around 10 GB monthly, you may need a higher-data plan like Flex Smart (12 GB) or Flex Unlimited.",
+      "cited": [
+        "plan-flex-start-ksa#0",
+        "plan-flex-smart-ksa#0",
+        "plan-flex-unlimited-ksa#0"
+      ],
+      "retrieved": [
+        "faq-postpaid#5",
+        "plan-flex-start-ksa#0",
+        "fair-usage-policy#3",
+        "plan-flex-unlimited-ksa#0",
+        "plan-flex-smart-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003242,
+      "latency_s": 2.493,
+      "verdict": "incorrect",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference says Flex Start has 5 GB, so it is not enough for ~10 GB/month, and recommends Flex Smart (12 GB, 55 SAR). The answer correctly states Flex Start includes 5 GB and that 10 GB/month exceeds it, but it incorrectly concludes “Yes—Flex Start” is enough. It also mentions Flex Smart (12 GB) as an alternative, which aligns with the reference, though it omits the exact price (55 SAR). The key contradiction is the main conclusion about whether Flex Start is sufficient.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00069815
+    },
+    {
+      "id": "h-040",
+      "category": "regional",
+      "question": "How much is Flex Pro?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "109 AED every 28 days.",
+      "status": "answered",
+      "answer": "Flex Pro (UAE) costs 109.00 AED every 28 days.",
+      "cited": [
+        "plan-flex-pro-uae#0"
+      ],
+      "retrieved": [
+        "plan-flex-pro-uae#0",
+        "plan-flex-smart-plus-uae#0",
+        "plan-flex-smart-uae#0",
+        "plan-max-premium-uae#0",
+        "plan-flex-unlimited-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00028010000000000003,
+      "latency_s": 2.278,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that Flex Pro (UAE) costs 109 AED every 28 days, which matches the reference exactly in both amount and billing period.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00038525
+    },
+    {
+      "id": "h-041",
+      "category": "regional",
+      "question": "How much does Max Premium cost per month?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "250 SAR every 30 days.",
+      "status": "answered",
+      "answer": "Max Premium (KSA) costs 250.00 SAR every 30 days.",
+      "cited": [
+        "plan-max-premium-ksa#0"
+      ],
+      "retrieved": [
+        "plan-max-premium-ksa#0",
+        "plan-max-advanced-ksa#0",
+        "plan-max-basic-ksa#0",
+        "plan-max-elite-ksa#0",
+        "plan-flex-pro-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002915,
+      "latency_s": 2.227,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that Max Premium costs 250 SAR every 30 days. The answer matches this exactly (250.00 SAR every 30 days) and correctly identifies the plan as Max Premium (KSA).",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00040645000000000004
+    },
+    {
+      "id": "h-042",
+      "category": "regional",
+      "question": "What does an incoming call cost when I'm roaming?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "2.5 AED per minute.",
+      "status": "answered",
+      "answer": "When you receive an incoming call while roaming, it costs 2.5 AED per minute.",
+      "cited": [
+        "roaming-policy-uae#3"
+      ],
+      "retrieved": [
+        "roaming-policy-uae#3",
+        "roaming-policy-uae#1",
+        "roaming-policy-uae#0",
+        "faq-roaming#1",
+        "out-of-bundle-charges-uae#1"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.000241,
+      "latency_s": 2.893,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that incoming calls while roaming cost 2.5 AED per minute, which matches the reference exactly.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00032570000000000006
+    },
+    {
+      "id": "h-043",
+      "category": "regional",
+      "question": "When does my data roaming get cut off because of spending?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "When roaming charges reach 500 SAR in a billing cycle, unless you opt out in the app.",
+      "status": "answered",
+      "answer": "In KSA, your data roaming is suspended when roaming charges reach 500 SAR in a billing cycle (unless you opt out of this limit in the TelcoX app). If it’s suspended, you may need to adjust your limit settings in the app before roaming data works again.",
+      "cited": [
+        "roaming-policy-ksa#5",
+        "faq-roaming#3"
+      ],
+      "retrieved": [
+        "roaming-policy-ksa#5",
+        "faq-roaming#3",
+        "faq-roaming#6",
+        "faq-roaming#4",
+        "out-of-bundle-charges-ksa#3"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00031445,
+      "latency_s": 2.406,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that data roaming is cut off when roaming charges reach 500 SAR in a billing cycle unless the customer opts out in the app. The answer matches this key threshold (500 SAR), the billing cycle condition, and the opt-out via the app. The extra detail about adjusting limit settings before roaming works again is not contradicted by the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00049425
+    },
+    {
+      "id": "h-050",
+      "category": "price_history",
+      "question": "How much is Flex Smart now? I remember it being 59 SAR.",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "It's 55 SAR every 28 days now (12 GB).",
+      "status": "answered",
+      "answer": "Flex Smart (KSA) is currently 55.00 SAR every 28 days.",
+      "cited": [
+        "plan-flex-smart-ksa#0"
+      ],
+      "retrieved": [
+        "plan-flex-smart-plus-ksa#0",
+        "plan-flex-smart-ksa#0",
+        "plan-flex-start-ksa#0",
+        "plan-flex-classic-ksa#0",
+        "plan-flex-unlimited-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027635,
+      "latency_s": 2.106,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference says Flex Smart is 55 SAR every 28 days (12 GB). The provided answer states it is 55.00 SAR every 28 days, matching the key price and cycle. It omits the 12 GB detail, but that is not required to answer the question about cost.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004379000000000001
+    },
+    {
+      "id": "h-051",
+      "category": "price_history",
+      "question": "What's the current price of Max Advanced?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "150 SAR every 30 days.",
+      "status": "answered",
+      "answer": "Max Advanced (KSA) is 150.00 SAR every 30 days.",
+      "cited": [
+        "plan-max-advanced-ksa#0"
+      ],
+      "retrieved": [
+        "plan-max-advanced-ksa#0",
+        "plan-max-premium-ksa#0",
+        "plan-max-basic-ksa#0",
+        "plan-max-elite-ksa#0",
+        "plan-flex-smart-plus-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029130000000000003,
+      "latency_s": 2.15,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states the current price of Max Advanced is 150 SAR every 30 days. The answer matches both the amount (150 SAR) and the billing period (every 30 days).",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00040750000000000004
+    },
+    {
+      "id": "h-052",
+      "category": "price_history",
+      "question": "How much is DataGo 60?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "99 AED every 30 days for 60 GB.",
+      "status": "answered",
+      "answer": "DataGo 60 (UAE) costs 99.00 AED every 30 days.",
+      "cited": [
+        "plan-datago-60-uae#0"
+      ],
+      "retrieved": [
+        "plan-datago-60-uae#0",
+        "plan-datago-20-uae#0",
+        "plan-datago-150-uae#0",
+        "out-of-bundle-charges-uae#4",
+        "plan-social-pack-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027000000000000006,
+      "latency_s": 2.285,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that DataGo 60 is 99 AED every 30 days for 60 GB. The answer matches the price (99.00 AED) and the billing period (every 30 days) and correctly identifies it as DataGo 60 in UAE. It omits the 60 GB detail, but the key requested fact (how much it costs) is correct.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004355
+    },
+    {
+      "id": "h-060",
+      "category": "unlimited_fair_usage",
+      "question": "Is Flex Unlimited really unlimited?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Full speed up to 150 GB per cycle, then speed drops to 1 Mbps until renewal.",
+      "status": "answered",
+      "answer": "Flex Unlimited is “unlimited” in the sense that you get full-speed data up to a fair usage threshold each billing cycle, after which your speed is reduced. Also, tethering on unlimited plans is capped at 20 GB per billing cycle and counts toward the fair usage threshold.",
+      "cited": [
+        "plan-flex-unlimited-ksa#0",
+        "fair-usage-policy#0",
+        "faq-network-devices#4",
+        "fair-usage-policy#3",
+        "fair-usage-policy#1"
+      ],
+      "retrieved": [
+        "fair-usage-policy#0",
+        "plan-flex-unlimited-ksa#0",
+        "faq-network-devices#4",
+        "fair-usage-policy#3",
+        "fair-usage-policy#1"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00031190000000000005,
+      "latency_s": 2.554,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that Flex Unlimited provides full speed up to 150 GB per cycle, then drops to 1 Mbps until renewal. The provided answer correctly explains that it is not truly unlimited and that full speed is limited per billing cycle with speed reduction afterward. However, it does not include the specific 150 GB threshold or the exact post-threshold speed of 1 Mbps, and it adds an extra tethering cap (20 GB) that is not present in the reference. Because the key required facts (150 GB and 1 Mbps) are missing, the answer is only partially aligned with the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0005604499999999999
+    },
+    {
+      "id": "h-061",
+      "category": "unlimited_fair_usage",
+      "question": "My internet got really slow on Max Elite after a heavy month. Why?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "After the 500 GB fair usage threshold, speed drops to 1 Mbps until the plan renews.",
+      "status": "answered",
+      "answer": "On Max Elite, if you’ve reached the fair usage threshold after a heavy month, your speed is reduced to 1 Mbps until your plan renews (and the threshold resets at renewal). After the threshold, video streaming may also be limited to 480p.",
+      "cited": [
+        "faq-network-devices#5",
+        "fair-usage-policy#2",
+        "plan-max-elite-uae#0"
+      ],
+      "retrieved": [
+        "faq-network-devices#5",
+        "faq-postpaid#5",
+        "faq-roaming#6",
+        "plan-max-elite-uae#0",
+        "fair-usage-policy#2"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003232,
+      "latency_s": 2.459,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that after the 500 GB fair usage threshold, speed drops to 1 Mbps until the plan renews. The answer matches this key fact and adds an extra detail about possible video streaming limits to 480p, which does not contradict the reference.",
+      "faithful": false,
+      "unsupported_claims": [
+        "The fair usage threshold behavior (1 Mbps reduction until renewal and threshold reset) applies specifically to the “Max Elite” plan.",
+        "The 480p video streaming limitation applies specifically to the “Max Elite” plan."
+      ],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0005893000000000001
+    },
+    {
+      "id": "h-062",
+      "category": "unlimited_fair_usage",
+      "question": "Can I use unlimited hotspot on Max Premium?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "No, tethering on unlimited plans is capped at 20 GB per cycle and counts toward the threshold.",
+      "status": "answered",
+      "answer": "Yes, tethering (mobile hotspot) is allowed on all plans, including Max Premium. However, on unlimited plans the hotspot is capped at 20 GB per billing cycle, and the tethering data counts toward the fair usage threshold.",
+      "cited": [
+        "faq-network-devices#3",
+        "plan-max-premium-ksa#0",
+        "fair-usage-policy#3"
+      ],
+      "retrieved": [
+        "fair-usage-policy#3",
+        "faq-network-devices#4",
+        "plan-max-premium-ksa#0",
+        "faq-network-devices#3",
+        "plan-flex-unlimited-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003011,
+      "latency_s": 2.43,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that tethering/mobile hotspot is allowed on Max Premium and that on unlimited plans it is capped at 20 GB per billing cycle and counts toward the threshold. This matches the reference information about the 20 GB cap and counting toward the limit. No contradictions found.",
+      "faithful": false,
+      "unsupported_claims": [
+        "The statement that tethering is allowed on all plans, including Max Premium (KSA). S4 says tethering is allowed on all plans, but S3 does not explicitly mention tethering for Max Premium."
+      ],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00056815
+    },
+    {
+      "id": "h-063",
+      "category": "unlimited_fair_usage",
+      "question": "Does video quality drop once I pass the limit on an unlimited plan?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Yes, after the threshold video streaming may be limited to 480p.",
+      "status": "answered",
+      "answer": "Yes—after you pass the fair usage threshold on an unlimited plan, video streaming may be limited to 480p until the plan renews.",
+      "cited": [
+        "fair-usage-policy#2"
+      ],
+      "retrieved": [
+        "fair-usage-policy#2",
+        "faq-network-devices#5",
+        "fair-usage-policy#1",
+        "fair-usage-policy#0",
+        "fair-usage-policy#4"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002531,
+      "latency_s": 2.247,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that on an unlimited plan, once the fair usage threshold is passed, video streaming may be limited to 480p until the plan renews. This matches the reference fact that video quality may be limited to 480p after the threshold.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00047215000000000007
+    },
+    {
+      "id": "h-070",
+      "category": "discontinued",
+      "question": "I'd like to sign up for the Social Pack.",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Social Pack is discontinued and can't be bought; DataGo plans are the current data-only options.",
+      "status": "answered",
+      "answer": "The Social Pack in the UAE is discontinued, so it’s no longer available for new or existing customers. You can consider other currently available UAE plans like Flex Smart, Flex Smart Plus, Flex Pro, or Max Premium.",
+      "cited": [
+        "plan-social-pack-uae#0",
+        "plan-flex-smart-plus-uae#0",
+        "plan-flex-smart-uae#0",
+        "plan-flex-pro-uae#0",
+        "plan-max-premium-uae#0"
+      ],
+      "retrieved": [
+        "plan-social-pack-uae#0",
+        "plan-flex-smart-plus-uae#0",
+        "plan-flex-smart-uae#0",
+        "plan-flex-pro-uae#0",
+        "plan-max-premium-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00032845,
+      "latency_s": 2.748,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that the Social Pack is discontinued and cannot be bought, and that DataGo plans are the current data-only options. The answer correctly says the Social Pack is discontinued and not available for new or existing customers. However, it does not mention that it can’t be bought and, more importantly, it suggests other Flex/Max Premium plans instead of the DataGo data-only options referenced. This misses a key part of what the customer should consider next per the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00055515
+    },
+    {
+      "id": "h-071",
+      "category": "discontinued",
+      "question": "What's the cheapest prepaid plan I can buy?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Flex Start at 35 SAR every 28 days (Flex Classic at 25 SAR is discontinued).",
+      "status": "answered",
+      "answer": "In KSA, the cheapest prepaid plan currently available is Flex Smart at 55.00 SAR every 28 days. Flex Classic is discontinued, so it’s no longer available to new or existing customers.",
+      "cited": [
+        "plan-flex-smart-ksa#0",
+        "plan-flex-classic-ksa#0"
+      ],
+      "retrieved": [
+        "refunds-cancellation#1",
+        "faq-prepaid#4",
+        "plan-flex-smart-ksa#0",
+        "plan-flex-classic-ksa#0",
+        "plan-change-rules#2"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00028125000000000003,
+      "latency_s": 2.394,
+      "verdict": "incorrect",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference says the cheapest prepaid plan is Flex Start at 35 SAR every 28 days, and that Flex Classic at 25 SAR is discontinued. The provided answer instead claims the cheapest available plan is Flex Smart at 55 SAR every 28 days, which contradicts the reference on both the plan name and price. It also correctly notes Flex Classic is discontinued, but the key cheapest-plan details are wrong.",
+      "faithful": false,
+      "unsupported_claims": [
+        "In KSA, the cheapest prepaid plan currently available is Flex Smart at 55.00 SAR every 28 days (sources list Flex Smart and Flex Classic but do not establish it is the cheapest among all available KSA prepaid plans)."
+      ],
+      "citation_relevant": false,
+      "judge_cost_usd": 0.0006483999999999999
+    },
+    {
+      "id": "h-080",
+      "category": "superseded_policy",
+      "question": "How much is pay-as-you-go roaming data in the GCC?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "30 SAR per 100 MB.",
+      "status": "answered",
+      "answer": "In KSA, pay-as-you-go roaming data in GCC countries costs 30 SAR per 100 MB.",
+      "cited": [
+        "roaming-policy-ksa#1"
+      ],
+      "retrieved": [
+        "roaming-policy-ksa#1",
+        "faq-roaming#2",
+        "roaming-policy-ksa#2",
+        "plan-travel-gcc-ksa#0",
+        "international-calling-ksa#1"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00026135000000000004,
+      "latency_s": 2.308,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that pay-as-you-go roaming data in the GCC is 30 SAR per 100 MB. The answer matches this exact price and unit (30 SAR per 100 MB) and correctly attributes it to pay-as-you-go roaming data in GCC countries (with an extra mention of KSA, which does not contradict the reference).",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004233
+    },
+    {
+      "id": "h-081",
+      "category": "superseded_policy",
+      "question": "How much data does the GCC Day Pass include?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "1 GB for 24 hours, for 25 SAR.",
+      "status": "answered",
+      "answer": "The GCC Day Pass includes 1 GB of roaming data for 24 hours.",
+      "cited": [
+        "roaming-policy-ksa#2",
+        "faq-roaming#2"
+      ],
+      "retrieved": [
+        "faq-roaming#2",
+        "roaming-policy-ksa#2",
+        "plan-travel-gcc-ksa#0",
+        "plan-datago-60-ksa#0",
+        "plan-datago-150-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002698,
+      "latency_s": 2.933,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states the GCC Day Pass includes 1 GB for 24 hours (and costs 25 SAR). The provided answer correctly mentions 1 GB for 24 hours but omits the price. Since the question asks only about how much data it includes, the missing price is not required to answer the question.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00042995
+    },
+    {
+      "id": "h-082",
+      "category": "superseded_policy",
+      "question": "Roaming outside the GCC is 75 SAR per 100 MB, right?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "No, it's 60 SAR per 100 MB now (75 SAR was the 2025 rate).",
+      "status": "answered",
+      "answer": "No—pay-as-you-go roaming data outside the GCC is **60 SAR per 100 MB** (not 75 SAR). If you’re roaming in a GCC country, it’s **30 SAR per 100 MB**.",
+      "cited": [
+        "roaming-policy-ksa#1"
+      ],
+      "retrieved": [
+        "roaming-policy-ksa#1",
+        "roaming-policy-ksa#2",
+        "faq-roaming#2",
+        "plan-travel-gcc-ksa#0",
+        "roaming-policy-ksa#3"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029115,
+      "latency_s": 2.367,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The question asks whether roaming outside the GCC is 75 SAR per 100 MB. The reference states it is not; it is 60 SAR per 100 MB now (75 SAR was the 2025 rate). The provided answer correctly says 60 SAR per 100 MB outside the GCC and also adds an extra detail about GCC roaming (30 SAR per 100 MB), which does not contradict the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00047365
+    },
+    {
+      "id": "h-090",
+      "category": "market_rule",
+      "question": "Is VAT added on top of my postpaid bill?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "No, in KSA the 15% VAT is already included in advertised prices.",
+      "status": "answered",
+      "answer": "No—if you’re in KSA, VAT is included in the prices for your postpaid plan, so it isn’t added on top of your bill.",
+      "cited": [
+        "faq-postpaid#3",
+        "faq-postpaid#7",
+        "postpaid-billing-ksa#6"
+      ],
+      "retrieved": [
+        "faq-postpaid#3",
+        "faq-postpaid#8",
+        "faq-postpaid#7",
+        "postpaid-billing-ksa#6",
+        "faq-postpaid#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027535000000000005,
+      "latency_s": 2.381,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that in KSA the 15% VAT is already included in advertised prices for postpaid plans and therefore is not added on top of the bill. This matches the reference exactly in key facts.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004189500000000001
+    },
+    {
+      "id": "h-091",
+      "category": "market_rule",
+      "question": "Do your plan prices include VAT?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "No, in the UAE 5% VAT is added on top of advertised prices.",
+      "status": "answered",
+      "answer": "In the UAE, VAT is added on top of the advertised plan prices (VAT is 5%).",
+      "cited": [
+        "postpaid-billing-uae#5",
+        "faq-postpaid#3"
+      ],
+      "retrieved": [
+        "faq-postpaid#3",
+        "postpaid-billing-uae#5",
+        "faq-postpaid#7",
+        "faq-postpaid#8",
+        "terms-and-conditions#6"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027725000000000004,
+      "latency_s": 2.286,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that VAT is added on top of advertised plan prices in the UAE and specifies the VAT rate as 5%, which matches the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00038705
+    },
+    {
+      "id": "h-100",
+      "category": "buried_fact",
+      "question": "Do you have any discount for elderly customers?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Customers aged 65+ get 20% off any postpaid plan with a valid ID in a TelcoX store.",
+      "status": "answered",
+      "answer": "Yes. Customers aged 65 and above get a 20% discount on any postpaid plan after presenting a valid ID in a TelcoX store.",
+      "cited": [
+        "terms-and-conditions#6",
+        "terms-and-conditions#12"
+      ],
+      "retrieved": [
+        "terms-and-conditions#6",
+        "terms-and-conditions#12",
+        "faq-postpaid#2",
+        "plan-max-elite-ksa#0",
+        "plan-flex-classic-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00031835,
+      "latency_s": 2.294,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that customers aged 65+ receive a 20% discount on any postpaid plan, provided they present a valid ID in a TelcoX store. This matches the reference facts (age threshold, discount percentage, eligible plans, and requirement/location).",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0005025
+    },
+    {
+      "id": "h-101",
+      "category": "buried_fact",
+      "question": "How long do I have to dispute a charge on my bill?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Billing disputes must be raised within 60 days of the bill date.",
+      "status": "answered",
+      "answer": "You must raise a billing dispute within 60 days of the bill date shown on your bill for the charges you want to dispute.",
+      "cited": [
+        "terms-and-conditions#7"
+      ],
+      "retrieved": [
+        "terms-and-conditions#7",
+        "postpaid-billing-uae#3",
+        "postpaid-billing-uae#2",
+        "refunds-cancellation#2",
+        "out-of-bundle-charges-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027495,
+      "latency_s": 2.294,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that billing disputes must be raised within 60 days of the bill date shown on the bill, which matches the reference requirement (within 60 days of the bill date).",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00040845
+    },
+    {
+      "id": "h-102",
+      "category": "buried_fact",
+      "question": "Can my 16-year-old open their own account?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "No, account holders must be at least 18.",
+      "status": "answered",
+      "answer": "No—TelcoX account holders must be at least 18 years old, so a 16-year-old can’t open their own TelcoX account under these terms.",
+      "cited": [
+        "terms-and-conditions#2"
+      ],
+      "retrieved": [
+        "terms-and-conditions#2",
+        "terms-and-conditions#3",
+        "parental-controls#3",
+        "terms-and-conditions#12",
+        "terms-and-conditions#5"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00033160000000000004,
+      "latency_s": 2.84,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that account holders must be at least 18. The answer agrees, saying TelcoX account holders must be at least 18 and therefore a 16-year-old can’t open their own account. No conflicting details are provided.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0005052
+    },
+    {
+      "id": "h-110",
+      "category": "multilingual",
+      "question": "كم سعر باقة الخليج اليومية؟",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "(Arabic) The GCC Day Pass costs 20 AED for 1 GB, valid 24 hours.",
+      "status": "answered",
+      "answer": "باقة الخليج اليومية (GCC Day Pass) تعطيك 1 جيجابايت لمدة 24 ساعة، وسعرها في الإمارات هو 20 درهم.",
+      "cited": [
+        "faq-roaming#2"
+      ],
+      "retrieved": [
+        "international-calling-uae#1",
+        "international-calling-uae#2",
+        "faq-roaming#2",
+        "international-calling-uae#4",
+        "international-calling-uae#5"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002582,
+      "latency_s": 2.598,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "الإجابة ذكرت أن باقة الخليج اليومية (GCC Day Pass) بسعة 1 جيجابايت لمدة 24 ساعة، وسعرها 20 درهم في الإمارات. هذه المعلومات متطابقة مع المرجع (20 AED، 1 GB، صالحة 24 ساعة).",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0003796
+    },
+    {
+      "id": "h-120",
+      "category": "out_of_scope",
+      "question": "What's the weather in Riyadh tomorrow?",
+      "market": "KSA",
+      "answerable": false,
+      "reference": "Declines; only TelcoX topics.",
+      "status": "cannot_answer",
+      "answer": "I can’t help with weather information. For TelcoX services in KSA (like 5G availability in Riyadh), please tell me what you need.",
+      "cited": [
+        "5g-coverage-devices#1",
+        "faq-network-devices#0"
+      ],
+      "retrieved": [
+        "international-calling-ksa#0",
+        "roaming-policy-ksa#0",
+        "5g-coverage-devices#1",
+        "faq-network-devices#0",
+        "faq-roaming#2"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027309999999999997,
+      "latency_s": 2.214,
+      "verdict": "correct",
+      "verdict_by": "rule",
+      "reasoning": "refused as expected",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "h-121",
+      "category": "out_of_scope",
+      "question": "Is STC cheaper than TelcoX?",
+      "market": "KSA",
+      "answerable": false,
+      "reference": "Can't compare with other operators; can share TelcoX prices.",
+      "status": "cannot_answer",
+      "answer": "I can’t confirm whether STC is cheaper than TelcoX because I only have TelcoX pricing details for KSA. Please contact TelcoX Customer Support for help comparing options.",
+      "cited": [
+        "customer-support-contact#0"
+      ],
+      "retrieved": [
+        "number-porting-ksa#1",
+        "customer-support-contact#0",
+        "plan-max-premium-ksa#0",
+        "plan-max-elite-ksa#0",
+        "plan-flex-unlimited-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00034120000000000005,
+      "latency_s": 2.401,
+      "verdict": "correct",
+      "verdict_by": "rule",
+      "reasoning": "refused as expected",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "h-122",
+      "category": "out_of_scope",
+      "question": "How much is the iPhone 17 on instalments?",
+      "market": "UAE",
+      "answerable": false,
+      "reference": "Device prices aren't in the documents; suggest support.",
+      "status": "cannot_answer",
+      "answer": "I don’t have any information here about the iPhone 17 installment price in the UAE. Please contact TelcoX customer support for the current iPhone 17 installment options.",
+      "cited": [
+        "refunds-cancellation#3"
+      ],
+      "retrieved": [
+        "refunds-cancellation#3",
+        "plan-flex-pro-uae#0",
+        "plan-flex-unlimited-uae#0",
+        "plan-flex-smart-uae#0",
+        "plan-flex-start-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029450000000000006,
+      "latency_s": 2.312,
+      "verdict": "correct",
+      "verdict_by": "rule",
+      "reasoning": "refused as expected",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "h-123",
+      "category": "out_of_scope",
+      "question": "Do you offer home fibre internet?",
+      "market": "KSA",
+      "answerable": false,
+      "reference": "The documents only cover mobile plans; suggest support.",
+      "status": "cannot_answer",
+      "answer": "I don’t have information on whether TelcoX offers home fibre internet in KSA. Please contact TelcoX customer support to confirm the available home internet options.",
+      "cited": [],
+      "retrieved": [
+        "faq-postpaid#5",
+        "faq-network-devices#5",
+        "plan-flex-unlimited-ksa#0",
+        "terms-and-conditions#4",
+        "faq-network-devices#3"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002822,
+      "latency_s": 2.349,
+      "verdict": "correct",
+      "verdict_by": "rule",
+      "reasoning": "refused as expected",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "seed-001",
+      "category": "paraphrase",
+      "question": "can I use my data in Bahrain?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Yes, GCC roaming applies, 25 AED per 100 MB, the GCC Day Pass at 20 AED, or Travel GCC (45 AED / 7 days).",
+      "status": "cannot_answer",
+      "answer": "I don’t have information on using TelcoX UAE data in Bahrain. Please contact TelcoX customer support to confirm roaming/data availability for Bahrain.",
+      "cited": [],
+      "retrieved": [
+        "faq-roaming#2",
+        "faq-roaming#4",
+        "plan-datago-60-uae#0",
+        "out-of-bundle-charges-uae#4",
+        "plan-datago-20-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00026905,
+      "latency_s": 2.265,
+      "verdict": "incorrect",
+      "verdict_by": "rule",
+      "reasoning": "refused a question the documents answer",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "seed-002",
+      "category": "multilingual",
+      "question": "ما هي مدة صلاحية الرصيد؟",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "(Arabic) The main balance doesn't expire while the line is active.",
+      "status": "cannot_answer",
+      "answer": "لا أملك معلومات محددة عن مدة صلاحية الرصيد في السعودية ضمن ما هو متاح لدي. يُرجى التواصل مع دعم TelcoX للتأكد من المدة حسب نوع رصيدك (مدفوع مسبقًا/غير ذلك).",
+      "cited": [],
+      "retrieved": [
+        "terms-and-conditions#7",
+        "data-rollover#3",
+        "postpaid-billing-ksa#4",
+        "postpaid-billing-ksa#3",
+        "postpaid-billing-ksa#2"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00030255,
+      "latency_s": 2.427,
+      "verdict": "incorrect",
+      "verdict_by": "rule",
+      "reasoning": "refused a question the documents answer",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "seed-003",
+      "category": "out_of_scope",
+      "question": "and what about in the UAE?",
+      "market": "KSA",
+      "answerable": false,
+      "reference": "Needs the previous turn; alone it can't be answered.",
+      "status": "cannot_answer",
+      "answer": "I can’t confirm what you mean by “what about in the UAE” for your specific request. If you tell me which topic (e.g., ID for a new line, 5G availability, VAT, or refunds/cancellation), I’ll share the UAE details for that item.",
+      "cited": [
+        "customer-id-requirements#2",
+        "faq-network-devices#0",
+        "faq-postpaid#7",
+        "refunds-cancellation#0"
+      ],
+      "retrieved": [
+        "customer-id-requirements#2",
+        "fair-usage-policy#5",
+        "faq-network-devices#0",
+        "faq-postpaid#7",
+        "refunds-cancellation#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029885,
+      "latency_s": 3.494,
+      "verdict": "correct",
+      "verdict_by": "rule",
+      "reasoning": "refused as expected",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "seed-004",
+      "category": "out_of_scope",
+      "question": "What is the VAT rate in Saudi Arabia?",
+      "market": "UAE",
+      "answerable": false,
+      "reference": "Product decision; today the market filter hides KSA pages.",
+      "status": "cannot_answer",
+      "answer": "I can’t confirm the VAT rate for Saudi Arabia here. What I can see is that in Saudi Arabia VAT is included in the prices you see, while in the UAE it’s added on top—please contact TelcoX customer support to get the exact Saudi VAT rate.",
+      "cited": [
+        "faq-postpaid#3",
+        "faq-postpaid#7"
+      ],
+      "retrieved": [
+        "faq-postpaid#3",
+        "faq-postpaid#7",
+        "postpaid-billing-uae#5",
+        "faq-postpaid#8",
+        "faq-postpaid#1"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002994,
+      "latency_s": 2.444,
+      "verdict": "correct",
+      "verdict_by": "rule",
+      "reasoning": "refused as expected",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "seed-005",
+      "category": "multi_doc",
+      "question": "Which is the cheapest prepaid plan with at least 20 GB?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Flex Smart Plus, 69 SAR / 28 days, 20 GB.",
+      "status": "answered",
+      "answer": "The cheapest prepaid plan with at least 20 GB in KSA is Flex Smart Plus at 69 SAR every 28 days (includes 20 GB).",
+      "cited": [
+        "plan-flex-smart-plus-ksa#0"
+      ],
+      "retrieved": [
+        "plan-flex-unlimited-ksa#0",
+        "plan-flex-smart-plus-ksa#0",
+        "plan-flex-pro-ksa#0",
+        "plan-flex-smart-ksa#0",
+        "plan-datago-20-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029545000000000005,
+      "latency_s": 2.614,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer identifies Flex Smart Plus as the cheapest prepaid plan with at least 20 GB, and matches the key details from the reference: 69 SAR and 28 days for 20 GB. No conflicting facts are present.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0005849
+    },
+    {
+      "id": "seed-006",
+      "category": "out_of_scope",
+      "question": "How much data do I have left this month?",
+      "market": "KSA",
+      "answerable": false,
+      "reference": "Needs account data; documents can't answer (tool in lesson 10).",
+      "status": "cannot_answer",
+      "answer": "I can’t check how much data you have left this month from here. Please contact TelcoX customer support to get your current remaining data balance.",
+      "cited": [
+        "faq-postpaid#5",
+        "data-rollover#0",
+        "data-rollover#2",
+        "faq-postpaid#4",
+        "out-of-bundle-charges-ksa#4"
+      ],
+      "retrieved": [
+        "faq-postpaid#5",
+        "data-rollover#0",
+        "data-rollover#2",
+        "faq-postpaid#4",
+        "out-of-bundle-charges-ksa#4"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00028720000000000004,
+      "latency_s": 2.71,
+      "verdict": "correct",
+      "verdict_by": "rule",
+      "reasoning": "refused as expected",
+      "faithful": null,
+      "unsupported_claims": [],
+      "citation_relevant": null,
+      "judge_cost_usd": 0.0
+    },
+    {
+      "id": "seed-007",
+      "category": "paraphrase",
+      "question": "My friend says TelcoX roaming in Europe is free. True?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "No. Travel Europe is 119 SAR / 14 days, or pay-as-you-go 60 SAR per 100 MB.",
+      "status": "answered",
+      "answer": "No—TelcoX roaming in Europe (KSA) requires the “Travel Europe” add-on, priced at 119.00 SAR every 14 days.",
+      "cited": [
+        "plan-travel-europe-ksa#0"
+      ],
+      "retrieved": [
+        "plan-travel-europe-ksa#0",
+        "plan-travel-world-ksa#0",
+        "number-porting-ksa#1",
+        "plan-travel-asia-ksa#0",
+        "faq-roaming#1"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00028910000000000003,
+      "latency_s": 2.433,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference says TelcoX roaming in Europe is not free and requires either the “Travel Europe” add-on at 119 SAR for 14 days or pay-as-you-go at 60 SAR per 100 MB. The answer correctly states it is not free and that the “Travel Europe” add-on costs 119.00 SAR every 14 days. It omits the pay-as-you-go option, but the key point (not free; 119 SAR/14 days add-on) is correct.",
+      "faithful": false,
+      "unsupported_claims": [
+        "TelcoX roaming in Europe (KSA) requires the “Travel Europe” add-on."
+      ],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0005674
+    },
+    {
+      "id": "seed-008",
+      "category": "multilingual",
+      "question": "how much is roaming في الإمارات for me?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "GCC pay-as-you-go 30 SAR per 100 MB, or the GCC Day Pass at 25 SAR.",
+      "status": "answered",
+      "answer": "For roaming data in the UAE (الإمارات) on a pay-as-you-go basis, the cost is 30 SAR لكل 100 ميجابايت. If you prefer an add-on, the “Travel GCC” roaming add-on is 49 SAR كل 7 أيام ويشمل 3 جيجابايت في الإمارات (مع دول أخرى).",
+      "cited": [
+        "roaming-policy-ksa#1",
+        "plan-travel-gcc-ksa#0"
+      ],
+      "retrieved": [
+        "roaming-policy-ksa#1",
+        "plan-travel-gcc-ksa#0",
+        "roaming-policy-ksa#2",
+        "faq-roaming#3",
+        "roaming-policy-ksa#3"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00032825,
+      "latency_s": 2.768,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference says UAE roaming under GCC pay-as-you-go is 30 SAR per 100 MB, or the GCC Day Pass is 25 SAR. The answer correctly states 30 SAR per 100 MB, but it does not mention the GCC Day Pass price (25 SAR) and instead provides a different add-on (Travel GCC 49 SAR for 7 days with 3 GB), which is not in the reference. Since the question asks how much roaming in the UAE is, the missing/incorrect alternative pricing makes it incomplete relative to the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0005886
+    },
+    {
+      "id": "seed-009",
+      "category": "discontinued",
+      "question": "Can I still sign up for Flex Classic?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "No, Flex Classic is discontinued.",
+      "status": "answered",
+      "answer": "No—Flex Classic (KSA) is discontinued, so it’s no longer available for new or existing customers.",
+      "cited": [
+        "plan-flex-classic-ksa#0"
+      ],
+      "retrieved": [
+        "plan-flex-classic-ksa#0",
+        "faq-postpaid#6",
+        "plan-flex-smart-ksa#0",
+        "plan-flex-smart-plus-ksa#0",
+        "plan-flex-pro-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002698,
+      "latency_s": 2.252,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states Flex Classic is discontinued. The answer agrees, saying it’s discontinued and no longer available for new or existing customers. This matches the key fact required.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00038030000000000003
+    },
+    {
+      "id": "syn-001",
+      "category": "single_fact",
+      "question": "How much is Travel Asia in KSA, and how long does it last?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "The roaming add-on costs 99.00 SAR every 14 days in KSA.",
+      "status": "answered",
+      "answer": "Travel Asia in KSA costs 99.00 SAR and lasts for 14 days.",
+      "cited": [
+        "plan-travel-asia-ksa#0"
+      ],
+      "retrieved": [
+        "plan-travel-asia-ksa#0",
+        "plan-travel-world-ksa#0",
+        "international-calling-ksa#0",
+        "international-calling-ksa#5",
+        "plan-travel-europe-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029075,
+      "latency_s": 2.274,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that Travel Asia in KSA costs 99.00 SAR and lasts for 14 days, which matches the reference (99.00 SAR every 14 days in KSA).",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004406
+    },
+    {
+      "id": "syn-003",
+      "category": "single_fact",
+      "question": "How much does the Travel Asia roaming add-on cost every 14 days in AED?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "The Travel Asia roaming add-on costs 95.00 AED every 14 days.",
+      "status": "answered",
+      "answer": "The Travel Asia roaming add-on costs 95.00 AED every 14 days.",
+      "cited": [
+        "plan-travel-asia-uae#0"
+      ],
+      "retrieved": [
+        "plan-travel-asia-uae#0",
+        "plan-travel-europe-uae#0",
+        "roaming-policy-uae#1",
+        "plan-travel-world-uae#0",
+        "plan-travel-gcc-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002857,
+      "latency_s": 2.34,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the Travel Asia roaming add-on costs 95.00 AED every 14 days, which matches the reference exactly in both amount and frequency.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0003935
+    },
+    {
+      "id": "syn-006",
+      "category": "paraphrase",
+      "question": "If I buy a GCC day pass while I’m in the UAE, how much data do I get for 24 hours and what’s the price?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "In the UAE, the GCC Day Pass costs 20 AED and includes 1 GB of data for 24 hours.",
+      "status": "answered",
+      "answer": "In the UAE, the GCC Day Pass gives you 1 GB of roaming data for 24 hours, and it costs 20 AED.",
+      "cited": [
+        "faq-roaming#2",
+        "roaming-policy-uae#2"
+      ],
+      "retrieved": [
+        "faq-roaming#2",
+        "roaming-policy-uae#2",
+        "roaming-policy-uae#1",
+        "plan-travel-gcc-uae#0",
+        "plan-datago-60-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002802,
+      "latency_s": 2.209,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the GCC Day Pass in the UAE costs 20 AED and includes 1 GB of data valid for 24 hours. This matches the reference exactly in both price and data amount/validity.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00044169999999999995
+    },
+    {
+      "id": "syn-010",
+      "category": "paraphrase",
+      "question": "I’m traveling in Europe from the UAE—how much does the roaming add-on cost and how often do I pay for it?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "The roaming add-on costs 109.00 AED every 14 days.",
+      "status": "answered",
+      "answer": "For Europe travel from the UAE, the roaming add-on costs 109.00 AED every 14 days.",
+      "cited": [
+        "plan-travel-europe-uae#0"
+      ],
+      "retrieved": [
+        "plan-travel-europe-uae#0",
+        "plan-travel-world-uae#0",
+        "plan-travel-asia-uae#0",
+        "roaming-policy-uae#1",
+        "plan-travel-gcc-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029374999999999996,
+      "latency_s": 2.35,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states the roaming add-on cost (109.00 AED) and the billing frequency (every 14 days), matching the reference exactly.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00041835
+    },
+    {
+      "id": "syn-011",
+      "category": "single_fact",
+      "question": "How much does the DataGo 60 plan cost every 30 days in KSA?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "The DataGo 60 plan costs 95.00 SAR every 30 days in KSA.",
+      "status": "answered",
+      "answer": "The DataGo 60 plan costs 95.00 SAR every 30 days in KSA.",
+      "cited": [
+        "plan-datago-60-ksa#0"
+      ],
+      "retrieved": [
+        "plan-datago-60-ksa#0",
+        "plan-datago-20-ksa#0",
+        "plan-datago-150-ksa#0",
+        "roaming-policy-ksa#1",
+        "plan-flex-start-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027364999999999996,
+      "latency_s": 2.282,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the DataGo 60 plan costs 95.00 SAR every 30 days in KSA, which matches the reference exactly in both amount and billing period.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00038555
+    },
+    {
+      "id": "syn-012",
+      "category": "unlimited_fair_usage",
+      "question": "I’m on a prepaid plan in the UAE—how much does the Flex Unlimited plan cost every 28 days, and what’s the data speed limit after the allowance?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "The Flex Unlimited (UAE) prepaid plan costs 219.00 AED every 28 days, with full-speed data up to 150 GB and reduced speed after that.",
+      "status": "answered",
+      "answer": "In the UAE, the Flex Unlimited prepaid plan costs 219.00 AED every 28 days. It includes unlimited local data with full speed up to 150 GB, then reduced speed after that allowance.",
+      "cited": [
+        "plan-flex-unlimited-uae#0"
+      ],
+      "retrieved": [
+        "plan-flex-unlimited-uae#0",
+        "plan-flex-smart-uae#0",
+        "plan-flex-start-uae#0",
+        "plan-flex-smart-plus-uae#0",
+        "plan-flex-pro-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00030930000000000004,
+      "latency_s": 2.38,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states the correct price (219.00 AED every 28 days) and the correct speed/allowance details: full-speed up to 150 GB, then reduced speed after that. This matches the reference facts.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00044425
+    },
+    {
+      "id": "syn-013",
+      "category": "single_fact",
+      "question": "Does my unused main balance expire if my line is still active?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "No—unused main balance does not expire as long as your line remains active.",
+      "status": "answered",
+      "answer": "No—if you have unused main balance, it doesn’t expire as long as your line remains active.",
+      "cited": [
+        "prepaid-recharge-validity#5"
+      ],
+      "retrieved": [
+        "prepaid-recharge-validity#5",
+        "prepaid-recharge-validity#4",
+        "prepaid-recharge-validity#2",
+        "faq-prepaid#2",
+        "customer-id-requirements#5"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002499,
+      "latency_s": 2.359,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that unused main balance does not expire as long as the line remains active, which matches the reference exactly in meaning and key condition.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0003514
+    },
+    {
+      "id": "syn-014",
+      "category": "paraphrase",
+      "question": "I’m trying to set up my eSIM—how long does activation take, and do I need to provide an ID?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "eSIM activation usually takes about 10 minutes, and a valid ID is required.",
+      "status": "answered",
+      "answer": "eSIM activation in the TelcoX app usually takes about 10 minutes. Yes—any eSIM activation requires a valid ID.",
+      "cited": [
+        "sim-replacement-esim#2",
+        "faq-prepaid#5"
+      ],
+      "retrieved": [
+        "sim-replacement-esim#2",
+        "faq-prepaid#5",
+        "sim-replacement-esim#1",
+        "sim-replacement-esim#3",
+        "sim-replacement-esim#4"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00026555000000000003,
+      "latency_s": 2.292,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states eSIM activation takes about 10 minutes and that a valid ID is required. These match the reference. The mention of the TelcoX app is extra but not contradictory.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00037255000000000003
+    },
+    {
+      "id": "syn-015",
+      "category": "single_fact",
+      "question": "How much is the Max Elite (KSA) postpaid plan per 30 days?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "The Max Elite (KSA) postpaid plan costs 399.00 SAR every 30 days.",
+      "status": "answered",
+      "answer": "The Max Elite (KSA) postpaid plan costs 399.00 SAR every 30 days.",
+      "cited": [
+        "plan-max-elite-ksa#0"
+      ],
+      "retrieved": [
+        "plan-max-elite-ksa#0",
+        "plan-max-premium-ksa#0",
+        "plan-max-advanced-ksa#0",
+        "plan-max-basic-ksa#0",
+        "plan-flex-unlimited-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003005,
+      "latency_s": 2.483,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the Max Elite (KSA) postpaid plan costs 399.00 SAR every 30 days, which exactly matches the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00041425
+    },
+    {
+      "id": "syn-017",
+      "category": "paraphrase",
+      "question": "Why can’t I open adult websites on my phone when I’m using mobile data?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Parental controls block adult content on mobile data, so adult content won’t be accessible when your device is using mobile data.",
+      "status": "answered",
+      "answer": "Adult websites are blocked when your phone is using mobile data because Parental Controls block adult content on mobile data. Note that these controls don’t apply when you’re connected to Wi‑Fi.",
+      "cited": [
+        "parental-controls#2",
+        "parental-controls#5"
+      ],
+      "retrieved": [
+        "parental-controls#2",
+        "parental-controls#0",
+        "faq-roaming#0",
+        "parental-controls#5",
+        "out-of-bundle-charges-ksa#3"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002725,
+      "latency_s": 2.252,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that Parental Controls block adult content on mobile data, preventing access to adult websites. It also adds the correct additional detail that the controls don’t apply on Wi‑Fi, which is consistent with the reference’s implication and does not contradict it.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00048445000000000004
+    },
+    {
+      "id": "syn-018",
+      "category": "single_fact",
+      "question": "How much does the DataGo 60 (UAE) data-only plan cost every 30 days?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "The DataGo 60 (UAE) data-only plan costs 99.00 AED every 30 days.",
+      "status": "answered",
+      "answer": "The DataGo 60 (UAE) data-only plan costs 99.00 AED every 30 days.",
+      "cited": [
+        "plan-datago-60-uae#0"
+      ],
+      "retrieved": [
+        "plan-datago-60-uae#0",
+        "plan-datago-20-uae#0",
+        "plan-datago-150-uae#0",
+        "roaming-policy-uae#1",
+        "plan-social-pack-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.000279,
+      "latency_s": 2.335,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the DataGo 60 (UAE) data-only plan costs 99.00 AED every 30 days, which matches the reference exactly in both amount and billing period.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004029
+    },
+    {
+      "id": "syn-020",
+      "category": "single_fact",
+      "question": "How much full-speed data do I get on my unlimited plan each billing cycle?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "You get full-speed data up to your plan’s fair usage threshold in each billing cycle.",
+      "status": "answered",
+      "answer": "On TelcoX unlimited data plans, you get full-speed data up to your plan’s fair usage threshold in each billing cycle. The exact threshold amount is listed on your specific plan page.",
+      "cited": [
+        "fair-usage-policy#1",
+        "fair-usage-policy#0"
+      ],
+      "retrieved": [
+        "fair-usage-policy#1",
+        "fair-usage-policy#0",
+        "faq-postpaid#5",
+        "faq-network-devices#5",
+        "fair-usage-policy#3"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002741,
+      "latency_s": 2.507,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that full-speed data is provided up to the plan’s fair usage threshold each billing cycle. The answer matches this and adds that the exact threshold is shown on the specific plan page, which is consistent and not contradictory.",
+      "faithful": false,
+      "unsupported_claims": [
+        "The sources do not explicitly mention the brand/name “TelcoX” in connection with the unlimited data plans."
+      ],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00048070000000000003
+    },
+    {
+      "id": "syn-021",
+      "category": "single_fact",
+      "question": "How much does the Flex Smart prepaid plan cost every 28 days in AED?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "The Flex Smart prepaid plan costs 59.00 AED every 28 days.",
+      "status": "answered",
+      "answer": "The Flex Smart prepaid plan costs 59.00 AED every 28 days.",
+      "cited": [
+        "plan-flex-smart-uae#0"
+      ],
+      "retrieved": [
+        "plan-flex-smart-uae#0",
+        "plan-flex-smart-plus-uae#0",
+        "plan-flex-start-uae#0",
+        "plan-flex-pro-uae#0",
+        "plan-flex-unlimited-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027445000000000003,
+      "latency_s": 2.239,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the Flex Smart prepaid plan costs 59.00 AED every 28 days, which matches the reference exactly in both amount and billing interval.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00038665
+    },
+    {
+      "id": "syn-023",
+      "category": "single_fact",
+      "question": "If I use data after my bundle runs out, how much does the extra data cost?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Extra data costs 5 SAR per 100 MB after your bundle runs out.",
+      "status": "answered",
+      "answer": "In KSA, if Data Overage is enabled, extra data costs 5 SAR per 100 MB after your bundle runs out. If Data Overage isn’t enabled, mobile data stops when your bundle data runs out.",
+      "cited": [
+        "out-of-bundle-charges-ksa#4",
+        "out-of-bundle-charges-ksa#3"
+      ],
+      "retrieved": [
+        "out-of-bundle-charges-ksa#4",
+        "out-of-bundle-charges-ksa#3",
+        "out-of-bundle-charges-ksa#5",
+        "out-of-bundle-charges-ksa#2",
+        "faq-postpaid#5"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00028605000000000004,
+      "latency_s": 2.621,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that extra data costs 5 SAR per 100 MB after the bundle runs out. The answer includes the same 5 SAR per 100 MB overage cost and adds an additional condition about data stopping if overage isn’t enabled. This does not contradict the reference and includes the key required fact.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00044755
+    },
+    {
+      "id": "syn-024",
+      "category": "paraphrase",
+      "question": "How much does the Max Elite postpaid plan cost in the UAE, and how often is it billed?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "The Max Elite (UAE) postpaid plan costs 425.00 AED every 30 days.",
+      "status": "answered",
+      "answer": "The Max Elite postpaid plan in the UAE costs 425.00 AED, billed every 30 days.",
+      "cited": [
+        "plan-max-elite-uae#0"
+      ],
+      "retrieved": [
+        "plan-max-elite-uae#0",
+        "plan-max-premium-uae#0",
+        "plan-max-advanced-uae#0",
+        "postpaid-billing-uae#0",
+        "plan-max-basic-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00029035,
+      "latency_s": 2.326,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states the Max Elite postpaid plan costs 425.00 AED in the UAE and that it is billed every 30 days, which matches the reference exactly.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004697
+    },
+    {
+      "id": "syn-025",
+      "category": "single_fact",
+      "question": "How much does the Flex Smart Plus prepaid plan cost every 28 days in AED?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "The Flex Smart Plus prepaid plan costs 75.00 AED every 28 days.",
+      "status": "answered",
+      "answer": "The Flex Smart Plus prepaid plan costs 75.00 AED every 28 days.",
+      "cited": [
+        "plan-flex-smart-plus-uae#0"
+      ],
+      "retrieved": [
+        "plan-flex-smart-plus-uae#0",
+        "plan-flex-smart-uae#0",
+        "plan-flex-start-uae#0",
+        "plan-flex-pro-uae#0",
+        "plan-flex-unlimited-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00027590000000000004,
+      "latency_s": 2.275,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the Flex Smart Plus prepaid plan costs 75.00 AED every 28 days, which matches the reference exactly in both amount and billing period.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0003887
+    },
+    {
+      "id": "syn-026",
+      "category": "paraphrase",
+      "question": "What are the ways I can pay my postpaid bill in the UAE?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "You can pay your postpaid bill using the TelcoX app, by card, or at TelcoX stores.",
+      "status": "answered",
+      "answer": "You can pay your TelcoX postpaid bill in the UAE using the TelcoX app, by card, or at TelcoX stores.",
+      "cited": [
+        "postpaid-billing-uae#6"
+      ],
+      "retrieved": [
+        "postpaid-billing-uae#6",
+        "postpaid-billing-uae#0",
+        "postpaid-billing-uae#4",
+        "postpaid-billing-uae#1",
+        "postpaid-billing-uae#2"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00026175000000000005,
+      "latency_s": 2.585,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer lists the same payment methods as the reference: via the TelcoX app, by card, and at TelcoX stores in the UAE. No conflicting or missing key facts.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00042490000000000003
+    },
+    {
+      "id": "syn-028",
+      "category": "single_fact",
+      "question": "How much does the Flex Smart Plus prepaid plan cost every 28 days in KSA?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "The Flex Smart Plus prepaid plan costs 69.00 SAR every 28 days in KSA.",
+      "status": "answered",
+      "answer": "The Flex Smart Plus prepaid plan in KSA costs 69.00 SAR every 28 days.",
+      "cited": [
+        "plan-flex-smart-plus-ksa#0"
+      ],
+      "retrieved": [
+        "plan-flex-smart-plus-ksa#0",
+        "plan-flex-smart-ksa#0",
+        "plan-flex-start-ksa#0",
+        "plan-flex-unlimited-ksa#0",
+        "plan-flex-pro-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00028105000000000003,
+      "latency_s": 2.463,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states that the Flex Smart Plus prepaid plan costs 69.00 SAR every 28 days in KSA, which matches the reference exactly.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.00039295
+    },
+    {
+      "id": "syn-033",
+      "category": "paraphrase",
+      "question": "I’m traveling in the GCC—how much does the roaming add-on cost per week, and how much roaming data do I get in places like UAE, Bahrain, Kuwait, Oman, or Qatar?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "It costs 49.00 SAR every 7 days and includes 3 GB of roaming data in the UAE, Bahrain, Kuwait, Oman, and Qatar.",
+      "status": "answered",
+      "answer": "In the GCC, the Travel GCC roaming add-on costs 49.00 SAR every 7 days and includes 3 GB of roaming data in the UAE, Bahrain, Kuwait, Oman, and Qatar.",
+      "cited": [
+        "plan-travel-gcc-ksa#0"
+      ],
+      "retrieved": [
+        "plan-travel-gcc-ksa#0",
+        "roaming-policy-ksa#1",
+        "faq-roaming#2",
+        "roaming-policy-ksa#2",
+        "plan-travel-world-ksa#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0003071,
+      "latency_s": 2.322,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer states the roaming add-on cost as 49.00 SAR every 7 days and specifies that it includes 3 GB of roaming data in the UAE, Bahrain, Kuwait, Oman, and Qatar. These match the reference exactly, with only minor wording differences.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0004927
+    },
+    {
+      "id": "w-001",
+      "category": "paraphrase",
+      "question": "I call my mum in Lahore every week. Is there a cheaper way than paying per minute?",
+      "market": "KSA",
+      "answerable": true,
+      "reference": "Yes. International Saver is 30 SAR for 100 international minutes over 30 days and covers Pakistan; per-minute calls to Pakistan cost 0.9 SAR.",
+      "status": "answered",
+      "answer": "For calls to Pakistan (Lahore), the international rate is 0.9 SAR per minute. I don’t have details here about any cheaper option than per-minute billing (like bundles or add-ons), so please contact TelcoX customer support to check what’s available for your line.",
+      "cited": [
+        "international-calling-ksa#2"
+      ],
+      "retrieved": [
+        "international-calling-ksa#2",
+        "out-of-bundle-charges-ksa#1",
+        "international-calling-ksa#3",
+        "international-calling-ksa#4",
+        "international-calling-ksa#1"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002818,
+      "latency_s": 2.47,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference says there is a cheaper option: International Saver for 30 SAR giving 100 international minutes over 30 days for Pakistan, and also notes per-minute calls to Pakistan cost 0.9 SAR. The answer only states the 0.9 SAR per-minute rate and fails to mention the International Saver bundle, which is the key cheaper alternative the customer asked about.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0005298
+    },
+    {
+      "id": "w-002",
+      "category": "multi_doc",
+      "question": "If I switch from Flex Smart to Flex Pro in the middle of my cycle, what will I pay?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "An upgrade applies immediately and you pay the prorated difference for the rest of the cycle; Flex Pro is 109 AED and Flex Smart 59 AED per 28 days.",
+      "status": "answered",
+      "answer": "If you upgrade from Flex Smart to the more expensive Flex Pro in the middle of your cycle, the change takes effect immediately and you’ll pay the prorated difference for the remaining time in your current billing period.",
+      "cited": [
+        "plan-change-rules#1",
+        "faq-prepaid#6"
+      ],
+      "retrieved": [
+        "plan-change-rules#1",
+        "plan-flex-pro-uae#0",
+        "plan-flex-smart-plus-uae#0",
+        "faq-prepaid#6",
+        "plan-flex-smart-uae#0"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.0002987,
+      "latency_s": 2.419,
+      "verdict": "partial",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The answer correctly states that the upgrade takes effect immediately and that the customer pays the prorated difference for the remainder of the cycle. However, it omits the required specific pricing details (Flex Pro 109 AED and Flex Smart 59 AED per 28 days), which are part of what the question needs per the reference.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0006074
+    },
+    {
+      "id": "w-003",
+      "category": "multi_doc",
+      "question": "Which postpaid plan gives the most minutes for under 200 AED?",
+      "market": "UAE",
+      "answerable": true,
+      "reference": "Max Advanced, 1,500 minutes for 165 AED (Max Basic has 500 for 125 AED).",
+      "status": "answered",
+      "answer": "In the UAE, the postpaid plan under 200 AED is Max Advanced at 165 AED/30 days, which includes 1500 local minutes. Max Premium is 275 AED/30 days, so it doesn’t qualify under 200 AED.",
+      "cited": [
+        "plan-max-advanced-uae#0",
+        "plan-max-premium-uae#0"
+      ],
+      "retrieved": [
+        "plan-max-advanced-uae#0",
+        "plan-max-premium-uae#0",
+        "plan-flex-unlimited-uae#0",
+        "plan-flex-start-uae#0",
+        "international-calling-uae#6"
+      ],
+      "checks_ok": true,
+      "cost_usd": 0.00033214999999999997,
+      "latency_s": 2.306,
+      "verdict": "correct",
+      "verdict_by": "gpt-5.4-nano",
+      "reasoning": "The reference states that Max Advanced provides the most minutes under 200 AED: 1,500 minutes for 165 AED (and Max Basic has 500 for 125 AED). The answer matches this key information (Max Advanced at 165 AED/30 days with 1,500 minutes) and correctly notes that Max Premium is above 200 AED. No conflicting facts are present.",
+      "faithful": true,
+      "unsupported_claims": [],
+      "citation_relevant": true,
+      "judge_cost_usd": 0.0006066
+    }
+  ]
+}

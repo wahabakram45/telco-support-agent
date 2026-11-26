@@ -1,0 +1,206 @@
+# Human labels for calibrating the LLM judge. Lesson 06, Task 2.
+# For each answer, replace `human: null` with correct / partial / incorrect, using the
+# SAME rubric as the judge (learn/06-generation-evals.md §5): judge the answer against
+# the question and the reference. `note:` is optional: why, in a few words.
+
+- id: h-060
+  question: Is Flex Unlimited really unlimited?
+  reference: Full speed up to 150 GB per cycle, then speed drops to 1 Mbps until renewal.
+  answer: Flex Unlimited is “unlimited” in the sense that you get full-speed data up to a fair usage threshold
+    each billing cycle, after which your speed is reduced. Also, tethering on unlimited plans is capped
+    at 20 GB per billing cycle and counts toward the fair usage threshold.
+  answer_sha: 72203b434f56
+  human: null
+  note: ''
+- id: h-010
+  question: I lost my phone. Will I have to pay for a new SIM card?
+  reference: A physical SIM replacement is free once every 12 months, then 25 SAR; a valid ID is required.
+  answer: If your SIM is lost, you should block it immediately in the TelcoX app or by calling 900. A
+    physical SIM replacement is free once every 12 months; after that, in KSA it costs 25 SAR (a valid
+    ID is required).
+  answer_sha: df70e067b9e9
+  human: null
+  note: ''
+- id: syn-023
+  question: If I use data after my bundle runs out, how much does the extra data cost?
+  reference: Extra data costs 5 SAR per 100 MB after your bundle runs out.
+  answer: In KSA, if Data Overage is enabled, extra data costs 5 SAR per 100 MB after your bundle runs
+    out. If Data Overage isn’t enabled, mobile data stops when your bundle data runs out.
+  answer_sha: 2eea523b2843
+  human: null
+  note: ''
+- id: syn-025
+  question: How much does the Flex Smart Plus prepaid plan cost every 28 days in AED?
+  reference: The Flex Smart Plus prepaid plan costs 75.00 AED every 28 days.
+  answer: The Flex Smart Plus prepaid plan costs 75.00 AED every 28 days.
+  answer_sha: f2102ff0f09c
+  human: null
+  note: ''
+- id: h-071
+  question: What's the cheapest prepaid plan I can buy?
+  reference: Flex Start at 35 SAR every 28 days (Flex Classic at 25 SAR is discontinued).
+  answer: In KSA, the cheapest prepaid plan currently available is Flex Smart at 55.00 SAR every 28 days.
+    Flex Classic is discontinued, so it’s no longer available to new or existing customers.
+  answer_sha: 2f8a4ceb5558
+  human: null
+  note: ''
+- id: h-001
+  question: How much is the late payment fee on a postpaid bill?
+  reference: A late payment fee of 25 SAR applies after the due date.
+  answer: In KSA, the late payment fee on a postpaid bill is 25 SAR after the due date.
+  answer_sha: b376e7c99a79
+  human: null
+  note: ''
+- id: h-022
+  question: I just got a new SIM and I'm flying to Bahrain tomorrow. What do I need to do to use data
+    there, and what will it cost?
+  reference: Turn on data roaming (app or *123#); GCC pay-as-you-go is 30 SAR per 100 MB, or the GCC Day
+    Pass 25 SAR / 1 GB.
+  answer: 'To use data in Bahrain, you can either use the **GCC Day Pass** (cost **25 SAR** for **1 GB**
+    valid for **24 hours**) or use **pay-as-you-go roaming data** (for **GCC countries** like Bahrain:
+    **30 SAR per 100 MB**).'
+  answer_sha: 78d056e59fd6
+  human: null
+  note: ''
+- id: syn-020
+  question: How much full-speed data do I get on my unlimited plan each billing cycle?
+  reference: You get full-speed data up to your plan’s fair usage threshold in each billing cycle.
+  answer: On TelcoX unlimited data plans, you get full-speed data up to your plan’s fair usage threshold
+    in each billing cycle. The exact threshold amount is listed on your specific plan page.
+  answer_sha: 3f4718a7c516
+  human: null
+  note: ''
+- id: h-020
+  question: I'm going to Turkey for a week. What's the cheapest way to get roaming data?
+  reference: Travel Europe (119 SAR / 14 days, 8 GB incl. Turkey) vs pay-as-you-go at 60 SAR per 100 MB.
+  answer: For Turkey (a GCC country), the **GCC Day Pass** is **25 SAR** for **1 GB** valid for **24 hours**.
+    If you want a fixed add-on for Turkey, the **Travel Europe** add-on costs **119 SAR every 14 days**
+    and includes **8 GB** for Turkey.
+  answer_sha: 485d0b85b82a
+  human: null
+  note: ''
+- id: h-100
+  question: Do you have any discount for elderly customers?
+  reference: Customers aged 65+ get 20% off any postpaid plan with a valid ID in a TelcoX store.
+  answer: Yes. Customers aged 65 and above get a 20% discount on any postpaid plan after presenting a
+    valid ID in a TelcoX store.
+  answer_sha: eaead36d2d2a
+  human: null
+  note: ''
+- id: h-033
+  question: Is Flex Start enough if I use about 10 GB a month?
+  reference: No, Flex Start has 5 GB; Flex Smart (12 GB, 55 SAR) would cover it.
+  answer: Yes—Flex Start includes 5 GB of local data every 28 days, so 10 GB/month would be above the
+    included allowance. If you want to cover around 10 GB monthly, you may need a higher-data plan like
+    Flex Smart (12 GB) or Flex Unlimited.
+  answer_sha: aef65fad490e
+  human: null
+  note: ''
+- id: syn-012
+  question: I’m on a prepaid plan in the UAE—how much does the Flex Unlimited plan cost every 28 days,
+    and what’s the data speed limit after the allowance?
+  reference: The Flex Unlimited (UAE) prepaid plan costs 219.00 AED every 28 days, with full-speed data
+    up to 150 GB and reduced speed after that.
+  answer: In the UAE, the Flex Unlimited prepaid plan costs 219.00 AED every 28 days. It includes unlimited
+    local data with full speed up to 150 GB, then reduced speed after that allowance.
+  answer_sha: 497b64a4e7b0
+  human: null
+  note: ''
+- id: h-003
+  question: How long does it take to port my number to TelcoX?
+  reference: Porting usually takes up to 3 working days, and it's free.
+  answer: In KSA, porting your number to TelcoX usually takes up to 3 working days.
+  answer_sha: b25298a02edc
+  human: null
+  note: ''
+- id: seed-008
+  question: how much is roaming في الإمارات for me?
+  reference: GCC pay-as-you-go 30 SAR per 100 MB, or the GCC Day Pass at 25 SAR.
+  answer: For roaming data in the UAE (الإمارات) on a pay-as-you-go basis, the cost is 30 SAR لكل 100
+    ميجابايت. If you prefer an add-on, the “Travel GCC” roaming add-on is 49 SAR كل 7 أيام ويشمل 3 جيجابايت
+    في الإمارات (مع دول أخرى).
+  answer_sha: d2a9f4df51d2
+  human: null
+  note: ''
+- id: h-040
+  question: How much is Flex Pro?
+  reference: 109 AED every 28 days.
+  answer: Flex Pro (UAE) costs 109.00 AED every 28 days.
+  answer_sha: a74afffd24d0
+  human: null
+  note: ''
+- id: h-030
+  question: How much data does Flex Smart give?
+  reference: Flex Smart (KSA) includes 12 GB for 55 SAR every 28 days.
+  answer: Flex Smart (KSA) includes 12 GB of local data.
+  answer_sha: 35c049029a8b
+  human: null
+  note: ''
+- id: seed-009
+  question: Can I still sign up for Flex Classic?
+  reference: No, Flex Classic is discontinued.
+  answer: No—Flex Classic (KSA) is discontinued, so it’s no longer available for new or existing customers.
+  answer_sha: 93bc50879b21
+  human: null
+  note: ''
+- id: h-070
+  question: I'd like to sign up for the Social Pack.
+  reference: Social Pack is discontinued and can't be bought; DataGo plans are the current data-only options.
+  answer: The Social Pack in the UAE is discontinued, so it’s no longer available for new or existing
+    customers. You can consider other currently available UAE plans like Flex Smart, Flex Smart Plus,
+    Flex Pro, or Max Premium.
+  answer_sha: 1fac0753e9d9
+  human: null
+  note: ''
+- id: syn-001
+  question: How much is Travel Asia in KSA, and how long does it last?
+  reference: The roaming add-on costs 99.00 SAR every 14 days in KSA.
+  answer: Travel Asia in KSA costs 99.00 SAR and lasts for 14 days.
+  answer_sha: 6981ad138580
+  human: null
+  note: ''
+- id: seed-007
+  question: My friend says TelcoX roaming in Europe is free. True?
+  reference: No. Travel Europe is 119 SAR / 14 days, or pay-as-you-go 60 SAR per 100 MB.
+  answer: No—TelcoX roaming in Europe (KSA) requires the “Travel Europe” add-on, priced at 119.00 SAR
+    every 14 days.
+  answer_sha: 3f25455ac529
+  human: null
+  note: ''
+- id: h-012
+  question: My kid uses my old phone. Can I stop them seeing inappropriate websites?
+  reference: Yes, parental controls are free and block adult content on mobile data (not Wi-Fi).
+  answer: 'Yes—TelcoX Parental Controls can block adult content on mobile data, so inappropriate websites
+    won’t be accessible when the phone is using mobile data. You can set it up in the TelcoX app and protect
+    the settings with a 4-digit PIN (note: it doesn’t apply when the phone is connected to Wi‑Fi).'
+  answer_sha: 071d5cba94f2
+  human: null
+  note: ''
+- id: w-001
+  question: I call my mum in Lahore every week. Is there a cheaper way than paying per minute?
+  reference: Yes. International Saver is 30 SAR for 100 international minutes over 30 days and covers
+    Pakistan; per-minute calls to Pakistan cost 0.9 SAR.
+  answer: For calls to Pakistan (Lahore), the international rate is 0.9 SAR per minute. I don’t have details
+    here about any cheaper option than per-minute billing (like bundles or add-ons), so please contact
+    TelcoX customer support to check what’s available for your line.
+  answer_sha: 35ccd5d75d9c
+  human: null
+  note: ''
+- id: w-002
+  question: If I switch from Flex Smart to Flex Pro in the middle of my cycle, what will I pay?
+  reference: An upgrade applies immediately and you pay the prorated difference for the rest of the cycle;
+    Flex Pro is 109 AED and Flex Smart 59 AED per 28 days.
+  answer: If you upgrade from Flex Smart to the more expensive Flex Pro in the middle of your cycle, the
+    change takes effect immediately and you’ll pay the prorated difference for the remaining time in your
+    current billing period.
+  answer_sha: ba843f68af1e
+  human: null
+  note: ''
+- id: h-006
+  question: Do I pay extra to use 5G?
+  reference: No, there is no extra charge for 5G if your plan includes it and your device supports it.
+  answer: No—5G has no extra charge. You just need a 5G-capable device and a plan that includes the 5G
+    feature.
+  answer_sha: c8a686cbef8d
+  human: null
+  note: ''
