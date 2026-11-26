@@ -94,3 +94,8 @@ def test_ndcg_ideal_is_cut_at_k():
 def test_ndcg_is_undefined_without_relevant_chunks():
     with pytest.raises(ValueError):
         ndcg_at_k([0, 0], [], 2)
+
+
+def test_ndcg_ignores_results_below_k():
+    # The harness retrieves 10 and scores the top 5: a relevant chunk at rank 6 must not count.
+    assert ndcg_at_k([0, 0, 0, 0, 0, 2], [2], 5) == 0.0

@@ -820,3 +820,47 @@
   reference_answer: It costs 49.00 SAR every 7 days and includes 3 GB of roaming data in the UAE, Bahrain,
     Kuwait, Oman, and Qatar.
   notes: generated from plan-travel-gcc-ksa#0
+- id: w-001
+  question: I call my mum in Lahore every week. Is there a cheaper way than paying per minute?
+  market: KSA
+  category: paraphrase
+  source: hand
+  relevant:
+  - doc: international-calling-ksa
+    has: 100 international minutes
+  - doc: international-calling-ksa
+    has: 0.9 SAR per minute
+    grade: 1
+  reference_answer: Yes. International Saver is 30 SAR for 100 international minutes over 30 days and
+    covers Pakistan; per-minute calls to Pakistan cost 0.9 SAR.
+  notes: Written in lesson 05, Task 3. Names a city (Lahore), not the country or the add-on.
+- id: w-002
+  question: If I switch from Flex Smart to Flex Pro in the middle of my cycle, what will I pay?
+  market: UAE
+  category: multi_doc
+  source: hand
+  relevant:
+  - doc: plan-change-rules
+    has: prorated difference
+  - doc: plan-flex-pro-uae
+  - doc: plan-flex-smart-uae
+    grade: 1
+  distractors:
+  - plan-flex-smart-plus-uae
+  reference_answer: An upgrade applies immediately and you pay the prorated difference for the rest of
+    the cycle; Flex Pro is 109 AED and Flex Smart 59 AED per 28 days.
+  notes: Written in lesson 05, Task 3. Needs the plan-change rule and the plan price.
+- id: w-003
+  question: Which postpaid plan gives the most minutes for under 200 AED?
+  market: UAE
+  category: multi_doc
+  source: hand
+  relevant:
+  - doc: plan-max-advanced-uae
+  - doc: plan-max-basic-uae
+  distractors:
+  - plan-max-premium-uae
+  - plan-max-elite-uae
+  reference_answer: Max Advanced, 1,500 minutes for 165 AED (Max Basic has 500 for 125 AED).
+  notes: Written in lesson 05, Task 3, expected to fail. A comparison needs every candidate plan in
+    the top k; plan pages score almost the same. Belongs in a tool (lesson 10).

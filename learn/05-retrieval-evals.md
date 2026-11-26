@@ -253,7 +253,9 @@ distractor@5 0.057
   exactly the case where a **reranker** (lesson 08) helps: retrieve 20, reorder, keep 5.
 - **multi_doc recall 0.68 and multilingual 0.39** are the slices to watch in lessons 07–09.
 
-These go into the ROADMAP results table as **v0: recall@5 0.880, MRR 0.898**.
+After Task 3 added your 3 questions (80 in total), the re-saved baseline is **hit@5 0.945,
+recall@5 0.871, MRR 0.902, nDCG 0.850, distractor@5 0.082**. Those are the v0 numbers in the
+ROADMAP results table, and the ones lessons 07–09 must beat.
 
 ### 10. Our decisions
 

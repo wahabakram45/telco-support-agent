@@ -51,8 +51,8 @@ Pydantic comes back throughout the project: request and response models in FastA
 - [x] Drill: interview-bank §04b — 7/8 (missed: Alpine is smaller, but uses musl so glibc wheels don't fit and ML packages compile from source)
 
 ## Phase 3 — Evals FIRST  (week 4) ⭐ the differentiator
-- [ ] Lesson [05 — Retrieval evals](learn/05-retrieval-evals.md): recall@k, precision@k, MRR, nDCG; building a golden set
-- [ ] Build: retrieval metrics, 77-question golden set (`data/eval/golden.yaml`), eval harness, baseline
+- [x] Lesson [05 — Retrieval evals](learn/05-retrieval-evals.md): recall@k, precision@k, MRR, nDCG; building a golden set
+- [x] Build: retrieval metrics, 80-question golden set (`data/eval/golden.yaml`), eval harness, baseline
 - [ ] Drill: interview-bank §05
 - [ ] Lesson 06 — Generation evals: faithfulness, answer relevance, correctness; LLM-as-judge and calibrating the judge against human labels
 - [ ] Build: generation evals with a calibrated LLM judge; CI regression gate (retrieval + generation)
@@ -90,7 +90,7 @@ Pydantic comes back throughout the project: request and response models in FastA
 
 | Version | Recall@5 | MRR | Faithfulness | Answer correctness | Tool-call acc. | p95 latency | Cost / 1k queries |
 |---|---|---|---|---|---|---|---|
-| v0 naive RAG | 0.880 | 0.898 | | | – | | |
+| v0 naive RAG | 0.871 | 0.902 | | | – | | |
 | v1 + hybrid | | | | | – | | |
 | v2 + reranker | | | | | – | | |
 | v3 + agent | | | | | | | |

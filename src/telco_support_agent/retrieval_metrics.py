@@ -25,14 +25,19 @@ def recall_at_k(grades: list[int], n_relevant: int, k: int) -> float:
 
     `n_relevant` counts every relevant chunk in the corpus, retrieved or not.
     """
-    # TODO(you) — lesson 05, Task 1. Raise ValueError if n_relevant is 0.
-    raise NotImplementedError
+    if n_relevant == 0:
+        raise ValueError("n_relevant cannot be zero")
+    return sum([1 for g in grades[:k] if g > 0]) / n_relevant
 
 
 def reciprocal_rank(grades: list[int]) -> float:
     """1 / (rank of the first relevant result), or 0.0 if none is relevant. Ranks start at 1."""
-    # TODO(you) — lesson 05, Task 1.
-    raise NotImplementedError
+    rank = None
+    for i, g in enumerate(grades, start=1):
+        if g > 0:
+            rank = i
+            break
+    return 1 / rank if rank else 0.0
 
 
 def dcg(grades: list[int]) -> float:
@@ -46,8 +51,10 @@ def ndcg_at_k(grades: list[int], ideal_grades: list[int], k: int) -> float:
     `ideal_grades` are the grades of ALL relevant chunks in the corpus (any order): the ideal
     ranking puts the highest grades first.
     """
-    # TODO(you) — lesson 05, Task 2. Use dcg(). Raise ValueError if the ideal DCG is 0.
-    raise NotImplementedError
+    ideal_grades = sorted(ideal_grades, reverse=True)[:k]
+    if not any(g > 0 for g in ideal_grades):
+        raise ValueError("ideal DCG is 0")
+    return dcg(grades[:k]) / dcg(ideal_grades)
 
 
 def bootstrap_ci(
